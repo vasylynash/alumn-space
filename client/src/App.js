@@ -2,7 +2,7 @@ import './App.css';
 import Home from './pages/Home';
 import Footer from './components/Footer'
 import Profile from './pages/Profile'
-import Addpost from './pages/Addpost'
+import AddPost from './pages/AddPost'
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -30,7 +30,7 @@ function App() {
               <Profile />
             </Route>
             <Route exact path="/addpost">
-              <Addpost />
+              <AddPost />
             </Route>
           </Switch>
         </div>

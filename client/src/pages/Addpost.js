@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 
-const Addpost = () => {
+const AddPost = () => {
 
     const [title, setTitle] = useState('');
     const [body, setBody] = useState(''); 
@@ -56,4 +56,4 @@ const Addpost = () => {
      );
 }
  
-export default Addpost;
+export default AddPost;
