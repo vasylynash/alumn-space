@@ -61,6 +61,17 @@ const typeDefs = gql `
         labels: [Label]
         label(labelId: ID!): Label
     }
+
+    type Mutation {
+        addUser(username: String!, email: String!, password: String!, yearOfGraduation: String!, class: String!): Auth
+        login(email: String!, password: String!): Auth
+        addPost(title: String!, body: String!, author: String!): Post
+        updatePost(postId: ID!, title: String!, body: String!): Post
+        removePost(postId: ID!): User
+        addComment(postId: ID!, commentText: String!): Post
+        updateComment(commentId: ID!, commentText: String!): Post
+        removeComment(commentId: ID!): Post
+    }
 `;
 
 
