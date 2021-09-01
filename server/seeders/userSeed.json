@@ -1,0 +1,57 @@
+[
+  {
+    "username": "Hayk",
+    "email": "hayk@gmail.com",
+    "password": "Password123456",
+    "role": "",
+    "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "yearOfGraduation": "2021",
+    "linkedIn": "https://linkedin.com",
+    "gitHub": "https://github.com",
+    "class": "Full Stack"
+  },
+  {
+    "username": "Dmitriy",
+    "email": "dmitriy@gmail.com",
+    "password": "Password123456",
+    "role": "",
+    "bio": "Turpis massa sed elementum tempus egestas sed sed risus pretium. Commodo odio aenean sed adipiscing diam donec. Neque viverra justo nec ultrices dui sapien. Risus nec feugiat in fermentum posuere. Sed nisi lacus sed viverra tellus in hac.",
+    "yearOfGraduation": "2021",
+    "linkedIn": "https://linkedin.com",
+    "gitHub": "https://github.com",
+    "class": "Full Stack"
+  },
+  {
+    "username": "Melina",
+    "email": "melina@gmail.com",
+    "password": "Password123456",
+    "role": "",
+    "bio": "Eu scelerisque felis imperdiet proin fermentum leo vel orci. Nunc sed velit dignissim sodales ut eu. Odio facilisis mauris sit amet massa vitae. Mattis nunc sed blandit libero.",
+    "yearOfGraduation": "2021",
+    "linkedIn": "https://linkedin.com",
+    "gitHub": "https://github.com",
+    "class": "Full Stack"
+  },
+  {
+    "username": "Jack",
+    "email": "jack@gmail.com",
+    "password": "Password123456",
+    "role": "",
+    "bio": "Viverra nibh cras pulvinar mattis nunc sed blandit. Est ultricies integer quis auctor elit sed vulputate mi sit. Eget nunc scelerisque viverra mauris in aliquam sem. Fermentum et sollicitudin ac orci phasellus egestas tellus rutrum. In pellentesque massa placerat duis ultricies lacus sed turpis.",
+    "yearOfGraduation": "2021",
+    "linkedIn": "https://linkedin.com",
+    "gitHub": "https://github.com",
+    "class": "Full Stack"
+  },
+  {
+    "username": "Vasylyna",
+    "email": "vasylyna@gmail.com",
+    "password": "Password123456",
+    "role": "",
+    "bio": "Pellentesque id nibh tortor id aliquet lectus proin. At risus viverra adipiscing at in tellus integer feugiat. Pellentesque sit amet porttitor eget dolor morbi non arcu risus. Tincidunt eget nullam non nisi est sit.",
+    "yearOfGraduation": "2021",
+    "linkedIn": "https://linkedin.com",
+    "gitHub": "https://github.com",
+    "class": "Full Stack"
+  }
+]
