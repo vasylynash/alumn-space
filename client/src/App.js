@@ -1,6 +1,5 @@
-import './App.css';
 import Home from './pages/Home';
-import Footer from './components/Footer'
+// import Footer from './components/Footer'
 import Profile from './pages/Profile'
 import AddPost from './pages/AddPost'
 import Landing from './pages/Landing';
@@ -34,7 +33,8 @@ function App() {
             </Route>
           </Switch>
         </div>
-        <Footer />
+        {/* Removed footer for now  */}
+        {/* <Footer /> */}
       </div>
     </Router>
   );
