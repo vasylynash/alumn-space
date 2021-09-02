@@ -14,6 +14,7 @@ const VerticalDiv = styled.div`
 const Title = styled.h1`
     font-size: 37px;
     font-family: 'Besley, serif';
+    margin: 0;
 `
 
 const LoginBtn = styled.button`
@@ -42,6 +43,7 @@ const SignUpBtn = styled.button`
     border: none;
     border-radius: 5px;
     padding: 5px 43px;
+    
 
     &:hover {
         background-color: #FF8985;
@@ -57,7 +59,7 @@ const Landing = () => {
         <VerticalDiv> 
             <img src={logo}  alt="logo images" height='20%' width='90%'/>
             <Title>AlumSpace</Title>
-            <p> A place for coding bootcamp Alumni to connect with each other and share ideas.</p>
+            <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif'}}> A place for coding bootcamp Alumni to connect  with each other <br/> and share ideas.</p>
             <Link to="/login">
                 <LoginBtn textColor='white' backgroundColor='#51BBB9'>
                     Login
