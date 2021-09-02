@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import logo from '../images/logo.png';
 import TextField from '@material-ui/core/TextField';
 import 'date-fns';
@@ -16,6 +16,7 @@ import GlobalStyle from './global.style';
 import { VerticalDiv } from './Landing';
 import { LoginBtn } from './Landing';
 import { SignUpBtn } from './Landing';
+import { BackArrow } from '../components/icons.styles'
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -52,6 +53,9 @@ const Signup = () => {
     return ( 
         <VerticalDiv>
             <GlobalStyle/>
+            <Link to='/'>
+                <BackArrow className="fas fa-arrow-left"></BackArrow>
+            </Link>
             <img src={logo}  alt="logo images" height='200px' width='50%'/>
             <h1 style={{fontSize:'37px', margin:'0'}}>Welcome!</h1>
             <p style={{fontSize:'15px'}}><span style={{color:'#51BBB9',fontWeight:'bold'}}>Sign up </span>to use AlumnSpace</p>
