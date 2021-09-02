@@ -15,7 +15,7 @@ const typeDefs = gql `
         yearOfGraduation: String
         linkedIn: String
         gitHub: String
-        class: String
+        className: String
     }
 
     type Auth {
@@ -63,7 +63,7 @@ const typeDefs = gql `
     }
 
     type Mutation {
-        addUser(username: String!, email: String!, password: String!, yearOfGraduation: String!, class: String!): Auth
+        addUser(username: String!, email: String!, password: String!, yearOfGraduation: String!, className: String!): Auth
         login(email: String!, password: String!): Auth
         addPost(title: String!, body: String!, author: String!): Post
         updatePost(postId: ID!, title: String!, body: String!): Post

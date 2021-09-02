@@ -53,7 +53,7 @@ const userSchema = new Schema(
     gitHub: {
         type: String
     },
-    class: {
+    className: {
         type: String,
         required: true
     }
