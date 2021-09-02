@@ -8,7 +8,7 @@ const commentSchema = new Schema({
     },
     author: {
         type: String,
-        required: true
+        // required: true
     },
     dateCreated: {
         type: Date,

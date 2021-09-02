@@ -1,7 +1,7 @@
 const { Schema, model, now } = require('mongoose');
 const bcrypt = require('bcrypt');
-const postSchema = require('./Post');
-const commentSchema = require('./Comment');
+const postSchema = require('./Post').schema;
+const commentSchema = require('./Comment').schema;
 const dateFormat = require('../utils/dateFormat');
 
 const userSchema = new Schema(
