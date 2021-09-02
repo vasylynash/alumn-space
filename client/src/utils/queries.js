@@ -15,7 +15,7 @@ export const QUERY_ALL_USERS = gql`
       yearOfGraduation
       linkedIn
       gitHub
-      class
+      className
       posts {
         _id
         title
@@ -50,7 +50,7 @@ export const QUERY_SINGLE_USER = gql`
       yearOfGraduation
       linkedIn
       gitHub
-      class
+      className
       posts {
         _id
         title
