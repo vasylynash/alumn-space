@@ -1,6 +1,8 @@
 [
   {
     "username": "Hayk",
+    "firstName": "Hayk",
+    "lastName": "Mnatsakanyan",
     "email": "hayk@gmail.com",
     "password": "Password123456",
     "image": "",
@@ -16,6 +18,8 @@
   },
   {
     "username": "Dmitriy",
+    "firstName": "Dmitriy",
+    "lastName": "Babich",
     "email": "dmitriy@gmail.com",
     "password": "Password123456",
     "image": "",
@@ -31,6 +35,8 @@
   },
   {
     "username": "Melina",
+    "firstName": "Melina",
+    "lastName": "Boedecker",
     "email": "melina@gmail.com",
     "password": "Password123456",
     "image": "",
@@ -46,6 +52,8 @@
   },
   {
     "username": "Jack",
+    "firstName": "Jack",
+    "lastName": "Jackinson",
     "email": "jack@gmail.com",
     "password": "Password123456",
     "image": "",
@@ -61,6 +69,8 @@
   },
   {
     "username": "Vasylyna",
+    "firstName": "Vasylyna",
+    "lastName": "Shevadutska",
     "email": "vasylyna@gmail.com",
     "password": "Password123456",
     "image": "",
