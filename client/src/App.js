@@ -6,9 +6,32 @@ import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+
+// material Ui theme
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#51BBB9',
+    },
+    secondary: {
+      main: '#f44336',
+    },
+  },
+  typography: {
+    fontFamily: [
+      "Montserrat",
+      "Roboto",
+      "Helvetica",
+      "sans-serif"
+    ],
+  }
+});
+
 
 function App() {
   return (
+    <ThemeProvider theme={ theme }>
     <Router>
       <div className="App">
         <div className="content">
@@ -37,6 +60,7 @@ function App() {
         {/* <Footer /> */}
       </div>
     </Router>
+    </ThemeProvider>
   );
 }
 
