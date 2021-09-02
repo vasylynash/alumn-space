@@ -8,8 +8,8 @@ export const ADD_USER = gql`
           _id
           username
           email
-          firstname
-          lastname
+          firstName
+          lastName
           image
           registrationDate
           role
