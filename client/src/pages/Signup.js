@@ -7,10 +7,8 @@ import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { makeStyles } from '@material-ui/core/styles';
 // styled components
 import GlobalStyle from './global.style';
 import { VerticalDiv } from './Landing';
@@ -18,16 +16,7 @@ import { LoginBtn } from './Landing';
 import { SignUpBtn } from './Landing';
 import { BackArrow } from '../components/icons.styles'
 
-const useStyles = makeStyles((theme) => ({
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 120,
-      paddingRight: 160
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
-  }));
+
 
 
 
@@ -43,7 +32,6 @@ const Signup = () => {
       };
 
     //   subject picker
-    const classes = useStyles();
     const [subject, setSubject] = useState();
 
     const handleSubjectChange = (event) => {
