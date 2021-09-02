@@ -54,7 +54,14 @@ const resolvers = {
     },
     addPost: async (parent, { title, body }, context) => {
       return Post.create({title: title, body: body, author: context.user.username});
-    }
+    },
+    updatePost: async (parent, { postId, title, body }, context) => {
+      const updatedPost = await Post.findOneAndUpdate(
+          { postId: postId, title: title, body:body },
+          { new: true});
+      
+      return { updatedPost };
+  }
   }    
 };
 
