@@ -68,15 +68,15 @@ const Signup = () => {
                         value={subject}
                         onChange={handleSubjectChange}
                         >
-                        <MenuItem value={10}>subject1</MenuItem>
-                        <MenuItem value={20}>subject2</MenuItem>
-                        <MenuItem value={30}>subject3</MenuItem>
-                        <MenuItem value={30}>subject4</MenuItem>
-                        <MenuItem value={30}>subject5</MenuItem>
-                        <MenuItem value={30}>subject6</MenuItem>
-                        <MenuItem value={30}>subject7</MenuItem>
-                        <MenuItem value={30}>subject8</MenuItem>
-                        <MenuItem value={30}>subject9</MenuItem>
+                        <MenuItem value={1}>subject1</MenuItem>
+                        <MenuItem value={2}>subject2</MenuItem>
+                        <MenuItem value={3}>subject3</MenuItem>
+                        <MenuItem value={4}>subject4</MenuItem>
+                        <MenuItem value={5}>subject5</MenuItem>
+                        <MenuItem value={6}>subject6</MenuItem>
+                        <MenuItem value={7}>subject7</MenuItem>
+                        <MenuItem value={8}>subject8</MenuItem>
+                        <MenuItem value={9}>subject9</MenuItem>
                         </Select>
                     </FormControl>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
