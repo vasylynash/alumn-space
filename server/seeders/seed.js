@@ -15,20 +15,15 @@ db.once("open", async () => {
     await Post.deleteMany({});
     await User.deleteMany({});
 
-    // await Category.create(categorySeed);
-    // await Comment.create(commentSeed);
-    // await Label.create(labelSeed);
-    // await Post.create(postSeed);
-    // await User.create(userSeed);
     const categories = await Category.insertMany(categorySeed);
     const comments = await Comment.insertMany(commentSeed);
     const labels = await Label.insertMany(labelSeed);
     const posts = await Post.insertMany(postSeed);
     const users = await User.insertMany(userSeed);
 
-    //Post
+    //Post referances
     for (newPost of posts) {
-      // randomly loop and add comments
+      // picking random number of comments and adding to post
       for (let i = 0; i <= Math.floor(Math.random() * comments.length); i++) {
         const tempComments =
           comments[Math.floor(Math.random() * comments.length)];
@@ -52,7 +47,8 @@ db.once("open", async () => {
       await tempLabel.save();
     }
 
-    //
+    //User referances
+
     console.log("Seeds are deployed!");
     process.exit(0);
   } catch (err) {
