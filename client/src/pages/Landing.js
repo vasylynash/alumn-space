@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.png';
 import styled from 'styled-components';
+import GlobalStyle from './global.style';
 
 // styles
 
-const VerticalDiv = styled.div`
+ export const VerticalDiv = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,7 +18,7 @@ const Title = styled.h1`
     margin: 0;
 `
 
-const LoginBtn = styled.button`
+export const LoginBtn = styled.button`
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: 15px;
@@ -34,7 +35,7 @@ const LoginBtn = styled.button`
     }
 `
 
-const SignUpBtn = styled.button`
+export const SignUpBtn = styled.button`
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: 15px;
@@ -56,7 +57,8 @@ const SignUpBtn = styled.button`
 
 const Landing = () => {
     return ( 
-        <VerticalDiv> 
+        <VerticalDiv>
+            <GlobalStyle/> 
             <img src={logo}  alt="logo images" height='20%' width='90%'/>
             <Title>AlumSpace</Title>
             <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif'}}> A place for coding bootcamp Alumni to connect  with each other <br/> and share ideas.</p>
