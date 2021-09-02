@@ -17,11 +17,6 @@ import { SignUpBtn } from './Landing';
 import { BackArrow } from '../components/icons.styles'
 
 
-
-
-
-
-
 const Signup = () => {
 
     // date picker 
@@ -90,7 +85,9 @@ const Signup = () => {
                     <TextField id="password" label="Password" color='primary' type='password' />
                     <TextField id="confirmPassword" label="Confirm password" color='primary' type='password'/>
                     <SignUpBtn textColor='white' backgroundColor='#51BBB9' type='Submit' style={{marginTop:'20px'}}>Sign up</SignUpBtn>
-                    <LoginBtn textColor='#707070' backgroundColor='#EDEDED'>Login</LoginBtn>
+                    <Link to='/login'>
+                        <LoginBtn textColor='#707070' backgroundColor='#EDEDED'>Login</LoginBtn>
+                    </Link>
                 </VerticalDiv>
             </form>
         </VerticalDiv>
