@@ -1,0 +1,26 @@
+[
+  {
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+    "author:": "Vasylyna Shevaduska",
+    "dateCreated": "05/25/2021",
+    "likes": "14"
+  },
+  {
+    "body": "Excepteur sint occaecat cupidatat non proident, sunt",
+    "author:": "Melina Boedecker",
+    "dateCreated": "06/18/2021",
+    "likes": "85"
+  },
+  {
+    "body": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip",
+    "author:": "Dmitriy Babich",
+    "dateCreated": "08/03/2021",
+    "likes": "12"
+  },
+  {
+    "body": "Tempor id eu nisl nunc mi. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat. Pellentesque elit eget gravida cum sociis natoque penatibus et. At volutpat diam ut venenatis. ",
+    "author:": "Hayk Mnatsakanyan",
+    "dateCreated": "08/28/2021",
+    "likes": "18"
+  }
+]
