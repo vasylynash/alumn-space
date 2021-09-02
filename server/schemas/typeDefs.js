@@ -57,7 +57,7 @@ const typeDefs = gql `
         posts: [Post]
         post(postId: ID!): Post
         categories: [Category]
-        category(categoryId: ID!)
+        category(categoryId: ID!): Category
         labels: [Label]
         label(labelId: ID!): Label
     }
