@@ -6,6 +6,27 @@ const resolvers = {
     users: async () => {
       return User.find();
     },
+    user: async (parent, { userId }) => {
+      return User.find({_id: userId});
+    },
+    posts: async () => {
+      return Post.find();
+    },
+    post: async (parent, { postId }) => {
+      return Post.find({_id: postId});
+    },
+    categories: async () => {
+      return Category.find();
+    },
+    category: async (parent, { categoryId }) => {
+      return Category.find({_id: categoryId});
+    },
+    labels: async () => {
+      return Label.find();
+    },
+    label: async (parent, { labelId }) => {
+      return Label.find({_id: labelId});
+    }
   },
 
   Mutation: {
@@ -31,6 +52,9 @@ const resolvers = {
 
       return { token, user };
     },
+    addPost: async (parent, { title, body }, context) => {
+      return Post.create({title: title, body: body, author: context.user.username});
+    }
   }    
 };
 
