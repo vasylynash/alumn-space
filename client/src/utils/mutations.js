@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!, yearOfGraduation: String!, class: String!) {
-    addUser(username: $username, email: $email, password: $password, yearOfGraduation: $yearOfGraduation, class: $class) {
+  mutation addUser($username: String!, $email: String!, $password: String!, yearOfGraduation: String!, className: String!) {
+    addUser(username: $username, email: $email, password: $password, yearOfGraduation: $yearOfGraduation, className: $className) {
       token
       user {
           _id
@@ -17,7 +17,7 @@ export const ADD_USER = gql`
           yearOfGraduation
           linkedIn
           gitHub
-          class
+          className
           posts {
               _id
               title
