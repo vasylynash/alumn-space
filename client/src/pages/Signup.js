@@ -44,7 +44,6 @@ const Signup = () => {
             <p style={{fontSize:'15px'}}>Please <span style={{color:'#51BBB9',fontWeight:'bold'}}>Sign up </span>to use AlumnSpace</p>
             <form noValidate autoComplete="off">
                 <VerticalDiv>
-                    <TextField id="name" label="Name" color='primary' />
                     <TextField id="username" label="Username" color='primary' />
                     <TextField id="email" label="Email" color='primary' />
                     <FormControl style={{minWidth: 190}}>

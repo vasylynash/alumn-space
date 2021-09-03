@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const BackArrow = styled.i`
     position: fixed;
     color: black;
@@ -8,7 +7,6 @@ export const BackArrow = styled.i`
     left: 40px;
     font-size: 30px;
     transition: ease-in-out 0.3s;
-
 
 &:hover {
     color: #FF8985;

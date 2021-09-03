@@ -17,7 +17,7 @@ const BurgerStyled = styled.div`
         justify-content: space-around;
         flex-flow: column nowrap;
     }
-    
+
     div {
         width: 2rem;
         height: 0.25rem;
@@ -41,7 +41,6 @@ const BurgerStyled = styled.div`
     }
 
 `
-
 
 function Burger() {
 

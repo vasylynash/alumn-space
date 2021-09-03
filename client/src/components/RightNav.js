@@ -36,7 +36,6 @@ const List = styled.ul`
         padding-top: 3.5rem;
         transition: transform 0.3s ease-in-out;
 
-
         p {
         color: #707070;
         text-decoration: none;

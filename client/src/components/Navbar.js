@@ -16,7 +16,6 @@ const Nav = styled.nav`
     }
 `
 
-
 const Navbar = () => {
     return ( 
         <Nav>
