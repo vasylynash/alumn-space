@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import RightNav from './RightNav';
 
 const BurgerStyled = styled.div`
     width: 2rem;
@@ -48,11 +49,12 @@ function Burger() {
 
     return (
         <>
-        <BurgerStyled open={open} onClick={()=>setOpen(!open)}>
+        <BurgerStyled open={open} onClick={() => setOpen(!open)}>
             <div/>
             <div/>
             <div/>
         </BurgerStyled>
+        <RightNav open ={open}/>
         </>
     )
 }

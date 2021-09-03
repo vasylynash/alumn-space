@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../images/logo.png';
 import GlobalStyle from '../pages/global.style';
@@ -15,7 +14,6 @@ const Nav = styled.nav`
     .logo {
         padding:5px;
     }
-
 `
 
 
