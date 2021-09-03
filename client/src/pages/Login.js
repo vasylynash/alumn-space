@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import GlobalStyle from './global.style';
+import GlobalStyle from '../components/global.style';
 import { VerticalDiv } from './Landing';
 import { LoginBtn } from './Landing';
 import { SignUpBtn } from './Landing';
