@@ -20,7 +20,7 @@ const Login = () => {
             <p style={{fontSize:'15px'}}>Plase <span style={{color:'#51BBB9',fontWeight:'bold'}}>Login </span>to use AlumnSpace</p>
             <form noValidate autoComplete="off">
                 <VerticalDiv>
-                    <TextField id="standard-basic" label="Username" color='primary' />
+                    <TextField id="username" label="Username" color='primary' />
                     <TextField id="password" label="Password" color='primary' type='password' />
                     <LoginBtn textColor='white' backgroundColor='#51BBB9' type='Submit' style={{marginTop:'20px'}}>Login</LoginBtn>
                     <Link to='/signup'>
