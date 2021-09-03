@@ -66,7 +66,7 @@ function RightNav( { open }) {
                     </Link>
                 </li>
                 <li>
-                    <Link to='/Landing' style={{textDecoration:'none'}}>
+                    <Link to='/' style={{textDecoration:'none'}}>
                         <p>Logout</p>
                     </Link>
                 </li>

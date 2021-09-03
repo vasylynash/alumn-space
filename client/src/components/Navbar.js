@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo from '../images/logo.png';
-import GlobalStyle from '../pages/global.style';
+import GlobalStyle from './global.style';
 import Burger from './Burger';
 
 const Nav = styled.nav`

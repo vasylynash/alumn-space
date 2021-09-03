@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.png';
 import styled from 'styled-components';
-import GlobalStyle from './global.style';
+import GlobalStyle from '../components/global.style';
 
 // styles
 

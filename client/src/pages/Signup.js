@@ -10,7 +10,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 // styled components
-import GlobalStyle from './global.style';
+import GlobalStyle from '../components/global.style';
 import { VerticalDiv } from './Landing';
 import { LoginBtn } from './Landing';
 import { SignUpBtn } from './Landing';
