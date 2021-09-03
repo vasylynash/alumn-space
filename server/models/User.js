@@ -31,7 +31,6 @@ const userSchema = new Schema(
         required: false,
     },
     posts: [postSchema],
-    // comments: [commentSchema],
     registrationDate: {
         type: Date,
         default: Date.now,
