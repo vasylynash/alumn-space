@@ -41,17 +41,17 @@ const Signup = () => {
             </Link>
             <img src={logo}  alt="logo images" height='200px' width='50%'/>
             <h1 style={{fontSize:'37px', margin:'0'}}>Welcome!</h1>
-            <p style={{fontSize:'15px'}}><span style={{color:'#51BBB9',fontWeight:'bold'}}>Sign up </span>to use AlumnSpace</p>
+            <p style={{fontSize:'15px'}}>Please <span style={{color:'#51BBB9',fontWeight:'bold'}}>Sign up </span>to use AlumnSpace</p>
             <form noValidate autoComplete="off">
                 <VerticalDiv>
-                    <TextField id="standard-basic" label="Name" color='primary' />
-                    <TextField id="standard-basic" label="Username" color='primary' />
-                    <TextField id="standard-basic" label="Email" color='primary' />
+                    <TextField id="name" label="Name" color='primary' />
+                    <TextField id="username" label="Username" color='primary' />
+                    <TextField id="email" label="Email" color='primary' />
                     <FormControl style={{minWidth: 190}}>
-                    <InputLabel id="demo-simple-select-label" >Your subject</InputLabel>
+                    <InputLabel id="subject" >Your subject</InputLabel>
                         <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
+                        labelId="subject"
+                        id="subject-select"
                         value={subject}
                         onChange={handleSubjectChange}
                         >
