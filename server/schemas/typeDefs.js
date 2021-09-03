@@ -53,24 +53,24 @@ const typeDefs = gql `
 
     type Query {
         users: [User]
-        user(userId: ID!): User
+        user(id: ID!): User
         posts: [Post]
-        post(postId: ID!): Post
+        post(id: ID!): Post
         categories: [Category]
-        category(categoryId: ID!): Category
+        category(id: ID!): Category
         labels: [Label]
-        label(labelId: ID!): Label
+        label(id: ID!): Label
     }
 
     type Mutation {
         addUser(username: String!, email: String!, password: String!, yearOfGraduation: String!, className: String!): Auth
         login(email: String!, password: String!): Auth
         addPost(title: String!, body: String!, author: String!): Post
-        updatePost(postId: ID!, title: String!, body: String!): Post
-        removePost(postId: ID!): User
+        updatePost(id: ID!, title: String!, body: String!): Post
+        removePost(id: ID!): Post
         addComment(postId: ID!, commentText: String!): Post
         updateComment(commentId: ID!, commentText: String!): Post
-        removeComment(commentId: ID!): Post
+        removeComment(id: ID!): Post
     }
 `;
 

@@ -7,26 +7,26 @@ const resolvers = {
     users: async () => {
       return User.find();
     },
-    user: async (parent, { userId }) => {
-      return User.find({_id: userId});
+    user: async (parent, args) => {
+      return User.findById(args.id);
     },
     posts: async () => {
       return Post.find();
     },
-    post: async (parent, { postId }) => {
-      return Post.find({_id: postId});
+    post: async (parent, args) => {
+      return Post.findById(args.id);
     },
     categories: async () => {
       return Category.find();
     },
-    category: async (parent, { categoryId }) => {
-      return Category.find({_id: categoryId});
+    category: async (parent, args) => {
+      return Category.findById(args.id);
     },
     labels: async () => {
       return Label.find();
     },
-    label: async (parent, { labelId }) => {
-      return Label.find({_id: labelId});
+    label: async (parent, args) => {
+      return Label.findById(args.id);
     }
   },
 
@@ -53,16 +53,21 @@ const resolvers = {
 
       return { token, user };
     },
-    addPost: async (parent, { title, body }, context) => {
-      return Post.create({title: title, body: body, author: context.user.username});
+    addPost: async (parent, { title, body, author }) => {
+      return Post.create({title: title, body: body, author: author});
     },
-    updatePost: async (parent, { postId, title, body }, context) => {
+    updatePost: async (parent, { id, title, body }, context) => {
       const updatedPost = await Post.findOneAndUpdate(
-          { postId: postId, title: title, body:body },
+          { id: id, title: title, body: body },
           { new: true});
       
       return { updatedPost };
-  }
+    },
+    removePost: async (parent, args)  => {
+      const id = args.id;
+      Post.findByIdAndRemove(id);
+      return id;
+    } 
   }    
 };
 
