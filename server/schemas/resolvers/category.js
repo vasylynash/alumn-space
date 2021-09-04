@@ -5,10 +5,8 @@ module.exports = {
     categories: async () => {
       return Category.find();
     },
-    category: async (parent, args) => {
+    category: async (_, args) => {
       return Category.findById(args.id);
     }
-  },
-  Mutation: {
-  }    
+  }   
 };

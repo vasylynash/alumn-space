@@ -5,11 +5,8 @@ module.exports = {
     labels: async () => {
       return Label.find();
     },
-    label: async (parent, args) => {
+    label: async (_, args) => {
       return Label.findById(args.id);
     }
-  },
-  Mutation: {
-      
-  }   
+  }  
 };
