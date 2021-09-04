@@ -7,6 +7,7 @@ const List = styled.ul`
     display: flex;
     flex-flow: row;
     margin-top: 0;
+    z-index: 19;
 
     li {
         padding: 15px 10px;
