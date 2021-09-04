@@ -9,6 +9,9 @@ function Post() {
         <VerticalDiv>
             <h1 style={{fontSize:'39px', margin:'0'}}>Posts</h1>
             <PostCard/>
+            <PostCard/>
+            <PostCard/>
+            <PostCard/>
         </VerticalDiv>
         </>
     )

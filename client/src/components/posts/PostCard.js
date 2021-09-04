@@ -9,6 +9,7 @@ const Card = styled.div`
     background-color: #F5F5F5;
     border-radius: 10px;
     box-shadow: 0 3px 6px rgba(0,0,0,30%);
+    margin: 0.5rem 0;
 
     .title {
         position: absolute;
