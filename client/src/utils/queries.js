@@ -91,8 +91,8 @@ export const QUERY_ALL_POSTS = gql`
 `;
 
 export const QUERY_SINGLE_POST = gql`
-  query post(postId: ID!) {
-    post(postId: ID!) {
+  query post($postId: ID!) {
+    post(postId: $postId) {
       _id
       title
       body
@@ -121,8 +121,8 @@ export const QUERY_ALL_CATEGORIES = gql`
 
 //For below query, do we need to put the posts in the Category typeDef?
 export const QUERY_CATEGORY_POSTS = gql`
-  query category(categoryId: ID!) {
-    category(categoryId: ID!) {
+  query category($categoryId: ID!) {
+    category(categoryId: $categoryId) {
       _id
       name
       posts {  
@@ -146,8 +146,8 @@ export const QUERY_ALL_LABELS = gql`
 
 //For below query, do we need to put the posts in the Label typeDef?
 export const QUERY_LABEL_POSTS = gql`
-  query label(labelId: ID!) {
-    label(labelId: ID!) {
+  query label($labelId: ID!) {
+    label(labelId: $labelId) {
       _id
       name
       posts {  
