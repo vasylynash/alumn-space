@@ -44,20 +44,12 @@ const postSchema = new Schema({
     likes: {
         type: Number,
     },
-    // category: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Category'
-    // },
     category: {
         type: String,
         enum: ['Coding', 'DataScience', 'UIUX', 'None'],
         default: 'None',
         required: true
     },
-    // label: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Label'
-    // }
     label: {
         type: String, 
         enum: [
