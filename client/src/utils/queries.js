@@ -119,7 +119,7 @@ export const QUERY_ALL_CATEGORIES = gql`
 }
 `;
 
-//For below query, do we need to put the posts in the Category typeDef?
+// //For below query, do we need to put the posts in the Category typeDef?
 export const QUERY_CATEGORY_POSTS = gql`
   query category($categoryId: ID!) {
     category(categoryId: $categoryId) {
@@ -144,7 +144,7 @@ export const QUERY_ALL_LABELS = gql`
 }
 `;
 
-//For below query, do we need to put the posts in the Label typeDef?
+// //For below query, do we need to put the posts in the Label typeDef?
 export const QUERY_LABEL_POSTS = gql`
   query label($labelId: ID!) {
     label(labelId: $labelId) {
