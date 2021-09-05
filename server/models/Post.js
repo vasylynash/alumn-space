@@ -44,13 +44,39 @@ const postSchema = new Schema({
     likes: {
         type: Number,
     },
+    // category: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Category'
+    // },
     category: {
-        type: Schema.Types.ObjectId,
-        ref: 'Category'
+        type: String,
+        enum: ['Coding', 'DataScience', 'UIUX', 'None'],
+        default: 'None',
+        required: true
     },
+    // label: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Label'
+    // }
     label: {
-        type: Schema.Types.ObjectId,
-        ref: 'Label'
+        type: String, 
+        enum: [
+            'Help',
+            'SucessStories',
+            'Jobs',
+            'Discussion',
+            'NodeJS',
+            'GraphQL',
+            'MongoDB',
+            'React',
+            'CSS',
+            'HTML',
+            'Handlebars',
+            'JavaScript',
+            'None'
+        ],
+        default: 'None',
+        required: true
     }
 
 });

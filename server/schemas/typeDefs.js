@@ -44,28 +44,28 @@ const typeDefs = gql `
     }
 
     enum Category {
-        CODING
-        DATASCIENCE
+        Coding
+        DataScience
         UIUX
-        NONE
+        None
     }
 
 
 
     enum Label {
-        HELP
-        SUCCESSSTORIES
-        JOBS
-        DISCUSSION
-        NODEJS
-        GRAPHQL
-        MONGODB
-        REACT
+        Help
+        SucessStories
+        Jobs
+        Discussion
+        NodeJS
+        GraphQL
+        MongoDB
+        React
         CSS
         HTML
-        HANDLEBARS
-        JAVASCRIPT
-        NONE
+        Handlebars
+        JavaScript
+        None
     }
 
     input RegisterInput {
@@ -76,24 +76,10 @@ const typeDefs = gql `
         className: String!
     }
 
-    input UpdateUserProfile {
-        username: String!
-        email: String!
-        yearOfGraduation: String!
-        className: String!
-        firstName: String
-        lastName: String
-        image: String
-        role: String
-        bio: String
-        gitHub: String
-        linkedIn: String
-    }
-
     type Query {
         users: [User]
         user(id: ID!): User
-        posts(Category: String, Label: String): [Post]
+        posts(category: Category, label: Label): [Post]
         post(id: ID!): Post
         categories: [Category]
         category(id: ID!): Category

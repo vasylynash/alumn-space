@@ -21,20 +21,20 @@ db.once("open", async () => {
     //Post references
     for (newPost of posts) {
       // randomly add a category to each post
-      const tempCategory =
-        categories[Math.floor(Math.random() * categories.length)];
-      newPost.category = tempCategory._id;
-      await newPost.save();
+      // const tempCategory =
+      //   categories[Math.floor(Math.random() * categories.length)];
+      // newPost.category = tempCategory._id;
+      // await newPost.save();
       // randomly add a label to each post
-      const tempLabel = labels[Math.floor(Math.random() * labels.length)];
-      newPost.label = tempLabel._id;
-      await newPost.save();
+      // const tempLabel = labels[Math.floor(Math.random() * labels.length)];
+      // newPost.label = tempLabel._id;
+      // await newPost.save();
       // reference posts on category model
-      tempCategory.posts.push(newPost);
-      await tempCategory.save();
+      // tempCategory.posts.push(newPost);
+      // await tempCategory.save();
       // reference posts on label model
-      tempLabel.posts.push(newPost);
-      await tempLabel.save();
+      // tempLabel.posts.push(newPost);
+      // await tempLabel.save();
     }
 
     //User references - TODO

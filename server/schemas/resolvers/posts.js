@@ -2,31 +2,48 @@ const Post = require('../../models/Post');
 const { UserInputError } = require('apollo-server-express');
 
 module.exports = {
-    Category: {
-      CODING: 'Coding',
-      DATASCIENCE: 'Data Science',
+    category: {
+      Coding: 'Coding',
+      DataScience: 'Data Science',
       UIUX: 'UI/UX',
-      NONE: 'none'
+      None: 'none'
     },
-    Label: {
-      HELP: 'Help',
-      SUCCESSSTORIES: 'Success Stories',
-      JOBS: 'Jobs',
-      DISCUSSION: 'Discussion',
-      NODEJS: 'NodeJs',
-      GRAPHQL: 'GraphQL',
+    label: {
+      Help: 'Help',
+      SuccessStories: 'Success Stories',
+      Jobs: 'Jobs',
+      Discussion: 'Discussion',
+      NodeJS: 'NodeJs',
+      GraphQL: 'GraphQL',
       MONGODB: 'MongoDB',
-      REACT: 'React',
+      React: 'React',
       CSS: 'CSS',
       HTML: 'HTML',
-      HANDLEBARS: 'Handlebars',
-      JAVASCRIPT: 'JavaScript',
-      NONE: 'none'
+      Handlebars: 'Handlebars',
+      JavaScript: 'JavaScript',
+      None: 'none'
     },
     Query: {
-    posts: async () => {
+    posts: async (_, {category, label}) => {
+      console.log(category, label)
       try {
-        return Post.find();        
+
+        if (category && label) {
+        return Post.find({
+          category: category,
+          label: label
+        });   
+      }  else if (category && !label) {
+        return Post.find({
+          category: category
+        });   
+      } else if (!category && label)  {
+        return Post.find({
+          label: label
+        }); 
+      } else {
+        return Post.find(); 
+      }
       }
       catch(err) {
         throw new Error(err)

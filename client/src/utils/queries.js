@@ -1,4 +1,8 @@
 import { gql } from '@apollo/client';
+//we will need to import the user selected category and label to be able to search for those
+//in the QUERY_ALL_POSTS below
+
+
 
 export const QUERY_ALL_USERS = gql`
   query users {
@@ -72,7 +76,7 @@ export const QUERY_SINGLE_USER = gql`
 
 export const QUERY_ALL_POSTS = gql`
     query posts {
-        posts {
+        posts (category:${category}, label:${label}){
             _id
             title
             body
