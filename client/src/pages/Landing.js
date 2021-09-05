@@ -26,6 +26,7 @@ export const LoginBtn = styled.button`
     border-radius: 5px;
     padding: 5px 50px;
     margin: 20px 0;
+    transition: ease-in-out 0.3s;
 
     &:hover {
         background-color: #FF8985;
@@ -42,6 +43,7 @@ export const SignUpBtn = styled.button`
     border: none;
     border-radius: 5px;
     padding: 5px 43px;
+    transition: ease-in-out 0.3s;
     
     &:hover {
         background-color: #FF8985;
