@@ -2,6 +2,27 @@ const Post = require('../../models/Post');
 const { UserInputError } = require('apollo-server-express');
 
 module.exports = {
+    Category: {
+      CODING: 'Coding',
+      DATASCIENCE: 'Data Science',
+      UIUX: 'UI/UX',
+      NONE: 'none'
+    },
+    Label: {
+      HELP: 'Help',
+      SUCCESSSTORIES: 'Success Stories',
+      JOBS: 'Jobs',
+      DISCUSSION: 'Discussion',
+      NODEJS: 'NodeJs',
+      GRAPHQL: 'GraphQL',
+      MONGODB: 'MongoDB',
+      REACT: 'React',
+      CSS: 'CSS',
+      HTML: 'HTML',
+      HANDLEBARS: 'Handlebars',
+      JAVASCRIPT: 'JavaScript',
+      NONE: 'none'
+    },
     Query: {
     posts: async () => {
       try {

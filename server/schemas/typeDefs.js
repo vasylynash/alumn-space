@@ -31,6 +31,8 @@ const typeDefs = gql `
         dateCreated: String
         comments: [Comment]
         likes: Int
+        category: Category
+        label: Label
     }
 
     type Comment {
@@ -41,14 +43,29 @@ const typeDefs = gql `
         likes: Int
     }
 
-    type Category {
-        _id: ID
-        name: String
+    enum Category {
+        CODING
+        DATASCIENCE
+        UIUX
+        NONE
     }
 
-    type Label {
-        _id: ID
-        name: String
+
+
+    enum Label {
+        HELP
+        SUCCESSSTORIES
+        JOBS
+        DISCUSSION
+        NODEJS
+        GRAPHQL
+        MONGODB
+        REACT
+        CSS
+        HTML
+        HANDLEBARS
+        JAVASCRIPT
+        NONE
     }
 
     input RegisterInput {
@@ -76,7 +93,7 @@ const typeDefs = gql `
     type Query {
         users: [User]
         user(id: ID!): User
-        posts: [Post]
+        posts(Category: String, Label: String): [Post]
         post(id: ID!): Post
         categories: [Category]
         category(id: ID!): Category
