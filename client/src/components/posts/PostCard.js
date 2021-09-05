@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { VerticalDiv } from '../../pages/Landing'
 
 
 const Card = styled.div`
@@ -86,6 +88,8 @@ const Card = styled.div`
 function PostCard() {
     return (
         <>
+        <Link to='/post' style={{textDecoration: 'none', color:'black'}}>
+        <VerticalDiv>
         <Card>
             <div className='title'>
                 <h5>Welcome</h5>
@@ -100,6 +104,8 @@ function PostCard() {
                 <p className='body'>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
             </div>
         </Card>
+        </VerticalDiv>
+        </Link>
         </>
     )
 }

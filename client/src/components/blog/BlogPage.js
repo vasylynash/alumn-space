@@ -3,7 +3,8 @@ import { VerticalDiv } from '../../pages/Landing'
 import Navbar from '../nav/Navbar'
 import styled from 'styled-components'
 import ContentContainer from './Content'
-
+import { BackArrow } from '../icons.styles'
+import { Link } from 'react-router-dom'
 
 const BlogPost = styled.div`
 
@@ -33,6 +34,9 @@ function BlogPage() {
         <Navbar/>
         <BlogPost>
             <VerticalDiv>
+                <Link to='/home'>
+                    <BackArrow className="fas fa-arrow-left" top='60px' left='20px'></BackArrow>
+                </Link>
                 <h1 style={{fontSize:'39px', margin:'0'}}>Welcome</h1>
                 <p className='author'>By: Dmitriy Babich</p>
                 <p className='category'>#FullStackFlex</p>

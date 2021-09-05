@@ -28,7 +28,6 @@ const Login = () => {
                     </Link>
                 </VerticalDiv>
             </form>
-
         </VerticalDiv>
      );
 }
