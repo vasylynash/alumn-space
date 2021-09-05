@@ -51,8 +51,7 @@ const typeDefs = gql`
     name: String
   }
 
-  type Likes {
-    _id: ID
+  type Like {
     likes: Int
   }
 
@@ -73,8 +72,8 @@ const typeDefs = gql`
     category(id: ID!): Category
     labels: [Label]
     label(id: ID!): Label
-    commentLikes(id: ID!): Likes
-    postLikes(id: ID!): Likes
+    postLikes(id: ID!): Like
+    commentLikes(id: ID): Like
   }
 
   type Mutation {
@@ -86,8 +85,8 @@ const typeDefs = gql`
     addComment(postId: ID!, commentText: String!): Post
     updateComment(commentId: ID!, commentText: String!): Post
     removeComment(id: ID!): Post
-    addCommentLike(commentId: ID!, likes: Int!): Likes
-    addPostLike(postId: ID!, likes: Int!): Likes
+    addCommentLike(commentId: ID!, likes: Int!): Like
+    addPostLike(postId: ID!, likes: Int!): Like
   }
 `;
 
