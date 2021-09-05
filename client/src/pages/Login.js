@@ -57,7 +57,6 @@ console.log(formState)
                     </Link>
                 </VerticalDiv>
             </form>
-
         </VerticalDiv>
      );
 }
