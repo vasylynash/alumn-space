@@ -32,6 +32,14 @@ module.exports = {
       const token = signToken(user);
 
       return { token, user };
-    },
+    }, 
+
+    updateUser: async (parent, {id, firstName, lastName, image, role, bio, yearOfGraduation, linkedIn, gitHub, className }) => {
+      return await User.findOneAndUpdate(
+        {_id: id},
+        { firstName, lastName, image, role, bio, yearOfGraduation, linkedIn, gitHub, className },
+        { new: true }
+      );
+    }
     }    
 };

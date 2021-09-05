@@ -158,4 +158,25 @@ export const REMOVE_COMMENT = gql`
         }
 `;
 
+export const UPDATE_USER_PROFILE = gql`
+mutation updateUser($id:ID!, $firstName: String, $lastName:String, $image:String, $role:String, $bio:String, $yearOfGraduation:String!, $linkedIn: String, $gitHub: String, $className: String!) {
+    updateUser(id:$id, firstName:$firstName, lastName:$lastName, image:$image, role:$role, bio:$bio, yearOfGraduation:$yearOfGraduation, linkedIn:$linkedIn, gitHub:$gitHub, className:$className) {
+            _id
+      		username
+      		email
+           firstName
+      		lastName
+      		image
+      		role	
+      		bio	
+      		yearOfGraduation
+      		linkedIn
+      		gitHub
+      		className
+      		
+         
+    }
+  }
+`;
+
 

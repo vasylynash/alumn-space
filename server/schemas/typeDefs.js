@@ -59,6 +59,20 @@ const typeDefs = gql `
         className: String!
     }
 
+    input UpdateUserProfile {
+        username: String!
+        email: String!
+        yearOfGraduation: String!
+        className: String!
+        firstName: String
+        lastName: String
+        image: String
+        role: String
+        bio: String
+        gitHub: String
+        linkedIn: String
+    }
+
     type Query {
         users: [User]
         user(id: ID!): User
@@ -79,6 +93,7 @@ const typeDefs = gql `
         addComment(postId: ID!, commentText: String!): Post
         updateComment(commentId: ID!, commentText: String!): Post
         removeComment(id: ID!): Post
+        updateUser(id: ID!, firstName: String, lastName: String, image: String, role: String, bio: String, yearOfGraduation: String!, linkedIn: String, gitHub: String, className: String!): User
     }
 `;
 
