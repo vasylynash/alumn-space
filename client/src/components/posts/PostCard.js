@@ -10,6 +10,16 @@ const Card = styled.div`
     border-radius: 10px;
     box-shadow: 0 3px 6px rgba(0,0,0,30%);
     margin: 0.5rem 0;
+    transition: ease-in-out 0.3s;
+    border:solid 1px rgba(0,0,0,0%);
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &:active {
+        border:solid 1px #FF8985;
+    }
 
     .title {
         position: absolute;
