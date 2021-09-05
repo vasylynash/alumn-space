@@ -1,6 +1,7 @@
+const Post = require("../../models/Post");
 
-    const Post = require('../../models/Post');
-    
+module.exports = {
+  Query: {
     addCommentLike: async (_, { comments }) => {
       comments.likes = Post.comments.likes + 1;
       return comments.likes;
@@ -9,3 +10,5 @@
       likes = Post.likes + 1;
       return likes;
     },
+  },
+};
