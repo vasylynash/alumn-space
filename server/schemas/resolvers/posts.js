@@ -45,11 +45,14 @@ module.exports = {
       Post.findByIdAndRemove(id);
       return id;
     },
-    addCommentLike: async (_, { comments }) => {
-      return (Post.comments.likes += 1);
-    },
-    addPostLike: async (_, { likes }) => {
-      return (Post.likes += 1);
-    },
+    //--
+    // addCommentLike: async (_, { comments }) => {
+    //   comments.likes = Post.comments.likes + 1;
+    //   return comments.likes;
+    // },
+    // addPostLike: async (_, { likes }) => {
+    //   likes = Post.likes + 1;
+    //   return likes;
+    // },
   },
 };

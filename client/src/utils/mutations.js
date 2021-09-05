@@ -164,7 +164,7 @@ export const REMOVE_COMMENT = gql`
 `;
 
 export const ADD_COMMENT_LIKE = gql`
-        mutation addCommentLike(commentId: ID!, likes: number!){
+        mutation addCommentLike(commentId: ID!, likes: Int!){
             addCommentLike(commentId: $commentId, likes: $likes){
                 _id
                 comments{
@@ -176,7 +176,7 @@ export const ADD_COMMENT_LIKE = gql`
 `;
 
 export const ADD_POST_LIKE = gql`
-        mutation addPostLike(postId: ID!, likes: number!){
+        mutation addPostLike(postId: ID!, likes: Int!){
             addPostLike(postId: $postId, likes: $likes){
                 _id
                 likes
