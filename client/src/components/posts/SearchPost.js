@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import GlobalStyle from './global.style'
-import { LoginBtn } from '../pages/Landing'
+import GlobalStyle from '../global.style'
+import { LoginBtn } from '../../pages/Landing'
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';

@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import BlogPage from './components/blog/BlogPage';
 
 // material Ui theme
 const theme = createTheme({
@@ -47,6 +48,9 @@ function App() {
             </Route>
             <Route exact path="/home">
               <Home />
+            </Route>
+            <Route exact path='/post'>
+              <BlogPage/>
             </Route>
             <Route exact path="/profile">
               <Profile />

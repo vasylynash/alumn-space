@@ -4,8 +4,6 @@ import logo from '../images/logo.png';
 import styled from 'styled-components';
 import GlobalStyle from '../components/global.style';
 
-// styles
-
  export const VerticalDiv = styled.div`
     display: flex;
     flex-direction: column;
@@ -28,6 +26,7 @@ export const LoginBtn = styled.button`
     border-radius: 5px;
     padding: 5px 50px;
     margin: 20px 0;
+    transition: ease-in-out 0.3s;
 
     &:hover {
         background-color: #FF8985;
@@ -44,16 +43,13 @@ export const SignUpBtn = styled.button`
     border: none;
     border-radius: 5px;
     padding: 5px 43px;
+    transition: ease-in-out 0.3s;
     
-
     &:hover {
         background-color: #FF8985;
         color: black;
     }
 `
-
-
-
 
 const Landing = () => {
     return ( 
