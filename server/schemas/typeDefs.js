@@ -59,20 +59,6 @@ const typeDefs = gql `
         className: String!
     }
 
-    input UpdateUserProfile {
-        username: String!
-        email: String!
-        yearOfGraduation: String!
-        className: String!
-        firstName: String
-        lastName: String
-        image: String
-        role: String
-        bio: String
-        gitHub: String
-        linkedIn: String
-    }
-
     type Query {
         users: [User]
         user(id: ID!): User
