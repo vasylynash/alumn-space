@@ -83,6 +83,20 @@ const Card = styled.div`
         font-size: 12px;
         margin: 0;
     }
+
+    button {
+        border: none;
+        background-color:#F5F5F5;
+        text-align: start;
+    }
+
+
+    i {
+        font-size: 10px;
+        color: red;
+        transition: ease-in-out 0.3s;
+
+    }
 `
 
 function PostCard() {
@@ -98,6 +112,7 @@ function PostCard() {
                 <p className='author'>By: Dmitriy</p>
                 <p className='category'>#FullStackFlex</p>
                 <p className='label'>Help</p>
+                <button><i class="fas fa-heart">2</i></button>
             </div>
             <div className='right'>
                 <p className='date'>01/01/2021</p>
