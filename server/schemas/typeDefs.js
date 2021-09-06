@@ -31,6 +31,7 @@ const typeDefs = gql`
     dateCreated: String
     comments: [Comment]
     likes: [String]
+    totalLikes: Int
   }
 
   type Comment {

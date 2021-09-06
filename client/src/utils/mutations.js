@@ -163,20 +163,8 @@ export const REMOVE_COMMENT = gql`
         }
 `;
 
-export const ADD_COMMENT_LIKE = gql`
-        mutation addCommentLike(commentId: ID!, likes: Int!){
-            addCommentLike(commentId: $commentId, likes: $likes){
-                _id
-                comments{
-                  _id
-                  likes
-                }
-            }
-        }
-`;
-
 export const ADD_POST_LIKE = gql`
-        mutation addPostLike(postId: ID!, likes: Int!){
+        mutation addPostLike(postId: ID!, userId: ){
             addPostLike(postId: $postId, likes: $likes){
                 _id
                 likes

@@ -44,6 +44,9 @@ const postSchema = new Schema({
     likes: {
         type: [String],
     },
+    totalLikes: {
+        type: Number
+    },
     category: {
         type: Schema.Types.ObjectId,
         ref: 'Category'
