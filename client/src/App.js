@@ -9,7 +9,6 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import Home from './pages/Home';
-// import Footer from './components/Footer'
 import Profile from './pages/Profile'
 import AddPost from './pages/AddPost'
 import Landing from './pages/Landing';
