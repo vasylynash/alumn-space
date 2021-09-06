@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server-express");
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type User {
@@ -30,7 +30,7 @@ const typeDefs = gql`
     author: String
     dateCreated: String
     comments: [Comment]
-    likes: Int
+    likes: [String]
   }
 
   type Comment {
@@ -51,10 +51,6 @@ const typeDefs = gql`
     name: String
   }
 
-  type Like {
-    likes: Int
-  }
-
   input RegisterInput {
     username: String!
     email: String!
@@ -72,8 +68,7 @@ const typeDefs = gql`
     category(id: ID!): Category
     labels: [Label]
     label(id: ID!): Label
-    postLikes(id: ID!): Like
-    commentLikes(id: ID!): [Like]
+    postLikes(id: ID!): Post
   }
 
   type Mutation {
@@ -85,8 +80,7 @@ const typeDefs = gql`
     addComment(postId: ID!, commentText: String!): Post
     updateComment(commentId: ID!, commentText: String!): Post
     removeComment(id: ID!): Post
-    addCommentLike(commentId: ID!, likes: Int!): Like
-    addPostLike(postId: ID!, likes: Int!): Like
+    addPostLike(postId: ID!, likes: Int!): Post
   }
 `;
 

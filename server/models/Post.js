@@ -42,7 +42,7 @@ const postSchema = new Schema({
         get: (timestamp) => dateFormat(timestamp),
     },
     likes: {
-        type: Number,
+        type: [String],
     },
     category: {
         type: Schema.Types.ObjectId,

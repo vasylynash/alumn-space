@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const QUERY_ALL_USERS = gql`
   query users {
@@ -160,20 +160,7 @@ export const QUERY_LABEL_POSTS = gql`
   }
 `;
 
-// export const QUERY_COMMENT_LIKES = gql`
-//     query commentLikes {
-//         labels {
-//             _id
-//             name
-//     }
-// }
-// `;
-
-// export const QUERY_POST_LIKES = gql`
-//     query postLikes {
-//         labels {
-//             _id
-//             name
-//     }
-// }
-// `;
+export const QUERY_POST_LIKES = gql`
+    query postLikes {
+      likes
+}`;
