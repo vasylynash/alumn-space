@@ -1,8 +1,13 @@
 import { gql } from '@apollo/client';
 
 export const ADD_USER = gql`
+<<<<<<< HEAD
   mutation addUser($registerInput: RegisterInput!) {
     addUser(registerInput: $registerInput) {
+=======
+  mutation addUser($username: String!, $email: String!, $password: String!, $yearOfGraduation: String!, $className: String!) {
+    addUser(username: $username, email: $email, password: $password, yearOfGraduation: $yearOfGraduation, className: $className) {
+>>>>>>> 1fa0ef0d4b73e3b10cf0773108f6931e9a8cfcc7
       token
       user {
           _id
@@ -55,6 +60,7 @@ export const ADD_POST = gql`
   }
   `;
 
+<<<<<<< HEAD
 export const UPDATE_POST = gql`
     mutation updatePost($postId: ID!, $title: String!, $body: String!) {
         updatePost(postId: $postId, title: $title, body: $body) {
@@ -74,6 +80,17 @@ export const UPDATE_POST = gql`
         }
     }
     `;
+=======
+// export const UPDATE_POST = gql`
+//     mutation updatePost($postId: ID!, $title: $String!, $body: String!) {
+//         updatePost(postId: $postId, title: $title, body: $body) {
+//             _id
+//             title
+//             body
+//         }
+//     }
+//     `;
+>>>>>>> 1fa0ef0d4b73e3b10cf0773108f6931e9a8cfcc7
 
 export const REMOVE_POST = gql`
         mutation removePost($postId: ID!) {
@@ -99,7 +116,7 @@ export const REMOVE_POST = gql`
         `;
 
 export const ADD_COMMENT = gql`
-        mutation addComment(postId: ID!, commentText: String!) {
+        mutation addComment($postId: ID!, $commentText: String!) {
             addComment(postId: $postId, commentText: $commentText) {
                 _id
                 title
@@ -119,7 +136,7 @@ export const ADD_COMMENT = gql`
 `;
 
 export const UPDATE_COMMENT = gql`
-        mutation updateComment(commentId: ID!, commentText: String!) {
+        mutation updateComment($commentId: ID!, $commentText: String!) {
             updateComment(commentId: $commentId, commentText: $commentText) {
                 _id
                 title
@@ -139,7 +156,7 @@ export const UPDATE_COMMENT = gql`
 `;
 
 export const REMOVE_COMMENT = gql`
-        mutation removeComment(commentId: ID!) {
+        mutation removeComment($commentId: ID!) {
             removeComment(commentId: $commentId) {
                 _id
                 title
