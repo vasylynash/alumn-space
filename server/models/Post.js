@@ -1,5 +1,5 @@
-const { Schema, model, now } = require("mongoose");
-const dateFormat = require("../utils/dateFormat");
+const { Schema, model, now } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const postSchema = new Schema({
   title: {
@@ -46,14 +46,14 @@ const postSchema = new Schema({
   },
   category: {
     type: Schema.Types.ObjectId,
-    ref: "Category",
+    ref: 'Category',
   },
   label: {
     type: Schema.Types.ObjectId,
-    ref: "Label",
+    ref: 'Label',
   },
 });
 
-const Post = model("Post", postSchema);
+const Post = model('Post', postSchema);
 
 module.exports = Post;
