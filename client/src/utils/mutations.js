@@ -1,13 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const ADD_USER = gql`
-<<<<<<< HEAD
   mutation addUser($registerInput: RegisterInput!) {
     addUser(registerInput: $registerInput) {
-=======
-  mutation addUser($username: String!, $email: String!, $password: String!, $yearOfGraduation: String!, $className: String!) {
-    addUser(username: $username, email: $email, password: $password, yearOfGraduation: $yearOfGraduation, className: $className) {
->>>>>>> 1fa0ef0d4b73e3b10cf0773108f6931e9a8cfcc7
       token
       user {
           _id
@@ -60,7 +55,6 @@ export const ADD_POST = gql`
   }
   `;
 
-<<<<<<< HEAD
 export const UPDATE_POST = gql`
     mutation updatePost($postId: ID!, $title: String!, $body: String!) {
         updatePost(postId: $postId, title: $title, body: $body) {
@@ -80,17 +74,6 @@ export const UPDATE_POST = gql`
         }
     }
     `;
-=======
-// export const UPDATE_POST = gql`
-//     mutation updatePost($postId: ID!, $title: $String!, $body: String!) {
-//         updatePost(postId: $postId, title: $title, body: $body) {
-//             _id
-//             title
-//             body
-//         }
-//     }
-//     `;
->>>>>>> 1fa0ef0d4b73e3b10cf0773108f6931e9a8cfcc7
 
 export const REMOVE_POST = gql`
         mutation removePost($postId: ID!) {
