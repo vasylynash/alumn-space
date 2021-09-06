@@ -13,7 +13,7 @@ db.once("open", async () => {
     await Post.deleteMany({});
     await User.deleteMany({});
 
-    const categories = await Category.insertMany(categorySeed);
+    // const categories = await Category.insertMany(categorySeed);
     const labels = await Label.insertMany(labelSeed);
     const posts = await Post.insertMany(postSeed);
     const users = await User.insertMany(userSeed);
@@ -25,14 +25,14 @@ db.once("open", async () => {
       //   categories[Math.floor(Math.random() * categories.length)];
       // newPost.category = tempCategory._id;
       // await newPost.save();
-      // randomly add a label to each post
+      // // randomly add a label to each post
       // const tempLabel = labels[Math.floor(Math.random() * labels.length)];
       // newPost.label = tempLabel._id;
       // await newPost.save();
-      // reference posts on category model
+      // // reference posts on category model
       // tempCategory.posts.push(newPost);
       // await tempCategory.save();
-      // reference posts on label model
+      // // reference posts on label model
       // tempLabel.posts.push(newPost);
       // await tempLabel.save();
     }

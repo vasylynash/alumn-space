@@ -64,10 +64,10 @@ module.exports = {
     }
   },
   Mutation: {
-    addPost: async (_, { title, body, author }) => {
+    addPost: async (_, { title, body, author, category, label }) => {
       return Post.create({title: title, body: body, author: author});
     },
-    updatePost: async (_, { id, title, body }) => {
+    updatePost: async (_, { id, title, body, category, label }) => {
       if(!title) {
         throw new UserInputError("The title cannot be empty");
       }
