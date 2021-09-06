@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_ALL_USERS = gql`
   query users {
@@ -24,11 +24,11 @@ export const QUERY_ALL_USERS = gql`
         dateCreated
         likes
         comments {
-            _id
-            body
-            author
-            dateCreated
-            likes
+          _id
+          body
+          author
+          dateCreated
+          likes
         }
       }
     }
@@ -59,11 +59,11 @@ export const QUERY_SINGLE_USER = gql`
         dateCreated
         likes
         comments {
-            _id
-            body
-            author
-            dateCreated
-            likes
+          _id
+          body
+          author
+          dateCreated
+          likes
         }
       }
     }
@@ -71,23 +71,23 @@ export const QUERY_SINGLE_USER = gql`
 `;
 
 export const QUERY_ALL_POSTS = gql`
-    query posts {
-        posts {
-            _id
-            title
-            body
-            author
-            dateCreated
-            likes
-            comments {
-                _id
-                body
-                author
-                dateCreated
-                likes
-            }
+  query posts {
+    posts {
+      _id
+      title
+      body
+      author
+      dateCreated
+      likes
+      comments {
+        _id
+        body
+        author
+        dateCreated
+        likes
+      }
     }
-}
+  }
 `;
 
 export const QUERY_SINGLE_POST = gql`
@@ -111,12 +111,12 @@ export const QUERY_SINGLE_POST = gql`
 `;
 
 export const QUERY_ALL_CATEGORIES = gql`
-    query categories {
-        categories {
-            _id
-            name
+  query categories {
+    categories {
+      _id
+      name
     }
-}
+  }
 `;
 
 //For below query, do we need to put the posts in the Category typeDef?
@@ -125,7 +125,7 @@ export const QUERY_CATEGORY_POSTS = gql`
     category(categoryId: $categoryId) {
       _id
       name
-      posts {  
+      posts {
         _id
         body
         author
@@ -136,12 +136,12 @@ export const QUERY_CATEGORY_POSTS = gql`
 `;
 
 export const QUERY_ALL_LABELS = gql`
-    query labels {
-        labels {
-            _id
-            name
+  query labels {
+    labels {
+      _id
+      name
     }
-}
+  }
 `;
 
 //For below query, do we need to put the posts in the Label typeDef?
@@ -150,7 +150,7 @@ export const QUERY_LABEL_POSTS = gql`
     label(labelId: $labelId) {
       _id
       name
-      posts {  
+      posts {
         _id
         body
         author
@@ -159,3 +159,21 @@ export const QUERY_LABEL_POSTS = gql`
     }
   }
 `;
+
+// export const QUERY_COMMENT_LIKES = gql`
+//     query commentLikes {
+//         labels {
+//             _id
+//             name
+//     }
+// }
+// `;
+
+// export const QUERY_POST_LIKES = gql`
+//     query postLikes {
+//         labels {
+//             _id
+//             name
+//     }
+// }
+// `;

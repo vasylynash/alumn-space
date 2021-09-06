@@ -73,7 +73,7 @@ const typeDefs = gql`
     labels: [Label]
     label(id: ID!): Label
     postLikes(id: ID!): Like
-    commentLikes(id: ID): Like
+    commentLikes(id: ID!): [Like]
   }
 
   type Mutation {

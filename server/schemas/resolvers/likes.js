@@ -5,16 +5,22 @@ module.exports = {
     postLikes: async (_, args) => {
       return Post.findById(args.id);
     },
+
+    commentLikes: async (_, args) => {
+      console.log(args.id);
+
+      return Post.find();
+    },
   },
 
-  Mutation: {
-    addCommentLike: async (_, { comments }) => {
-      // comments.likes = Post.comments.likes + 1;
-      return comments.likes;
-    },
-    addPostLike: async (_, { likes }) => {
-      // likes = Post.likes + 1;
-      return likes;
-    },
-  },
+  // Mutation: {
+  //   addCommentLike: async (_, args) => {
+  //
+  //     return comments.likes;
+  //   },
+  //   addPostLike: async (_, args) => {
+  //
+  //     return likes;
+  //   },
+  // },
 };
