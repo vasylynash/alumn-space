@@ -189,7 +189,7 @@ mutation updateUser($id:ID!, $firstName: String, $lastName:String, $image:String
 export const REMOVE_USER = gql`
   mutation removeUser($id:ID!) {
       removeUser(id:$id) {
-          _id
+            _id
       }
   }
 `;

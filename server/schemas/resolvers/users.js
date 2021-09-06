@@ -3,7 +3,7 @@ const { signToken } = require('../../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
 module.exports = {
-    Query: {
+  Query: {
     users: async () => {
       return User.find();
     },
@@ -11,12 +11,14 @@ module.exports = {
       return User.findById(args.id);
     },
   },
+
   Mutation: {
     addUser: async (_, {registerInput: { username, email, password, yearOfGraduation, className }}) => {
       const user = await User.create({ username, email, password, yearOfGraduation, className });
       const token = signToken(user);
       return { token, user };
     },
+
     login: async (_, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -46,7 +48,7 @@ module.exports = {
     removeUser: async (parent, { id }, context) => {
       return await User.deleteOne(
         { _id: id }
-        )
+        );
     }
-    }    
+  }    
 };
