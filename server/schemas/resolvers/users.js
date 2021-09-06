@@ -41,6 +41,12 @@ module.exports = {
         { firstName, lastName, image, role, bio, yearOfGraduation, linkedIn, gitHub, className },
         { new: true }
       );
+    },
+
+    removeUser: async (parent, { id }, context) => {
+      return await User.deleteOne(
+        { _id: id }
+        )
     }
     }    
 };
