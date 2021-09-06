@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const BackArrow = styled.i`
-    position: fixed;
+    position: ${(props)=>props.position || 'fixed'};
     color: black;
-    top: 20px;
-    left: 40px;
+    top: ${(props)=>props.top || '20px'};
+    left: ${(props)=>props.left || '40px'};
     font-size: 30px;
     transition: ease-in-out 0.3s;
 
