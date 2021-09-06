@@ -118,24 +118,3 @@ export const QUERY_ALL_CATEGORIES = gql`
     }
 }
 `;
-
-export const QUERY_ALL_LABELS = gql`
-    query labels {
-        labels {
-            _id
-            name
-    }
-}
-`;
-
-
-
-//Can't include posts in single category search as posts aren't connected to the categories in typeDefs
-export const QUERY_SINGLE_LABEL = gql`
-    query label($id: ID!) {
-      label(id: $id) {
-        _id
-        name
-      }
-    }
-`;
