@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '../components/nav/Navbar'
 import Post from '../components/posts/Post';
 import SearchPost from '../components/posts/SearchPost';

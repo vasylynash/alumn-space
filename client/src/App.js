@@ -9,12 +9,13 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import Home from './pages/Home';
-// import Footer from './components/Footer'
 import Profile from './pages/Profile'
 import AddPost from './pages/AddPost'
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import BlogPage from './components/blog/BlogPage';
+import Comments from './components/comments/Comments';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
@@ -78,6 +79,9 @@ function App() {
             </Route>
             <Route exact path='/post'>
               <BlogPage/>
+            </Route>
+            <Route exact path='/comments'>
+              <Comments/>
             </Route>
             <Route exact path="/profile">
               <Profile />
