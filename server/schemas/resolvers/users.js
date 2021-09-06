@@ -15,8 +15,8 @@ module.exports = {
     },
   },
   Mutation: {
-    addUser: async (_, {registerInput: { username, email, password, yearOfGraduation, className }}) => {
-      const { errors, valid } = validateRegisterInput(username, email, password, yearOfGraduation, className);
+    addUser: async (_, {registerInput: { username, email, password, confirmPassword, yearOfGraduation, className }}) => {
+      const { errors, valid } = validateRegisterInput(username, email, password, confirmPassword, yearOfGraduation, className);
       if (!valid) {
         throw new UserInputError('Errors', { errors })
       }
@@ -36,6 +36,7 @@ module.exports = {
           }
         })
       }
+
       const newUser = await User.create({ username, email, password, yearOfGraduation, className });
       const token = signToken(newUser);
       console.log(token)
@@ -47,7 +48,8 @@ module.exports = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+        errors.general = 'No user found with this email address';
+        throw new UserInputError('No user found with this email address', { errors } );
       }
 
       const correctPw = await user.isCorrectPassword(password);

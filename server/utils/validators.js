@@ -2,6 +2,7 @@ module.exports.validateRegisterInput = (
     username,
     email,
     password,
+    confirmPassword,
     yearOfGraduation,
     className
     ) => {
@@ -19,7 +20,10 @@ module.exports.validateRegisterInput = (
     }
     if (password === '') {
         errors.password = 'Pasword cannot be empty';
+    } else if (password !== confirmPassword) {
+        errors.password = 'Passwords must match';
     }
+    
     if (yearOfGraduation === '') {
         errors.yearOfGraduation = 'Please specify the year';
     }

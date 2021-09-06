@@ -19,7 +19,7 @@ const typeDefs = gql `
     }
 
     type Auth {
-        token: ID
+        token: ID!
         user: User
     }
 
@@ -55,6 +55,7 @@ const typeDefs = gql `
         username: String!
         email: String!
         password: String!,
+        confirmPassword: String!,
         yearOfGraduation: String!,
         className: String!
     }
