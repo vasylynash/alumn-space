@@ -50,8 +50,6 @@ const typeDefs = gql `
         None
     }
 
-
-
     enum Label {
         Help
         SucessStories
