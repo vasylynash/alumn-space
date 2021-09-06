@@ -81,7 +81,7 @@ export const QUERY_SINGLE_USER = gql`
 
 export const QUERY_ALL_POSTS = gql`
     query posts {
-        posts (cagegory: ${category}, label: ${label}){
+        posts (category: ${category}, label: ${label}){
             _id
             title
             body
