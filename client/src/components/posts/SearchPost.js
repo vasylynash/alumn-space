@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import GlobalStyle from './global.style'
-import { LoginBtn } from '../pages/Landing'
+import GlobalStyle from '../global.style'
+import { LoginBtn } from '../../pages/Landing'
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 
-const SearchInput = styled.input`
+export const SearchInput = styled.input`
     width: 70%;
     font-size: 15px;
     height: 25px;
@@ -22,21 +22,34 @@ const SearchInput = styled.input`
     }
 `
 
-const SearchIcon = styled.i`
+export const SearchIcon = styled.i`
     color: #707070;
     background-color: #EDEDED;
     font-size: 18px;
     margin-right: 0.2rem;
 `
 
-const SearchBar = styled.div`
+export const SearchBtn = styled.button`
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    justify-content: flex-end;
+    border: none;
+    background-color:#51BBB9;
+    border-radius: 3px;
+    color: white;
+    padding: 6px 20px;
+`
+
+export const SearchBar = styled.div`
 
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     margin: 1rem auto 0.5rem auto;
-    padding: 0 0.5rem;
+    padding-left: 0.5rem;
     width: 70%;
     border: solid 1px #51BBB9;
     border-radius: 5px;
@@ -44,7 +57,7 @@ const SearchBar = styled.div`
     
 `
 
-const Line = styled.div`
+export const Line = styled.div`
     margin: 1rem auto;
     padding: auto;
     width: 80%;
@@ -84,6 +97,7 @@ function SearchPost() {
         <SearchBar>
             <SearchIcon className='fas fa-search'/>
             <SearchInput placeholder='Search Title'/>
+            <SearchBtn>Search</SearchBtn>
         </SearchBar>
         <DropDownContainer>
             <FormControl style={{minWidth: 100}}>
@@ -125,9 +139,6 @@ function SearchPost() {
                 </Select>
             </FormControl>
         </DropDownContainer>
-        <div style={{width:'100%', display:'flex', flexDirection:'row', justifyContent:'center'}}>
-            <LoginBtn textColor='white' backgroundColor='#51BBB9' type='Submit'>Search</LoginBtn>
-        </div>
         <Line/>
         </>
     )

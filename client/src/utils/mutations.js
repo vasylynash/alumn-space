@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!, yearOfGraduation: String!, className: String!) {
-    addUser(username: $username, email: $email, password: $password, yearOfGraduation: $yearOfGraduation, className: $className) {
+  mutation addUser($registerInput: RegisterInput!) {
+    addUser(registerInput: $registerInput) {
       token
       user {
           _id
@@ -18,21 +18,6 @@ export const ADD_USER = gql`
           linkedIn
           gitHub
           className
-          posts {
-              _id
-              title
-              body
-              author
-              dateCreated
-              likes
-              comments {
-                  _id
-                  body
-                  author
-                  dateCreated
-                  likes
-              }
-          }
       }
     }
   }
@@ -61,7 +46,7 @@ export const ADD_POST = gql`
           likes
           comments {
               _id
-              body
+              commentText
               author
               dateCreated
               likes
@@ -71,11 +56,21 @@ export const ADD_POST = gql`
   `;
 
 export const UPDATE_POST = gql`
-    mutation updatePost($postId: ID!, $title: $String!, $body: String!) {
+    mutation updatePost($postId: ID!, $title: String!, $body: String!) {
         updatePost(postId: $postId, title: $title, body: $body) {
             _id
             title
             body
+            author
+            dateCreated
+            comments {
+                _id
+                commentText
+                author
+                dateCreated
+                likes
+            }
+            likes
         }
     }
     `;
@@ -104,7 +99,7 @@ export const REMOVE_POST = gql`
         `;
 
 export const ADD_COMMENT = gql`
-        mutation addComment(postId: ID!, commentText: String!) {
+        mutation addComment($postId: ID!, $commentText: String!) {
             addComment(postId: $postId, commentText: $commentText) {
                 _id
                 title
@@ -124,7 +119,7 @@ export const ADD_COMMENT = gql`
 `;
 
 export const UPDATE_COMMENT = gql`
-        mutation updateComment(commentId: ID!, commentText: String!) {
+        mutation updateComment($commentId: ID!, $commentText: String!) {
             updateComment(commentId: $commentId, commentText: $commentText) {
                 _id
                 title
@@ -144,7 +139,7 @@ export const UPDATE_COMMENT = gql`
 `;
 
 export const REMOVE_COMMENT = gql`
-        mutation removeComment(commentId: ID!) {
+        mutation removeComment($commentId: ID!) {
             removeComment(commentId: $commentId) {
                 _id
                 title
@@ -162,4 +157,26 @@ export const REMOVE_COMMENT = gql`
             }
         }
 `;
+
+export const UPDATE_USER_PROFILE = gql`
+mutation updateUser($id:ID!, $firstName: String, $lastName:String, $image:String, $role:String, $bio:String, $yearOfGraduation:String!, $linkedIn: String, $gitHub: String, $className: String!) {
+    updateUser(id:$id, firstName:$firstName, lastName:$lastName, image:$image, role:$role, bio:$bio, yearOfGraduation:$yearOfGraduation, linkedIn:$linkedIn, gitHub:$gitHub, className:$className) {
+            _id
+      		username
+      		email
+           firstName
+      		lastName
+      		image
+      		role	
+      		bio	
+      		yearOfGraduation
+      		linkedIn
+      		gitHub
+      		className
+      		
+         
+    }
+  }
+`;
+
 
