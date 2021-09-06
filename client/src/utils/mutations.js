@@ -20,7 +20,7 @@ export const ADD_USER = gql`
           className
       }
     }
-  }
+   }
 `;
 
 export const LOGIN_USER = gql`
@@ -36,14 +36,16 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($title: String!, $body: String!, $author: String!) {
-      addPost(title: $title, body: $body, author: $author) {
+  mutation addPost($title: String!, $body: String!, $author: String!, $category: Category!, $label: Label!) {
+      addPost(title: $title, body: $body, author: $author, category: $category, label: $label) {
           _id
           title
           body
           author
           dateCreated
           likes
+          category
+          label
           comments {
               _id
               commentText
@@ -55,26 +57,29 @@ export const ADD_POST = gql`
   }
   `;
 
-export const UPDATE_POST = gql`
-    mutation updatePost($postId: ID!, $title: String!, $body: String!) {
-        updatePost(postId: $postId, title: $title, body: $body) {
-            _id
-            title
-            body
-            author
-            dateCreated
-            comments {
-                _id
-                commentText
-                author
-                dateCreated
-                likes
-            }
-            likes
-        }
-    }
-    `;
+  export const UPDATE_POST = gql`
+  mutation updatePost($id: ID!, $title: String!, $body: String!, $category: Category!, $label: Label!) {
+      updatePost(id: $id, title: $title, body: $body, category: $category, label: $label) {
+          _id
+          title
+          body
+          author
+          dateCreated
+          comments {
+              _id
+              commentText
+              author
+              dateCreated
+              likes
+          }
+          likes
+          category
+          label
+      }
+  }
+  `;
 
+//Check and fix the REMOVE_POST in next branch/PR
 export const REMOVE_POST = gql`
         mutation removePost($postId: ID!) {
             removePost(postId: $postId) {
@@ -86,6 +91,8 @@ export const REMOVE_POST = gql`
                    author
                    dateCreated
                    likes
+                   category
+                   label
                    comments {
                        _id
                        body
@@ -98,6 +105,7 @@ export const REMOVE_POST = gql`
         }
         `;
 
+//check ADD UPDATE & REMOVE COMMENT in future branch/PR
 export const ADD_COMMENT = gql`
         mutation addComment($postId: ID!, $commentText: String!) {
             addComment(postId: $postId, commentText: $commentText) {
@@ -158,6 +166,7 @@ export const REMOVE_COMMENT = gql`
         }
 `;
 
+//UPDATE_USER_PROFILE works
 export const UPDATE_USER_PROFILE = gql`
 mutation updateUser($id:ID!, $firstName: String, $lastName:String, $image:String, $role:String, $bio:String, $yearOfGraduation:String!, $linkedIn: String, $gitHub: String, $className: String!) {
     updateUser(id:$id, firstName:$firstName, lastName:$lastName, image:$image, role:$role, bio:$bio, yearOfGraduation:$yearOfGraduation, linkedIn:$linkedIn, gitHub:$gitHub, className:$className) {
@@ -173,8 +182,6 @@ mutation updateUser($id:ID!, $firstName: String, $lastName:String, $image:String
       		linkedIn
       		gitHub
       		className
-      		
-         
     }
   }
 `;

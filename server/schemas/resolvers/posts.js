@@ -2,10 +2,46 @@ const Post = require('../../models/Post');
 const { UserInputError } = require('apollo-server-express');
 
 module.exports = {
+    category: {
+      Coding: 'Coding',
+      DataScience: 'Data Science',
+      UIUX: 'UI/UX',
+      None: 'none'
+    },
+    label: {
+      Help: 'Help',
+      SuccessStories: 'Success Stories',
+      Jobs: 'Jobs',
+      Discussion: 'Discussion',
+      NodeJS: 'NodeJs',
+      GraphQL: 'GraphQL',
+      MONGODB: 'MongoDB',
+      React: 'React',
+      CSS: 'CSS',
+      HTML: 'HTML',
+      Handlebars: 'Handlebars',
+      JavaScript: 'JavaScript',
+      None: 'none'
+    },
     Query: {
-    posts: async () => {
+    posts: async (_, {category, label}) => {
       try {
-        return Post.find();        
+        if (category && label) {
+        return Post.find({
+          category: category,
+          label: label
+        });   
+      }  else if (category && !label) {
+        return Post.find({
+          category: category
+        });   
+      } else if (!category && label)  {
+        return Post.find({
+          label: label
+        }); 
+      } else {
+        return Post.find(); 
+      }
       }
       catch(err) {
         throw new Error(err)
@@ -26,10 +62,10 @@ module.exports = {
     }
   },
   Mutation: {
-    addPost: async (_, { title, body, author }) => {
-      return Post.create({title: title, body: body, author: author});
+    addPost: async (_, { title, body, author, category, label }) => {
+      return Post.create({title: title, body: body, author: author, category: category, label: label});
     },
-    updatePost: async (_, { id, title, body }) => {
+    updatePost: async (_, { id, title, body, category, label }) => {
       if(!title) {
         throw new UserInputError("The title cannot be empty");
       }
@@ -39,6 +75,8 @@ module.exports = {
       const post = await Post.findById({_id: id});
       post.title = title;
       post.body = body;
+      post.category = category;
+      post.label = label;
       
       return post;
     },

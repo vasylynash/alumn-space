@@ -31,6 +31,8 @@ const typeDefs = gql `
         dateCreated: String
         comments: [Comment]
         likes: Int
+        category: Category
+        label: Label
     }
 
     type Comment {
@@ -41,14 +43,27 @@ const typeDefs = gql `
         likes: Int
     }
 
-    type Category {
-        _id: ID
-        name: String
+    enum Category {
+        Coding
+        DataScience
+        UIUX
+        None
     }
 
-    type Label {
-        _id: ID
-        name: String
+    enum Label {
+        Help
+        SucessStories
+        Jobs
+        Discussion
+        NodeJS
+        GraphQL
+        MongoDB
+        React
+        CSS
+        HTML
+        Handlebars
+        JavaScript
+        None
     }
 
     input RegisterInput {
@@ -62,19 +77,15 @@ const typeDefs = gql `
     type Query {
         users: [User]
         user(id: ID!): User
-        posts: [Post]
+        posts(category: Category, label: Label): [Post]
         post(id: ID!): Post
-        categories: [Category]
-        category(id: ID!): Category
-        labels: [Label]
-        label(id: ID!): Label
     }
 
     type Mutation {
         addUser(registerInput: RegisterInput!): Auth
         login(email: String!, password: String!): Auth
-        addPost(title: String!, body: String!, author: String!): Post
-        updatePost(id: ID!, title: String!, body: String!): Post
+        addPost(title: String!, body: String!, author: String!, category: Category, label: Label): Post
+        updatePost(id: ID!, title: String!, body: String!, category: Category, label: Label): Post
         removePost(id: ID!): Post
         addComment(postId: ID!, commentText: String!): Post
         updateComment(commentId: ID!, commentText: String!): Post
@@ -82,6 +93,5 @@ const typeDefs = gql `
         updateUser(id: ID!, firstName: String, lastName: String, image: String, role: String, bio: String, yearOfGraduation: String!, linkedIn: String, gitHub: String, className: String!): User
     }
 `;
-
 
 module.exports = typeDefs;
