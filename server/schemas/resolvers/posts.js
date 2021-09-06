@@ -25,9 +25,7 @@ module.exports = {
     },
     Query: {
     posts: async (_, {category, label}) => {
-      console.log(category, label)
       try {
-
         if (category && label) {
         return Post.find({
           category: category,
@@ -65,7 +63,7 @@ module.exports = {
   },
   Mutation: {
     addPost: async (_, { title, body, author, category, label }) => {
-      return Post.create({title: title, body: body, author: author});
+      return Post.create({title: title, body: body, author: author, category: category, label: label});
     },
     updatePost: async (_, { id, title, body, category, label }) => {
       if(!title) {
@@ -77,6 +75,8 @@ module.exports = {
       const post = await Post.findById({_id: id});
       post.title = title;
       post.body = body;
+      post.category = category;
+      post.label = label;
       
       return post;
     },
