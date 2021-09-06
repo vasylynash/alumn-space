@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import Navbar from '../components/Navbar'
-import SearchPost from '../components/SearchPost';
-import Sidebar from '../components/Sidebar';
+import Navbar from '../components/nav/Navbar'
+import Post from '../components/posts/Post';
+import SearchPost from '../components/posts/SearchPost';
+
 
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
         <div>
             <Navbar/>
             <SearchPost/>
+            <Post/>
         </div>
      );
 }
