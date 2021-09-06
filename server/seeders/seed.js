@@ -37,7 +37,16 @@ db.once("open", async () => {
       // await tempLabel.save();
     }
 
-    //User references - TODO
+    //User references
+    for (newUser of users) {
+      // randomly add a posts to each user
+      const tempPost = posts[Math.floor(Math.random() * posts.length)];
+      newUser.posts.push(tempPost);
+      await newUser.save();
+      // reference user on post model
+      tempPost.author = newUser.username;
+      await tempPost.save();
+    }
 
     console.log("Seeds are deployed!");
     process.exit(0);

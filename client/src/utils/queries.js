@@ -91,8 +91,8 @@ export const QUERY_ALL_POSTS = gql`
 `;
 
 export const QUERY_SINGLE_POST = gql`
-  query post($postId: ID!) {
-    post(postId: $postId) {
+  query post($id: ID!) {
+    post(id: $id) {
       _id
       title
       body
