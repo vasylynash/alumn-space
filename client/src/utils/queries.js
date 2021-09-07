@@ -87,7 +87,7 @@ export const QUERY_ALL_POSTS = gql`
             body
             author
             dateCreated
-            likes
+            totalLikes
             category
             label
             comments {
@@ -109,7 +109,7 @@ export const QUERY_SINGLE_POST = gql`
       body
       author
       dateCreated
-      likes
+      totalLikes
       category
       label
       comments {
