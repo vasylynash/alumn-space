@@ -36,6 +36,12 @@ const postSchema = new Schema({
       },
     }
   ],
+  likes: {
+    type: [String],
+  },
+  totalLikes: {
+    type: Number
+ },
     category: {
         type: String,
         enum: ['Coding', 'DataScience', 'UIUX', 'None'],
