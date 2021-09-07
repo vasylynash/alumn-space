@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!, yearOfGraduation: String!, className: String!) {
-    addUser(username: $username, email: $email, password: $password, yearOfGraduation: $yearOfGraduation, className: $className) {
+  mutation addUser($registerInput: RegisterInput!) {
+    addUser(registerInput: $registerInput) {
       token
       user {
           _id
@@ -18,24 +18,9 @@ export const ADD_USER = gql`
           linkedIn
           gitHub
           className
-          posts {
-              _id
-              title
-              body
-              author
-              dateCreated
-              likes
-              comments {
-                  _id
-                  body
-                  author
-                  dateCreated
-                  likes
-              }
-          }
       }
     }
-  }
+   }
 `;
 
 export const LOGIN_USER = gql`
@@ -51,58 +36,80 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($title: String!, $body: String!, $author: String!) {
-    addPost(title: $title, body: $body, author: $author) {
-      _id
-      title
-      body
-      author
-      dateCreated
-      likes
-      comments {
-        _id
-        body
-        author
-        dateCreated
-        likes
-      }
-    }
-  }
-`;
-
-export const UPDATE_POST = gql`
-    mutation updatePost($postId: ID!, $title: $String!, $body: String!) {
-        updatePost(postId: $postId, title: $title, body: $body) {
-            _id
-            title
-            body
-        }
-    }
-    `;
-
-export const REMOVE_POST = gql`
-  mutation removePost($postId: ID!) {
-    removePost(postId: $postId) {
-      _id
-      posts {
-        _id
-        title
-        body
-        author
-        dateCreated
-        likes
-        comments {
+  mutation addPost($title: String!, $body: String!, $author: String!, $category: Category!, $label: Label!) {
+      addPost(title: $title, body: $body, author: $author, category: $category, label: $label) {
           _id
+          title
           body
           author
           dateCreated
           likes
+          category
+          label
+          comments {
+              _id
+              commentText
+              author
+              dateCreated
+              likes
+          }
+      }
+    }
+  }
+`;
+
+  export const UPDATE_POST = gql`
+  mutation updatePost($id: ID!, $title: String!, $body: String!, $category: Category!, $label: Label!) {
+      updatePost(id: $id, title: $title, body: $body, category: $category, label: $label) {
+          _id
+          title
+          body
+          author
+          dateCreated
+          comments {
+              _id
+              commentText
+              author
+              dateCreated
+              likes
+          }
+          likes
+          category
+          label
+      }
+  }
+  `;
+
+//Check and fix the REMOVE_POST in next branch/PR
+export const REMOVE_POST = gql`
+        mutation removePost($postId: ID!) {
+            removePost(postId: $postId) {
+               _id
+               posts {
+                   _id
+                   title
+                   body
+                   author
+                   dateCreated
+                   likes
+                   category
+                   label
+                   comments {
+                       _id
+                       body
+                       author
+                       dateCreated
+                       likes
+                   }
+               } 
+            }
         }
       }
     }
   }
 `;
 
+//check ADD UPDATE & REMOVE COMMENT in future branch/PR
 export const ADD_COMMENT = gql`
         mutation addComment(postId: ID!, commentText: String!) {
             addComment(postId: $postId, commentText: $commentText) {
@@ -170,3 +177,24 @@ export const ADD_POST_LIKE = gql`
             }
         }
 `;
+//UPDATE_USER_PROFILE works
+export const UPDATE_USER_PROFILE = gql`
+mutation updateUser($id:ID!, $firstName: String, $lastName:String, $image:String, $role:String, $bio:String, $yearOfGraduation:String!, $linkedIn: String, $gitHub: String, $className: String!) {
+    updateUser(id:$id, firstName:$firstName, lastName:$lastName, image:$image, role:$role, bio:$bio, yearOfGraduation:$yearOfGraduation, linkedIn:$linkedIn, gitHub:$gitHub, className:$className) {
+            _id
+      		username
+      		email
+           firstName
+      		lastName
+      		image
+      		role	
+      		bio	
+      		yearOfGraduation
+      		linkedIn
+      		gitHub
+      		className
+    }
+  }
+`;
+
+

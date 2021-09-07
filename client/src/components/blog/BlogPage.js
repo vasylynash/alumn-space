@@ -26,6 +26,11 @@ const BlogPost = styled.div`
     p {
         margin: 0.1rem 0;
     }
+
+    .comments {
+        color: #51BBB9;
+        margin-top: 1rem;
+    }
 `
 
 function BlogPage() {
@@ -42,6 +47,9 @@ function BlogPage() {
                 <p className='category'>#FullStackFlex</p>
                 <p className='label'>help</p>
                 <ContentContainer/>
+                <Link to='/comments' style={{textDecoration:'none'}}>
+                    <p className='comments'>View Comments</p>
+                </Link>
             </VerticalDiv>
         </BlogPost>
         </>
