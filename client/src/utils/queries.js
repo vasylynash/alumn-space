@@ -172,8 +172,3 @@ export const QUERY_LABEL_POSTS = gql`
     }
   }
 `;
-
-export const QUERY_POST_LIKES = gql`
-    query postLikes($postId: ID!) {
-      totalLikes
-}`;
