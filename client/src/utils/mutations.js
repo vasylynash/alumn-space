@@ -43,7 +43,7 @@ export const ADD_POST = gql`
           body
           author
           dateCreated
-          likes
+          totalLikes
           category
           label
           comments {
@@ -73,7 +73,7 @@ export const ADD_POST = gql`
               dateCreated
               likes
           }
-          likes
+          totalLikes
           category
           label
       }
@@ -91,7 +91,7 @@ export const REMOVE_POST = gql`
                    body
                    author
                    dateCreated
-                   likes
+                   totalLikes
                    category
                    label
                    comments {
@@ -118,7 +118,7 @@ export const ADD_COMMENT = gql`
                 body
                 author
                 dateCreated
-                likes
+                totalLikes
                 comments {
                     _id
                     body
@@ -138,7 +138,7 @@ export const UPDATE_COMMENT = gql`
                 body
                 author
                 dateCreated
-                likes
+                totalLikes
                 comments {
                     _id
                     body
@@ -158,7 +158,7 @@ export const REMOVE_COMMENT = gql`
                 body
                 author
                 dateCreated
-                likes
+                totalLikes
                 comments {
                     _id
                     body
