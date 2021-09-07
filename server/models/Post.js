@@ -30,13 +30,18 @@ const postSchema = new Schema({
         type: Date,
         default: Date.now,
         get: (timestamp) => dateFormat(timestamp),
-    },
-    likes: {
-        type: [String],
-    },
-    totalLikes: {
-        type: Number
-    },
+      },
+      likes: {
+        type: Number,
+      },
+    }
+  ],
+  likes: {
+    type: [String],
+  },
+  totalLikes: {
+    type: Number
+ },
     category: {
         type: String,
         enum: ['Coding', 'DataScience', 'UIUX', 'None'],
