@@ -1,47 +1,48 @@
-const { gql } = require("apollo-server-express");
+const { gql } = require('apollo-server-express');
 
-const typeDefs = gql `
-    type User {
-        _id: ID
-        username: String
-        email: String
-        firstName: String
-        lastName: String
-        image: String
-        posts: [Post]
-        registrationDate: String
-        role: String
-        bio: String
-        yearOfGraduation: String
-        linkedIn: String
-        gitHub: String
-        className: String
-    }
+const typeDefs = gql`
+  type User {
+    _id: ID
+    username: String
+    email: String
+    firstName: String
+    lastName: String
+    image: String
+    posts: [Post]
+    registrationDate: String
+    role: String
+    bio: String
+    yearOfGraduation: String
+    linkedIn: String
+    gitHub: String
+    className: String
+  }
 
-    type Auth {
-        token: ID
-        user: User
-    }
+  type Auth {
+    token: ID
+    user: User
+  }
 
-    type Post {
-        _id: ID
-        title: String
-        body: String
-        author: String
-        dateCreated: String
-        comments: [Comment]
-        likes: Int
-        category: Category
-        label: Label
-    }
+  type Post {
+    _id: ID
+    title: String
+    body: String
+    author: String
+    dateCreated: String
+    comments: [Comment]
+    likes: [String]
+    totalLikes: Int
+    category: Category
+    label: Label
+  }
 
-    type Comment {
-        _id: ID
-        commentText: String
-        author: String
-        dateCreated: String
-        likes: Int
-    }
+  type Comment {
+    _id: ID
+    commentText: String
+    author: String
+    dateCreated: String
+    likes: Int
+  }
 
     enum Category {
         Coding
@@ -66,32 +67,34 @@ const typeDefs = gql `
         None
     }
 
-    input RegisterInput {
-        username: String!
-        email: String!
-        password: String!,
-        yearOfGraduation: String!,
-        className: String!
-    }
+  input RegisterInput {
+    username: String!
+    email: String!
+    password: String!
+    yearOfGraduation: String!
+    className: String!
+  }
 
-    type Query {
-        users: [User]
-        user(id: ID!): User
-        posts(category: Category, label: Label): [Post]
-        post(id: ID!): Post
-    }
+  type Query {
+    users: [User]
+    user(id: ID!): User
+    posts: [Post]
+    post(id: ID!): Post
+    postLikes(id: ID!): Post
+  }
 
-    type Mutation {
-        addUser(registerInput: RegisterInput!): Auth
-        login(email: String!, password: String!): Auth
-        addPost(title: String!, body: String!, author: String!, category: Category, label: Label): Post
-        updatePost(id: ID!, title: String!, body: String!, category: Category, label: Label): Post
-        removePost(id: ID!): Post
-        addComment(postId: ID!, commentText: String!): Post
-        updateComment(commentId: ID!, commentText: String!): Post
-        removeComment(id: ID!): Post
-        updateUser(id: ID!, firstName: String, lastName: String, image: String, role: String, bio: String, yearOfGraduation: String!, linkedIn: String, gitHub: String, className: String!): User
-    }
+  type Mutation {
+    addUser(registerInput: RegisterInput!): Auth
+    login(email: String!, password: String!): Auth
+    addPost(title: String!, body: String!, author: String!, category: Category, label: Label): Post
+    updatePost(id: ID!, title: String!, body: String!, category: Category, label: Label): Post
+    removePost(id: ID!): Post
+    addComment(postId: ID!, commentText: String!): Post
+    updateComment(commentId: ID!, commentText: String!): Post
+    removeComment(id: ID!): Post
+    updateUser(id: ID!, firstName: String, lastName: String, image: String, role: String, bio: String, yearOfGraduation: String!, linkedIn: String, gitHub: String, className: String!): User
+    addPostLike(id: ID!, userId: ID!): Post
+  }
 `;
 
 module.exports = typeDefs;
