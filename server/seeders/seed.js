@@ -48,7 +48,7 @@ db.once("open", async () => {
       await tempPost.save();
     }
 
-    console.log("Seeds are deployed!");
+    console.log('Seeds are deployed!');
     process.exit(0);
   } catch (err) {
     throw err;
