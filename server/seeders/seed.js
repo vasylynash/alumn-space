@@ -39,7 +39,7 @@ db.once("open", async () => {
 
     //User references - TODO
 
-    console.log("Seeds are deployed!");
+    console.log('Seeds are deployed!');
     process.exit(0);
   } catch (err) {
     throw err;
