@@ -39,9 +39,7 @@ module.exports = {
 
       const newUser = await User.create({ username, email, password, yearOfGraduation, className });
       const token = signToken(newUser);
-      console.log(token)
-      console.log(newUser)
-      return { token, newUser };
+      return { token, user: newUser };
     },
     login: async (_, { email, password }) => {
       const { errors, valid } = validateLoginInput(email, password); 
@@ -63,7 +61,7 @@ module.exports = {
       return { token, user };
     }, 
 
-    updateUser: async (parent, {id, firstName, lastName, image, role, bio, yearOfGraduation, linkedIn, gitHub, className }) => {
+    updateUser: async (_, {id, firstName, lastName, image, role, bio, yearOfGraduation, linkedIn, gitHub, className }) => {
       return await User.findOneAndUpdate(
         {_id: id},
         { firstName, lastName, image, role, bio, yearOfGraduation, linkedIn, gitHub, className },
