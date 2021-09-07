@@ -8,17 +8,17 @@ const userSeed = require("./userSeed.json");
 db.once("open", async () => {
   try {
     // remove from database
-    await Category.deleteMany({});
-    await Label.deleteMany({});
+    //await Category.deleteMany({});
+    //await Label.deleteMany({});
     await Post.deleteMany({});
     await User.deleteMany({});
 
     // const categories = await Category.insertMany(categorySeed);
-    const labels = await Label.insertMany(labelSeed);
+    //const labels = await Label.insertMany(labelSeed);
     const posts = await Post.insertMany(postSeed);
     const users = await User.insertMany(userSeed);
 
-    // //Post references
+    //Post references
     // for (newPost of posts) {
     //   //randomly add a category to each post
     //   const tempCategory =
@@ -45,6 +45,8 @@ db.once("open", async () => {
       await newUser.save();
       // reference user on post model
       tempPost.author = newUser.username;
+      tempPost.likes.push(newUser.id)
+      tempPost.totalLikes = tempPost.likes.length
       await tempPost.save();
     }
 
