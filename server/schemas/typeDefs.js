@@ -32,6 +32,7 @@ const typeDefs = gql`
     comments: [Comment]
     likes: [String]
     totalLikes: Int
+    category: Category
     label: Label
   }
 
