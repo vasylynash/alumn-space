@@ -18,7 +18,6 @@ module.exports = {
       await Post.updateOne(post)
       }
   
-      console.log(post.likes)
       return post;
     },
   },
