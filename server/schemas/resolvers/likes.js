@@ -3,16 +3,23 @@ const Post = require('../../models/Post');
 module.exports = {
   Query: {
     postLikes: async (_, args) => {
-       const data = await Post.findById(args.id);
-       data.totalLikes = data.likes.length
-      return await data
+       const post = await Post.findById(args.id);
+       post.totalLikes = post.likes.length
+      return await post
     },
   },
 
   Mutation: {
     addPostLike: async (_, args) => {
-      const post = Post.findById(args.id)
-      return likes;
+      const post = await Post.findById(args.id);
+
+      if (!post.likes.includes(args.userId)){
+      post.likes.push(args.userId)
+      await Post.updateOne(post)
+      }
+  
+      console.log(post.likes)
+      return post;
     },
   },
 };
