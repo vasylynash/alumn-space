@@ -1,5 +1,5 @@
-const Post = require("../../models/Post");
-const { UserInputError } = require("apollo-server-express");
+const Post = require('../../models/Post');
+const { UserInputError } = require('apollo-server-express');
 
 module.exports = {
   Query: {
@@ -16,7 +16,7 @@ module.exports = {
         if (post) {
           return post;
         } else {
-          throw new Error("Post not found");
+          throw new Error('Post not found');
         }
       } catch (err) {
         throw new Error(err);
@@ -29,10 +29,10 @@ module.exports = {
     },
     updatePost: async (_, { id, title, body }) => {
       if (!title) {
-        throw new UserInputError("The title cannot be empty");
+        throw new UserInputError('The title cannot be empty');
       }
       if (!body) {
-        throw new UserInputError("The body of the post cannot be empty");
+        throw new UserInputError('The body of the post cannot be empty');
       }
       const post = await Post.findById({ _id: id });
       post.title = title;

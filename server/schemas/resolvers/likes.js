@@ -15,7 +15,9 @@ module.exports = {
 
       if (!post.likes.includes(args.userId)){
       post.likes.push(args.userId)
+      post.totalLikes = post.likes.length
       await Post.updateOne(post)
+      
       }
   
       return post;

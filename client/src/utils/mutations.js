@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!, yearOfGraduation: String!, className: String!) {
@@ -164,8 +164,8 @@ export const REMOVE_COMMENT = gql`
 `;
 
 export const ADD_POST_LIKE = gql`
-        mutation addPostLike(postId: ID!, userId: ){
-            addPostLike(postId: $postId, likes: $likes){
+        mutation addPostLike(id: ID!, userId: ID! ){
+            addPostLike(id: $postId, userId: $userId){
                 _id
                 likes
             }
