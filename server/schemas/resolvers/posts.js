@@ -80,10 +80,8 @@ module.exports = {
       
       return post;
     },
-    removePost: async (_, args)  => {
-      const id = args.id;
-      Post.findByIdAndRemove(id);
-      return id;
+    removePost: async (parent, { id }, context)  => {
+      return await Post.deleteOne({ _id: id });
     } 
   }    
 };
