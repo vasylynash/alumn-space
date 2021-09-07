@@ -43,7 +43,7 @@ export const ADD_POST = gql`
           body
           author
           dateCreated
-          likes
+          totalLikes
           category
           label
           comments {
@@ -54,8 +54,8 @@ export const ADD_POST = gql`
               likes
           }
       }
-  }
-  `;
+    }
+`;
 
   export const UPDATE_POST = gql`
   mutation updatePost($id: ID!, $title: String!, $body: String!, $category: Category!, $label: Label!) {
@@ -72,7 +72,7 @@ export const ADD_POST = gql`
               dateCreated
               likes
           }
-          likes
+          totalLikes
           category
           label
       }
@@ -86,7 +86,7 @@ export const REMOVE_POST = gql`
                _id
             }
         }
-        `;
+`;
 
 //check ADD UPDATE & REMOVE COMMENT in future branch/PR
 export const ADD_COMMENT = gql`
@@ -97,7 +97,7 @@ export const ADD_COMMENT = gql`
                 body
                 author
                 dateCreated
-                likes
+                totalLikes
                 comments {
                     _id
                     body
@@ -117,7 +117,7 @@ export const UPDATE_COMMENT = gql`
                 body
                 author
                 dateCreated
-                likes
+                totalLikes
                 comments {
                     _id
                     body
@@ -137,7 +137,7 @@ export const REMOVE_COMMENT = gql`
                 body
                 author
                 dateCreated
-                likes
+                totalLikes
                 comments {
                     _id
                     body
@@ -149,6 +149,13 @@ export const REMOVE_COMMENT = gql`
         }
 `;
 
+export const ADD_POST_LIKE = gql`
+        mutation addPostLike($id: ID!, $userId: ID! ){
+            addPostLike(id: $postId, userId: $userId){
+                totalLikes
+            }
+        }
+`;
 //UPDATE_USER_PROFILE works
 export const UPDATE_USER_PROFILE = gql`
 mutation updateUser($id:ID!, $firstName: String, $lastName:String, $image:String, $role:String, $bio:String, $yearOfGraduation:String!, $linkedIn: String, $gitHub: String, $className: String!) {
