@@ -40,7 +40,8 @@ const postSchema = new Schema({
     type: [String],
   },
   totalLikes: {
-    type: Number
+    type: Number,
+    default: 0,
  },
     category: {
         type: String,
