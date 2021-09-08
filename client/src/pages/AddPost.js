@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useMutation } from "@apollo/client";
 import { ADD_POST } from '../utils/mutations';
 import Auth from '../utils/auth';
+
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import { BackArrow } from "../components/icons.styles";
@@ -29,30 +30,15 @@ const AddPostContainer = styled.div`
 const AddPost = () => {
 
     const [category, setCategory] = useState('');
-    console.log("category" + category)
-
-    const handleCategoryChange = (event) => {
-        setCategory(event.target.value);
-    };
-
     const [label, setLabel] = useState('');
-    console.log("label", label)
-
-    // const handleLabelChange = (event) => {
-    //     setLabel(event.target.value);
-    // };
-
     const [title, setTitle] = useState('');
-    console.log("title", title)
     const [body, setBody] = useState(''); 
-    console.log("body" + body)
     const [isPending, setIsPending] = useState(false);
     const [addPost, {error}] = useMutation(ADD_POST)
     const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // const post = { title, body, category, label };
 
         setIsPending(true);
         try {
@@ -66,34 +52,22 @@ const AddPost = () => {
                 }
             });
             setIsPending(false);
+            history.push('/home');
         } catch(e) {
             console.log(e)
         }
-
-
-
-        //Add the mutation method here to send the new post to the db
-
-        //Then when added setPending back to false and
-        //use the useHistory to send user back to homepage
-
-        //setIsPending(false);
-        //history.push('/');
     };
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
+    // const handleChange = (event) => {
+    //     const { name, value } = event.target;
 
-        if (name === 'label') {
-            setLabel(value)
-        }
-        if (name === 'category') {
-            setCategory(value)
-        }
-
-
-
-    }
+    //     if (name === 'label') {
+    //         setLabel(value)
+    //     }
+    //     if (name === 'category') {
+    //         setCategory(value)
+    //     }
+    // }
 
     return ( 
         <>
