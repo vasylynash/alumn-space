@@ -2,14 +2,9 @@
   {
     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
     "body": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "author": "6137cfcd362f5bbc39c76ad9",
-    "likes": [
-      "14",
-      "12",
-      "136",
-      "13346"
-    ],
-    "totalLikes": "",
+    "author": "Hayk Mnatsakanyan",
+    "likes": [],
+    "totalLikes": 0,
     "comments": [
       {
         "commentText": "Background image, layout, design, camera angle – delightful :-)",
@@ -28,13 +23,9 @@
   {
     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
     "body": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "author": "6137cfcd362f5bbc39c76ad9",
-    "likes": [
-      "14",
-      "12",
-      "16"
-    ],
-    "totalLikes": "",
+    "author": "Dmitriy Babich",
+    "likes": [],
+    "totalLikes": 0,
     "comments": [
       {
         "commentText": "Such style, many layers, so simple",
@@ -59,15 +50,9 @@
   {
     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
     "body": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "author": "6137cfcd362f5bbc39c76ad9",
-    "likes": [
-      "146",
-      "12",
-      "16",
-      "453",
-      "6543"
-    ],
-    "totalLikes": "",
+    "author": "Melina Boedecker",
+    "likes": [],
+    "totalLikes": 0,
     "comments": [
       {
         "commentText": "Very thought out! How do you make this? Photoshop?",
@@ -98,16 +83,9 @@
   {
     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
     "body": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "author": "6137cfcd362f5bbc39c76ad9",
-    "likes": [
-      "14",
-      "12",
-      "16",
-      "154",
-      "132",
-      "166"
-    ],
-    "totalLikes": "",
+    "author": "Vasylyna Shevaduska",
+    "likes": [],
+    "totalLikes": 0,
     "comments": [
       {
         "commentText": "Cool =) I adore the use of gradient and blur!",
