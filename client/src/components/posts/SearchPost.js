@@ -65,7 +65,7 @@ export const Line = styled.div`
     background-color: #707070;
 `
 
-const DropDownContainer = styled.div`
+export const DropDownContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
