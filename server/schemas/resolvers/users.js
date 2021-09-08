@@ -6,7 +6,7 @@ const { validateRegisterInput, validateLoginInput } = require('../../utils/valid
 const { AuthenticationError } = require('apollo-server-express');
 
 module.exports = {
-    Query: {
+  Query: {
     users: async () => {
       return User.find();
     },
@@ -14,6 +14,7 @@ module.exports = {
       return User.findById(args.id);
     },
   },
+
   Mutation: {
     addUser: async (_, {registerInput: { username, email, password, confirmPassword, yearOfGraduation, className }}) => {
       const { errors, valid } = validateRegisterInput(username, email, password, confirmPassword, yearOfGraduation, className);
@@ -41,6 +42,7 @@ module.exports = {
       const token = signToken(newUser);
       return { token, user: newUser };
     },
+
     login: async (_, { email, password }) => {
       const { errors, valid } = validateLoginInput(email, password); 
       const user = await User.findOne({ email });
@@ -67,6 +69,12 @@ module.exports = {
         { firstName, lastName, image, role, bio, yearOfGraduation, linkedIn, gitHub, className },
         { new: true }
       );
+    },
+
+    removeUser: async (parent, { id }, context) => {
+      return await User.deleteOne(
+        { _id: id }
+        );
     }
-    }    
+  }    
 };
