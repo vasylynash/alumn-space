@@ -58,17 +58,6 @@ const AddPost = () => {
         }
     };
 
-    // const handleChange = (event) => {
-    //     const { name, value } = event.target;
-
-    //     if (name === 'label') {
-    //         setLabel(value)
-    //     }
-    //     if (name === 'category') {
-    //         setCategory(value)
-    //     }
-    // }
-
     return ( 
         <>
             <Navbar/>
