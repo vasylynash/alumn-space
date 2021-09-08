@@ -2,7 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { VerticalDiv } from '../../pages/Landing'
-
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { QUERY_ALL_USERS } from '../../utils/queries'
 
 const Card = styled.div`
     display: flex;
@@ -99,7 +100,12 @@ const Card = styled.div`
     }
 `
 
+
+
 function PostCard() {
+
+    const { loading, myData } = useQuery(QUERY_ALL_USERS);
+   
     return (
         <>
         <Link to='/post' style={{textDecoration: 'none', color:'black'}}>
@@ -112,7 +118,7 @@ function PostCard() {
                 <p className='author'>By: Dmitriy</p>
                 <p className='category'>#FullStackFlex</p>
                 <p className='label'>Help</p>
-                <button><i class="fas fa-heart">2</i></button>
+                <button><i class="fas fa-heart">3</i></button>
             </div>
             <div className='right'>
                 <p className='date'>01/01/2021</p>
