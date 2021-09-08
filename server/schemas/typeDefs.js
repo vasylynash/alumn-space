@@ -18,10 +18,10 @@ const typeDefs = gql`
     className: String
   }
 
-  type Auth {
-    token: ID
-    user: User
-  }
+    type Auth {
+        token: ID!
+        user: User
+    }
 
   type Post {
     _id: ID
@@ -67,13 +67,14 @@ const typeDefs = gql`
         None
     }
 
-  input RegisterInput {
-    username: String!
-    email: String!
-    password: String!
-    yearOfGraduation: String!
-    className: String!
-  }
+    input RegisterInput {
+        username: String!
+        email: String!
+        password: String!,
+        confirmPassword: String!,
+        yearOfGraduation: String!,
+        className: String!
+    }
 
   type Query {
     users: [User]
