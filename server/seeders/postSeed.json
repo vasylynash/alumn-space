@@ -2,8 +2,13 @@
   {
     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
     "body": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "author": "Hayk Mnatsakanyan",
-    "likes": ["14","12","136","13346"],
+    "author": "6137cfcd362f5bbc39c76ad9",
+    "likes": [
+      "14",
+      "12",
+      "136",
+      "13346"
+    ],
     "totalLikes": "",
     "comments": [
       {
@@ -23,8 +28,12 @@
   {
     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
     "body": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "author": "Dmitriy Babich",
-    "likes": ["14","12","16"],
+    "author": "6137cfcd362f5bbc39c76ad9",
+    "likes": [
+      "14",
+      "12",
+      "16"
+    ],
     "totalLikes": "",
     "comments": [
       {
@@ -50,8 +59,14 @@
   {
     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
     "body": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "author": "Melina Boedecker",
-    "likes": ["146","12","16","453","6543"],
+    "author": "6137cfcd362f5bbc39c76ad9",
+    "likes": [
+      "146",
+      "12",
+      "16",
+      "453",
+      "6543"
+    ],
     "totalLikes": "",
     "comments": [
       {
@@ -83,8 +98,15 @@
   {
     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
     "body": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "author": "Vasylyna Shevaduska",
-    "likes": ["14","12","16","154","132","166"],
+    "author": "6137cfcd362f5bbc39c76ad9",
+    "likes": [
+      "14",
+      "12",
+      "16",
+      "154",
+      "132",
+      "166"
+    ],
     "totalLikes": "",
     "comments": [
       {
