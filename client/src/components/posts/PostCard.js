@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { VerticalDiv } from '../../pages/Landing'
-import { useQuery, useMutation } from '@apollo/react-hooks';
 import { QUERY_ALL_USERS } from '../../utils/queries'
 
 const Card = styled.div`
