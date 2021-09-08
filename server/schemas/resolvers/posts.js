@@ -26,12 +26,11 @@ module.exports = {
     }
   },
   Mutation: {
-    addPost: async (_, { title, body }, context) => {
+    addPost: async (_, { title, body, authorId }, context) => {
       // if (!context.user) {
       //   throw new AuthenticationError('You must be logged in to add a post');
       // }
-      console.log(context)
-      return Post.create({title: title, body: body, author: context.user.id});
+      return Post.create({title: title, body: body, author: authorId});
     },
     updatePost: async (_, { id, title, body }) => {
       if(!title) {

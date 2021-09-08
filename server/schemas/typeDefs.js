@@ -27,7 +27,7 @@ const typeDefs = gql `
         _id: ID
         title: String
         body: String
-        author: String
+        author: User
         dateCreated: String
         comments: [Comment]
         likes: Int
@@ -73,7 +73,7 @@ const typeDefs = gql `
     type Mutation {
         addUser(registerInput: RegisterInput!): Auth
         login(email: String!, password: String!): Auth
-        addPost(title: String!, body: String!): Post
+        addPost(title: String!, body: String!, authorId: ID!): Post
         updatePost(id: ID!, title: String!, body: String!): Post
         removePost(id: ID!): Post
         addComment(postId: ID!, commentText: String!): Post
