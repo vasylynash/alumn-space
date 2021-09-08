@@ -1,5 +1,5 @@
 const Post = require('../../models/Post');
-const { UserInputError } = require('apollo-server-express');
+const { UserInputError, AuthenticationError } = require('apollo-server-express');
 
 module.exports = {
     Query: {
@@ -26,8 +26,12 @@ module.exports = {
     }
   },
   Mutation: {
-    addPost: async (_, { title, body, author }) => {
-      return Post.create({title: title, body: body, author: author});
+    addPost: async (_, { title, body }, context) => {
+      // if (!context.user) {
+      //   throw new AuthenticationError('You must be logged in to add a post');
+      // }
+      console.log(context)
+      return Post.create({title: title, body: body, author: context.user.id});
     },
     updatePost: async (_, { id, title, body }) => {
       if(!title) {
