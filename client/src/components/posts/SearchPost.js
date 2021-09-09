@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import GlobalStyle from '../global.style'
-import { LoginBtn } from '../../pages/Landing'
+import React, { useState } from 'react';
+import { useSearch } from '../../utils/SearchContext';
+import styled from 'styled-components';
+import GlobalStyle from '../global.style';
+import { LoginBtn } from '../../pages/Landing';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -77,18 +78,28 @@ export const DropDownContainer = styled.div`
 
 
 function SearchPost() {
+    const { formData, setFormData } = useSearch();
+    console.log(formData);
 
-    const [Category, setCategory] = useState();
+    const [category, setCategory] = useState('');
 
     const handleCategoryChange = (event) => {
         setCategory(event.target.value);
     };
 
-    const [Label, setLabel] = useState();
+    const [label, setLabel] = useState('');
 
     const handleLabelChange = (event) => {
         setLabel(event.target.value);
     };
+
+    const [keyword, setKeyword] = useState('');
+    
+    const handleKeywordChange = (event) => {
+        setKeyword(event.target.value);
+    };
+
+    setFormData({keyword, category, label});
 
     return (
         <>
@@ -96,7 +107,7 @@ function SearchPost() {
         <Line/>
         <SearchBar>
             <SearchIcon className='fas fa-search'/>
-            <SearchInput placeholder='Search Title'/>
+            <SearchInput placeholder='Search Title' onChange={handleKeywordChange}/>
             <SearchBtn>Search</SearchBtn>
         </SearchBar>
         <DropDownContainer>
@@ -105,7 +116,7 @@ function SearchPost() {
                 <Select
                 labelId="subject"
                 id="subject-select"
-                value={Category}
+                value={category}
                 onChange={handleCategoryChange}
                 >
                 <MenuItem value={1}>Categoryt1</MenuItem>
@@ -124,7 +135,7 @@ function SearchPost() {
                 <Select
                 labelId="subject"
                 id="subject-select"
-                value={Label}
+                value={label}
                 onChange={handleLabelChange}
                 >
                 <MenuItem value={1}>Label1</MenuItem>
