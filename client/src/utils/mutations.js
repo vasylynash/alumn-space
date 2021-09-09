@@ -36,12 +36,15 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($title: String!, $body: String!, $author: String!, $category: Category!, $label: Label!) {
-      addPost(title: $title, body: $body, author: $author, category: $category, label: $label) {
+  mutation addPost($title: String!, $body: String!, $category: Category!, $label: Label!) {
+      addPost(title: $title, body: $body, category: $category, label: $label) {
           _id
           title
           body
-          author
+          author {
+              _id
+              username
+          }
           dateCreated
           totalLikes
           category
