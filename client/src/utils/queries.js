@@ -108,6 +108,7 @@ export const QUERY_ALL_POSTS = gql`
             title
             body
             author {
+              _id
               username
             }
             dateCreated
@@ -131,7 +132,9 @@ export const QUERY_SINGLE_POST = gql`
       _id
       title
       body
-      author
+      author {
+        username
+      }
       dateCreated
       totalLikes
       category

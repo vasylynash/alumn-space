@@ -2,9 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { VerticalDiv } from '../../pages/Landing'
-import { QUERY_ALL_POSTS } from '../../utils/queries'
+import { QUERY_SINGLE_POST } from '../../utils/queries'
 import { useQuery } from '@apollo/client'
 import Auth from '../../utils/auth'
+import { useParams } from 'react-router-dom';
 
 const Card = styled.div`
     display: flex;
@@ -102,17 +103,28 @@ const Card = styled.div`
 
 
 
-function PostCard() {
+const  PostCard = () => {
+ 
+    const { _id } = useParams();
+    // const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
+    //     variables: { postId: id },
+    //   });
 
-    // get token
-    // const token = Auth.loggedIn() ? Auth.getToken() : null;
+    const { loading, data } = useQuery(QUERY_SINGLE_POST, {
+      variables: { postId: _id },
+    });
+  
+    const post = data?.username || {};
+  
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+   console.log("id -- >  ",_id)
+  
+    //   if (loading) {
+    //     return <div>Loading...</div>;
+    //   }
 
-    // if (!token) {
-    //   return false;
-    // }
-
-     const { loading, error, data } = useQuery(QUERY_ALL_POSTS);
-     console.log("Data -- >  ", data)
    
     return (
         <>
@@ -126,7 +138,7 @@ function PostCard() {
                 <p className='author'>By: </p>
                 <p className='category'>#FullStackFlex</p>
                 <p className='label'>Help</p>
-                <button><i className="fas fa-heart">3</i></button>
+                <button><i className="fas fa-heart">{}</i></button>
             </div>
             <div className='right'>
                 <p className='date'>01/01/2021</p>
