@@ -6,7 +6,6 @@ import SearchPost from '../components/posts/SearchPost';
 
 
 const Home = () => {
-
     
     return ( 
         <div>

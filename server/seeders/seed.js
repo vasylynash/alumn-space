@@ -8,10 +8,11 @@ const userSeed = require("./userSeed.json");
 db.once("open", async () => {
   try {
     // remove from database
-    await Post.deleteMany({});
     await User.deleteMany({});
-    const posts = await Post.insertMany(postSeed);
+    await Post.deleteMany({});
+   
     const users = await User.insertMany(userSeed);
+    const posts = await Post.insertMany(postSeed);
 
     //User references
     for (newUser of users) {
@@ -20,8 +21,8 @@ db.once("open", async () => {
       newUser.posts.push(tempPost);
       await newUser.save();
       // reference user on post model
-      tempPost.author = newUser.username;
-      tempPost.likes.push(newUser.id)
+      tempPost.author = newUser._id;
+      tempPost.likes.push(newUser._id)
       tempPost.totalLikes = tempPost.likes.length
       await tempPost.save();
     }

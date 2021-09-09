@@ -103,7 +103,6 @@ const Card = styled.div`
 
 function PostCard() {
 
-    // Hayk's change
     // const { loading, myData } = useQuery(QUERY_ALL_USERS);
    
     return (
