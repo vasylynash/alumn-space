@@ -76,13 +76,20 @@ const typeDefs = gql`
         className: String!
     }
 
-    type Query {
-        users: [User]
-        user(id: ID!): User
-        posts: [Post]
-        post(id: ID!): Post
-        postLikes(id: ID!): Post
+    type PostResult {
+      post: [Post]
+      currentPage: Int
+      totalPages: Int
     }
+
+  type Query {
+    users: [User]
+    user(id: ID!): User
+    posts: [Post]
+    post(id: ID!): Post
+    postLikes(id: ID!): Post
+    searchPosts(search: String, page: Int, limit: Int): PostResult
+  }
 
     type Mutation {
         addUser(registerInput: RegisterInput!): Auth
