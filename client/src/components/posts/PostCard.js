@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { VerticalDiv } from '../../pages/Landing'
-import { QUERY_ALL_USERS } from '../../utils/queries'
+// import { QUERY_ALL_USERS } from '../../utils/queries'
 
 const Card = styled.div`
     display: flex;
@@ -103,7 +103,8 @@ const Card = styled.div`
 
 function PostCard() {
 
-    const { loading, myData } = useQuery(QUERY_ALL_USERS);
+    // Hayk's change
+    // const { loading, myData } = useQuery(QUERY_ALL_USERS);
    
     return (
         <>

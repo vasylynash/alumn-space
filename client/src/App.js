@@ -89,10 +89,11 @@ function App() {
             <Route exact path="/addpost">
               <AddPost />
             </Route>
+            <Route exact path="/Profile">
+              <Profile />
+            </Route>
           </Switch>
         </div>
-        {/* Removed footer for now  */}
-        {/* <Footer /> */}
       </div>
     </Router>
   </ThemeProvider>
