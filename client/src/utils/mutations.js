@@ -84,26 +84,9 @@ export const ADD_POST = gql`
 
 //Check and fix the REMOVE_POST in next branch/PR
 export const REMOVE_POST = gql`
-        mutation removePost($postId: ID!) {
-            removePost(postId: $postId) {
+        mutation removePost($id: ID!) {
+            removePost(id: $id) {
                _id
-               posts {
-                   _id
-                   title
-                   body
-                   author
-                   dateCreated
-                   totalLikes
-                   category
-                   label
-                   comments {
-                       _id
-                       body
-                       author
-                       dateCreated
-                       likes
-                   }
-               } 
             }
         }
 `;
