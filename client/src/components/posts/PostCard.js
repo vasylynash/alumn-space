@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { VerticalDiv } from '../../pages/Landing'
 import { QUERY_SINGLE_POST } from '../../utils/queries'
 import { useQuery } from '@apollo/client'
-import Auth from '../../utils/auth'
 import { useParams } from 'react-router-dom';
 
 const Card = styled.div`
@@ -101,30 +100,15 @@ const Card = styled.div`
     }
 `
 
-
-
-const  PostCard = () => {
+const  PostCard = ({post}) => {
  
-    const { _id } = useParams();
-    // const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
-    //     variables: { postId: id },
-    //   });
-
     const { loading, data } = useQuery(QUERY_SINGLE_POST, {
-      variables: { postId: _id },
+      variables: { id: post._id },
     });
   
-    const post = data?.username || {};
-  
     if (loading) {
-      return <div>Loading...</div>;
+      return <div>Loading Posts...</div>;
     }
-   console.log("id -- >  ",_id)
-  
-    //   if (loading) {
-    //     return <div>Loading...</div>;
-    //   }
-
    
     return (
         <>
@@ -135,14 +119,14 @@ const  PostCard = () => {
                 <h5>Welcome</h5>
             </div>
             <div className='left'>
-                <p className='author'>By: </p>
-                <p className='category'>#FullStackFlex</p>
-                <p className='label'>Help</p>
-                <button><i className="fas fa-heart">{}</i></button>
+                <p className='author'>By: {post.author.username}</p>
+                <p className='category'>{post.category}</p>
+                <p className='label'>{post.label}</p>
+                <button><i className="fas fa-heart">{post.totalLikes}</i></button>
             </div>
             <div className='right'>
-                <p className='date'>01/01/2021</p>
-                <p className='body'>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+                <p className='date'>{post.dateCreated}</p>
+                <p className='body'>{post.body}</p>
             </div>
         </Card>
         </VerticalDiv>
