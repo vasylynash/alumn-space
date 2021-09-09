@@ -42,10 +42,10 @@ const TabContainer = styled.div`
     .option {
         margin: 0 1rem;
     }
-
 `
 
 const Profile = () => {
+
     return ( 
         <>
         <GlobalStyle/>
@@ -67,7 +67,6 @@ const Profile = () => {
              </TabContainer>
             <Line/>
         </VerticalDiv>
-        
         </>
      );
 }
