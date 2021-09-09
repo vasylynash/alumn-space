@@ -2,7 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { VerticalDiv } from '../../pages/Landing'
-import { QUERY_ALL_USERS } from '../../utils/queries'
+import { QUERY_ALL_POSTS } from '../../utils/queries'
+import { useQuery } from '@apollo/client'
+import Auth from '../../utils/auth'
 
 const Card = styled.div`
     display: flex;
@@ -95,7 +97,6 @@ const Card = styled.div`
         font-size: 10px;
         color: red;
         transition: ease-in-out 0.3s;
-
     }
 `
 
@@ -103,7 +104,15 @@ const Card = styled.div`
 
 function PostCard() {
 
-    // const { loading, myData } = useQuery(QUERY_ALL_USERS);
+    // get token
+    // const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    // if (!token) {
+    //   return false;
+    // }
+
+     const { loading, error, data } = useQuery(QUERY_ALL_POSTS);
+     console.log("Data -- >  ", data)
    
     return (
         <>
@@ -114,10 +123,10 @@ function PostCard() {
                 <h5>Welcome</h5>
             </div>
             <div className='left'>
-                <p className='author'>By: Dmitriy</p>
+                <p className='author'>By: </p>
                 <p className='category'>#FullStackFlex</p>
                 <p className='label'>Help</p>
-                <button><i class="fas fa-heart">3</i></button>
+                <button><i className="fas fa-heart">3</i></button>
             </div>
             <div className='right'>
                 <p className='date'>01/01/2021</p>
