@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { useHistory } from 'react-router-dom';
+import { useMutation } from "@apollo/client";
+import { ADD_POST } from '../utils/mutations';
+import Auth from '../utils/auth';
+
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import { BackArrow } from "../components/icons.styles";
@@ -25,37 +29,34 @@ const AddPostContainer = styled.div`
 
 const AddPost = () => {
 
-    const [Category, setCategory] = useState();
-
-    const handleCategoryChange = (event) => {
-        setCategory(event.target.value);
-    };
-
-    const [Label, setLabel] = useState();
-
-    const handleLabelChange = (event) => {
-        setLabel(event.target.value);
-    };
-
+    const [category, setCategory] = useState('');
+    const [label, setLabel] = useState('');
     const [title, setTitle] = useState('');
     const [body, setBody] = useState(''); 
     const [isPending, setIsPending] = useState(false);
+    const [addPost, {error}] = useMutation(ADD_POST)
     const history = useHistory();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const post = { title, body };
 
         setIsPending(true);
-
-        //Add the mutation method here to send the new post to the db
-
-        //Then when added setPending back to false and
-        //use the useHistory to send user back to homepage
-
-        //setIsPending(false);
-        //history.push('/');
-    }
+        try {
+            const {data} = await addPost({
+                variables: {
+                    title,
+                    body,
+                    category,
+                    label,
+                    author: Auth.getProfile().data._id
+                }
+            });
+            setIsPending(false);
+            history.push('/home');
+        } catch(e) {
+            console.log(e)
+        }
+    };
 
     return ( 
         <>
@@ -81,41 +82,38 @@ const AddPost = () => {
                 />
                 <DropDownContainer>
                     <FormControl style={{minWidth: 100}}>
-                    <InputLabel id="subject" >Category</InputLabel>
+                    <InputLabel id="subject" name="category">Category</InputLabel>
                         <Select
                         labelId="subject"
                         id="subject-select"
-                        value={Category}
-                        onChange={handleCategoryChange}
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
                         >
-                        <MenuItem value={1}>Categoryt1</MenuItem>
-                        <MenuItem value={2}>Categoryt2</MenuItem>
-                        <MenuItem value={3}>Categoryt3</MenuItem>
-                        <MenuItem value={4}>Categoryt4</MenuItem>
-                        <MenuItem value={5}>Categoryt5</MenuItem>
-                        <MenuItem value={6}>Categoryt6</MenuItem>
-                        <MenuItem value={7}>Categoryt7</MenuItem>
-                        <MenuItem value={8}>Categoryt8</MenuItem>
-                        <MenuItem value={9}>Categoryt9</MenuItem>
+                        <MenuItem value={'Coding'}>Coding</MenuItem>
+                        <MenuItem value={'DataScience'}>Data Science</MenuItem>
+                        <MenuItem value={'UIUX'}>UI/UX</MenuItem>
                         </Select>
                     </FormControl>
                     <FormControl style={{minWidth: 100}}>
-                    <InputLabel id="subject" >Label</InputLabel>
+                    <InputLabel id="subject" name="label">Label</InputLabel>
                         <Select
                         labelId="subject"
                         id="subject-select"
-                        value={Label}
-                        onChange={handleLabelChange}
+                        value={label}
+                        onChange={(e) => setLabel(e.target.value)}
                         >
-                        <MenuItem value={1}>Label1</MenuItem>
-                        <MenuItem value={2}>Label2</MenuItem>
-                        <MenuItem value={3}>Label3</MenuItem>
-                        <MenuItem value={4}>Label4</MenuItem>
-                        <MenuItem value={5}>Label5</MenuItem>
-                        <MenuItem value={6}>Label6</MenuItem>
-                        <MenuItem value={7}>Label7</MenuItem>
-                        <MenuItem value={8}>Label8</MenuItem>
-                        <MenuItem value={9}>Label9</MenuItem>
+                        <MenuItem value={'Help'}>Help</MenuItem>
+                        <MenuItem value={'SuccessStories'}>Success Stories</MenuItem>
+                        <MenuItem value={'Jobs'}>Jobs</MenuItem>
+                        <MenuItem value={'Discussion'}>Discussion</MenuItem>
+                        <MenuItem value={'NodeJS'}>NodeJS</MenuItem>
+                        <MenuItem value={'GraphQL'}>GraphQL</MenuItem>
+                        <MenuItem value={'MONGODB'}>MongoDB</MenuItem>
+                        <MenuItem value={'React'}>React</MenuItem>
+                        <MenuItem value={'CSS'}>CSS</MenuItem>
+                        <MenuItem value={'HTML'}>HTML</MenuItem>
+                        <MenuItem value={'HandleBars'}>HandleBars</MenuItem>
+                        <MenuItem value={'JavaScript'}>JavaScript</MenuItem>
                         </Select>
                     </FormControl>
                 </DropDownContainer>
