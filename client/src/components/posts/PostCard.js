@@ -103,7 +103,7 @@ const Card = styled.div`
 
 function PostCard() {
 
-    const { loading, myData } = useQuery(QUERY_ALL_USERS);
+    // const { loading, myData } = useQuery(QUERY_ALL_USERS);
    
     return (
         <>
