@@ -81,6 +81,7 @@ module.exports = {
       return post;
     },
     removePost: async (parent, { id }, context)  => {
+      console.log('context.user:    ', context.user)
       return await Post.deleteOne({ _id: id });
     } 
   }    
