@@ -172,3 +172,16 @@ export const QUERY_LABEL_POSTS = gql`
     }
   }
 `;
+
+export const SEARCH_POSTS = gql `
+  query searchPosts($search: String) {
+    searchPosts(search: $search) {
+      post {
+        title
+        body
+        author
+        dateCreated
+      }
+    }
+  }
+`;

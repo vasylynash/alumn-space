@@ -60,6 +60,33 @@ module.exports = {
       catch (err) {
         throw new Error(err)
       }
+    },
+    searchPosts: async (_, args) => {
+      const { search = null, page = 1, limit = 20 } = args;
+
+      let searchQuery = {};
+
+      if(search) {
+        searchQuery = {
+          $or: [
+            {title: {$regex: search, $options: 'i'}},
+            {body: {$regex: search, $options: 'i'}}
+          ]
+        };
+      }
+     
+      const posts = await Post.find(searchQuery)
+      .limit(limit)
+      .skip((page-1) * limit)
+      .lean();
+
+      const count = await Post.countDocuments(searchQuery);
+
+      return {
+        post: posts,
+        totalPages: Math.ceil(count / limit),
+        currentPage: page
+      }
     }
   },
   Mutation: {
@@ -91,6 +118,7 @@ module.exports = {
       const id = args.id;
       Post.findByIdAndRemove(id);
       return id;
-    } 
+    },
+     
   }    
 };
