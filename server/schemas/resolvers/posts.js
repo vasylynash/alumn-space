@@ -1,4 +1,5 @@
 const Post = require('../../models/Post');
+const User = require('../../models/User');
 const { UserInputError } = require('apollo-server-express');
 
 module.exports = {
@@ -13,7 +14,7 @@ module.exports = {
       SuccessStories: 'Success Stories',
       Jobs: 'Jobs',
       Discussion: 'Discussion',
-      NodeJS: 'NodeJs',
+      NodeJS: 'NodeJS',
       GraphQL: 'GraphQL',
       MONGODB: 'MongoDB',
       React: 'React',
@@ -91,8 +92,14 @@ module.exports = {
     }
   },
   Mutation: {
-    addPost: async (_, { title, body, author, category, label }) => {
-      return Post.create({title: title, body: body, author: author, category: category, label: label});
+    addPost: async (_, { title, body, category, label }, context) => {
+      const post = await Post.create({title: title, body: body, category: category, label: label, author: context.user._id });
+      await User.findByIdAndUpdate(
+                { _id: context.user._id },
+                { $push: { posts: post._id } },
+                { new: true }
+              );
+      return await post.populate('author').execPopulate();
     },
     updatePost: async (_, { id, title, body, category, label }) => {
       if(!title) {

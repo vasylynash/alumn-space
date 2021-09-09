@@ -1,48 +1,48 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-  type User {
-    _id: ID
-    username: String
-    email: String
-    firstName: String
-    lastName: String
-    image: String
-    posts: [Post]
-    registrationDate: String
-    role: String
-    bio: String
-    yearOfGraduation: String
-    linkedIn: String
-    gitHub: String
-    className: String
-  }
+    type User {
+        _id: ID
+        username: String
+        email: String
+        firstName: String
+        lastName: String
+        image: String
+        posts: [Post]
+        registrationDate: String
+        role: String
+        bio: String
+        yearOfGraduation: String
+        linkedIn: String
+        gitHub: String
+        className: String
+    }
 
     type Auth {
         token: ID!
         user: User
     }
 
-  type Post {
-    _id: ID
-    title: String
-    body: String
-    author: String
-    dateCreated: String
-    comments: [Comment]
-    likes: [String]
-    totalLikes: Int
-    category: Category
-    label: Label
-  }
+    type Post {
+        _id: ID
+        title: String
+        body: String
+        author: User
+        dateCreated: String
+        comments: [Comment]
+        likes: [String]
+        totalLikes: Int
+        category: Category
+        label: Label
+    }
 
-  type Comment {
-    _id: ID
-    commentText: String
-    author: String
-    dateCreated: String
-    likes: Int
-  }
+    type Comment {
+        _id: ID
+        commentText: String
+        author: String
+        dateCreated: String
+        likes: Int
+    } 
 
     enum Category {
         Coding
@@ -53,7 +53,7 @@ const typeDefs = gql`
 
     enum Label {
         Help
-        SucessStories
+        SuccessStories
         Jobs
         Discussion
         NodeJS
@@ -94,7 +94,7 @@ const typeDefs = gql`
     type Mutation {
         addUser(registerInput: RegisterInput!): Auth
         login(email: String!, password: String!): Auth
-        addPost(title: String!, body: String!, author: String!, category: Category, label: Label): Post
+        addPost(title: String!, body: String!, category: Category, label: Label): Post
         updatePost(id: ID!, title: String!, body: String!, category: Category, label: Label): Post
         removePost(id: ID!): Post
         addComment(postId: ID!, commentText: String!): Post

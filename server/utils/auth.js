@@ -1,3 +1,4 @@
+const { AuthenticationError } = require('apollo-server-express');
 const jwt = require('jsonwebtoken');
 
 const secret = 'mysecretssshhhhhhh';
@@ -19,7 +20,7 @@ module.exports = {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
     } catch {
-      console.log('Invalid token');
+      throw new AuthenticationError('Invalid token');
     }
 
     return req;
