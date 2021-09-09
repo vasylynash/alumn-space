@@ -74,13 +74,11 @@ module.exports = {
           ]
         };
       }
-      console.dir(searchQuery, {depth: 3})
+     
       const posts = await Post.find(searchQuery)
       .limit(limit)
       .skip((page-1) * limit)
       .lean();
-
-      console.log(posts)
 
       const count = await Post.countDocuments(searchQuery);
 
