@@ -1,10 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import { VerticalDiv } from '../../pages/Landing'
-import { QUERY_SINGLE_POST } from '../../utils/queries'
-import { useQuery } from '@apollo/client'
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { VerticalDiv } from '../../pages/Landing';
+import { QUERY_SINGLE_POST } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
 
 const Card = styled.div`
     display: flex;
@@ -101,14 +100,6 @@ const Card = styled.div`
 `
 
 const  PostCard = ({post}) => {
- 
-    const { loading, data } = useQuery(QUERY_SINGLE_POST, {
-      variables: { id: post._id },
-    });
-  
-    if (loading) {
-      return <div>Loading Posts...</div>;
-    }
    
     return (
         <>

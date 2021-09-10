@@ -1,10 +1,10 @@
-import React from 'react'
-import { VerticalDiv } from '../../pages/Landing'
-import Navbar from '../nav/Navbar'
-import styled from 'styled-components'
-import ContentContainer from './Content'
-import { BackArrow } from '../icons.styles'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { VerticalDiv } from '../../pages/Landing';
+import Navbar from '../nav/Navbar';
+import styled from 'styled-components';
+import ContentContainer from './Content';
+import { BackArrow } from '../icons.styles';
+import { Link } from 'react-router-dom';
 
 const BlogPost = styled.div`
 

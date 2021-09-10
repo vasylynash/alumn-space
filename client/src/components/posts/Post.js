@@ -1,6 +1,6 @@
-import React from 'react'
-import { VerticalDiv } from '../../pages/Landing'
-import PostCard from './PostCard'
+import React from 'react';
+import { VerticalDiv } from '../../pages/Landing';
+import PostCard from './PostCard';
 
 const  Post = ({
     posts
