@@ -63,6 +63,11 @@ const Profile = () => {
         setComponentState('security');
     };
 
+    const handleChangeToMyPosts = (event) => {
+        event.preventDefault();
+        setComponentState('myPost')
+    }
+
     return ( 
         <>
         <GlobalStyle/>
@@ -78,6 +83,7 @@ const Profile = () => {
             <h1 className='username' style={{fontSize:'25px', marginBottom:'0'}}>Jane Doe</h1>
             <Line/>
             <TabContainer>
+                <Button className='option' onClick={handleChangeToMyPosts}>My posts</Button>
                 <Button className='option' onClick={handleChangeToInfo}>Info</Button>
                 <Button className='option' onClick={handleChangeToSecurity}>Security</Button>
              </TabContainer>
