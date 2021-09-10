@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../components/nav/Navbar'
-import Post from '../components/posts/Post';
+import Post from '../components/posts/PostList';
 import SearchPost from '../components/posts/SearchPost';
 import { QUERY_ALL_POSTS } from '../utils/queries';
 import { useQuery } from '@apollo/client';
