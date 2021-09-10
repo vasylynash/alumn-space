@@ -15,15 +15,16 @@ db.once("open", async () => {
     const posts = await Post.insertMany(postSeed);
 
     //User references
-    for (newUser of users) {
-      // randomly add a posts to each user
-      const tempPost = posts[Math.floor(Math.random() * posts.length)];
+    for (const [index, newUser] of users.entries()) {
+      if (index <= posts.length){
+        var tempPost = posts[index];
+      } 
       newUser.posts.push(tempPost);
       await newUser.save();
       // reference user on post model
       tempPost.author = newUser._id;
-      tempPost.likes.push(newUser._id)
-      tempPost.totalLikes = tempPost.likes.length
+      tempPost.likes.push(newUser._id);
+      tempPost.totalLikes = tempPost.likes.length;
       await tempPost.save();
     }
 
