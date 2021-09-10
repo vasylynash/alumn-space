@@ -1,8 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import { VerticalDiv } from '../../pages/Landing'
-// import { QUERY_ALL_USERS } from '../../utils/queries'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { VerticalDiv } from '../../pages/Landing';
+import { QUERY_SINGLE_POST } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
 
 const Card = styled.div`
     display: flex;
@@ -95,15 +96,10 @@ const Card = styled.div`
         font-size: 10px;
         color: red;
         transition: ease-in-out 0.3s;
-
     }
 `
 
-
-
-function PostCard() {
-
-    // const { loading, myData } = useQuery(QUERY_ALL_USERS);
+const  PostCard = ({post}) => {
    
     return (
         <>
@@ -114,14 +110,14 @@ function PostCard() {
                 <h5>Welcome</h5>
             </div>
             <div className='left'>
-                <p className='author'>By: Dmitriy</p>
-                <p className='category'>#FullStackFlex</p>
-                <p className='label'>Help</p>
-                <button><i class="fas fa-heart">3</i></button>
+                <p className='author'>By: {post.author.username}</p>
+                <p className='category'>{post.category}</p>
+                <p className='label'>{post.label}</p>
+                <button><i className="fas fa-heart">{post.totalLikes}</i></button>
             </div>
             <div className='right'>
-                <p className='date'>01/01/2021</p>
-                <p className='body'>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+                <p className='date'>{post.dateCreated}</p>
+                <p className='body'>{post.body}</p>
             </div>
         </Card>
         </VerticalDiv>
