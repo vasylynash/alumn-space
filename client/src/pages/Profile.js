@@ -7,13 +7,13 @@ import JaneDoe from '../images/janeDoe.jpg'
 import { VerticalDiv } from './Landing';
 import { Line } from '../components/posts/SearchPost';
 import { Button } from '@material-ui/core';
+import Index from '../components/profile/Index';
 
 const GradientContainer = styled.div`
     height: 180px;
     width: 100%;
     margin: 0;
     background: linear-gradient(90deg, rgba(81,187,185,1) 0%, rgba(255,137,133,1) 100%);
-
 `
 
 const ProfilePic = styled.div`
@@ -41,10 +41,28 @@ const TabContainer = styled.div`
 
     .option {
         margin: 0 1rem;
+        font-weight: bold;
     }
+
+    .active {
+        color: #51BBB9;
+    }
+
 `
 
 const Profile = () => {
+    const [componentState, setComponentState] = useState();
+
+    const handleChangeToInfo = (event) => {
+        event.preventDefault();
+        setComponentState('info');
+        
+    }
+
+    const handleChangeToSecurity = (event) => {
+        event.preventDefault();
+        setComponentState('security');
+    }
 
     return ( 
         <>
@@ -61,11 +79,11 @@ const Profile = () => {
             <h1 className='username' style={{fontSize:'25px', marginBottom:'0'}}>Jane Doe</h1>
             <Line/>
             <TabContainer>
-                <Button className='option'>Info</Button>
-                <Button className='option'>Security</Button>
-                <Button className='option'>Groups</Button>
+                <Button className='option' onClick={handleChangeToInfo}>Info</Button>
+                <Button className='option' onClick={handleChangeToSecurity}>Security</Button>
              </TabContainer>
             <Line/>
+            <Index section={componentState}/>
         </VerticalDiv>
         </>
      );
