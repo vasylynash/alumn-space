@@ -73,7 +73,7 @@ const Profile = () => {
         </Link>
         </GradientContainer>
         <ProfilePic>
-            <img src={JaneDoe} alt="yoda" className='img'/>
+            <img src={JaneDoe} alt="profile" className='img'/>
         </ProfilePic>
         <VerticalDiv>
             <h1 className='username' style={{fontSize:'25px', marginBottom:'0'}}>Jane Doe</h1>
