@@ -55,14 +55,13 @@ const Profile = () => {
 
     const handleChangeToInfo = (event) => {
         event.preventDefault();
-        setComponentState('info');
-        
-    }
+        setComponentState('info'); 
+    };
 
     const handleChangeToSecurity = (event) => {
         event.preventDefault();
         setComponentState('security');
-    }
+    };
 
     return ( 
         <>

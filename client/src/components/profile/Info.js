@@ -83,5 +83,5 @@ const Info = () => {
             </form>
         </VerticalDiv>
      );
-}
-export default Info
+};
+export default Info;

@@ -1,7 +1,6 @@
-import React from 'react'
-import Info from './Info'
+import React from 'react';
+import Info from './Info';
 import Security from './Security';
-import Groups from './Groups'
 
 function Index(props) {
     const { section } = props
@@ -19,4 +18,4 @@ function Index(props) {
     return component;
 }
 
-export default Index
+export default Index;

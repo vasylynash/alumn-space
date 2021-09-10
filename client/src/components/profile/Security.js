@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { LoginBtn, VerticalDiv } from '../../pages/Landing';
 import { Line } from '../posts/SearchPost';
@@ -26,7 +26,7 @@ function Security() {
                 </VerticalDiv>
             </form>
         </>
-    )
-}
+    );
+};
 
-export default Security
+export default Security;
