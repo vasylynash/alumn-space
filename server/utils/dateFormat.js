@@ -22,6 +22,14 @@ module.exports = (
   timestamp,
   { monthLength = 'short', dateSuffix = true } = {}
 ) => {
+  // get todays date
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, '0');
+  let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  let yyyy = today.getFullYear();
+  let postdd = String(timestamp.getDate()).padStart(2, '0');
+  let postmm = String(timestamp.getMonth() + 1).padStart(2, '0');
+  let postyyyy = timestamp.getFullYear();
   // create month object
   const months = {
     0: monthLength === 'short' ? 'Jan' : 'January',
@@ -40,6 +48,8 @@ module.exports = (
 
   const dateObj = new Date(timestamp);
   const formattedMonth = months[dateObj.getMonth()];
+
+
 
   const dayOfMonth = dateSuffix
     ? addDateSuffix(dateObj.getDate())
@@ -61,7 +71,6 @@ module.exports = (
   // set `am` or `pm`
   const periodOfDay = dateObj.getHours() >= 12 ? 'pm' : 'am';
 
-  const formattedTimeStamp = `${formattedMonth} ${dayOfMonth}, ${year}`;
-
+  let formattedTimeStamp = (postdd === dd && postmm === mm && postyyyy === yyyy) ? `Today` : `${formattedMonth} ${dayOfMonth}, ${year}`;
   return formattedTimeStamp;
 };
