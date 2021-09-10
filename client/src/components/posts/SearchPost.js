@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import GlobalStyle from '../global.style'
-import { LoginBtn } from '../../pages/Landing'
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-
 
 export const SearchInput = styled.input`
     width: 70%;
@@ -40,6 +38,13 @@ export const SearchBtn = styled.button`
     border-radius: 3px;
     color: white;
     padding: 6px 20px;
+    transition: ease-in-out 0.3s;
+
+    &:hover {
+        background-color: #FF8985;
+        color: #707070;
+        cursor: pointer;
+    }
 `
 
 export const SearchBar = styled.div`
@@ -73,8 +78,6 @@ export const DropDownContainer = styled.div`
     margin: 0;
     
 `
-
-
 
 function SearchPost() {
 

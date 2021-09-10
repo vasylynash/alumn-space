@@ -29,7 +29,7 @@ export const QUERY_ALL_USERS = gql`
         _id
         title
         body
-        author
+        author {_id}
         dateCreated
         likes
         comments {
@@ -79,13 +79,38 @@ export const QUERY_SINGLE_USER = gql`
   }
 `;
 
-export const QUERY_ALL_POSTS = gql`
+export const QUERY_ALL_POSTS_CATEGORY_LABEL = gql`
     query posts {
         posts (category: ${category}, label: ${label}){
             _id
             title
             body
-            author
+            author{_id}
+            dateCreated
+            totalLikes
+            category
+            label
+            comments {
+                _id
+                commentText
+                author
+                dateCreated
+                likes
+            }
+    }
+  }
+`;
+
+export const QUERY_ALL_POSTS = gql`
+    query posts {
+        posts {
+            _id
+            title
+            body
+            author {
+              _id
+              username
+            }
             dateCreated
             totalLikes
             category
@@ -107,7 +132,9 @@ export const QUERY_SINGLE_POST = gql`
       _id
       title
       body
-      author
+      author {
+        username
+      }
       dateCreated
       totalLikes
       category

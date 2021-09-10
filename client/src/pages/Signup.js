@@ -9,24 +9,20 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-// styled components
 import GlobalStyle from '../components/global.style';
 import { VerticalDiv } from './Landing';
 import { LoginBtn } from './Landing';
 import { SignUpBtn } from './Landing';
 import { BackArrow } from '../components/icons.styles'
 
-
 const Signup = () => {
 
-    // date picker 
     const [selectedDate, setSelectedDate] = useState(new Date('2021-01-01T21:11:54'));
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
       };
 
-    //   subject picker
     const [subject, setSubject] = useState();
 
     const handleSubjectChange = (event) => {
@@ -91,6 +87,6 @@ const Signup = () => {
             </form>
         </VerticalDiv>
      );
-}
+};
  
 export default Signup;
