@@ -100,7 +100,6 @@ const Card = styled.div`
 `
 
 const  PostCard = ({post}) => {
-   
     return (
         <>
         <Link to='/post' style={{textDecoration: 'none', color:'black'}}>
