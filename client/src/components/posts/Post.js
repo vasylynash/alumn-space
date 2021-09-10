@@ -107,7 +107,7 @@ const  PostCard = ({post}) => {
         <VerticalDiv>
         <Card>
             <div className='title'>
-                <h5>Welcome</h5>
+                <h5>{post.title}</h5>
             </div>
             <div className='left'>
                 <p className='author'>By: {post.author.username}</p>

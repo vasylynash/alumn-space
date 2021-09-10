@@ -20,7 +20,7 @@ const  Post = ({
                    <PostCard post = {post}/>
                     );
                 })
-                };
+                }
             </VerticalDiv>
         </VerticalDiv>
         </>
