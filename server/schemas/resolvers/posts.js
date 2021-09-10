@@ -41,7 +41,7 @@ module.exports = {
           label: label
         }); 
       } else {
-        return Post.find(); 
+        return Post.find().populate('author'); 
       }
       }
       catch(err) {
