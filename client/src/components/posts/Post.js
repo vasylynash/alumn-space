@@ -99,7 +99,7 @@ const Card = styled.div`
     }
 `
 
-const  Post = ({post}) => {
+const Post = ({post}) => {
    
     return (
         <>

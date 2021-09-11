@@ -63,11 +63,8 @@ module.exports = {
     },
     searchPosts: async (_, args) => {
       const { search = null, page = 1, limit = 20 } = args;
-      console.log(args)
       let filters = [];
-      // if (search === null) {
-      //   return Post.find().populate('author');
-      // }
+
       if(search.keyword) {
         filters.push({
           $or: [
@@ -84,8 +81,6 @@ module.exports = {
       }
 
       let searchQuery = filters.length? {$and: filters} : {} ;
-      console.log("SEARCH QUERY FROM RESOLVER")
-      console.log(searchQuery)
      
       const posts = await Post.find(searchQuery)
       .limit(limit)

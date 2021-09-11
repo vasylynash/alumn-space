@@ -87,8 +87,6 @@ export const DropDownContainer = styled.div`
 function SearchPost() {
     const searchContext = useSearch();
     const [ state, dispatch ] = useReducer(reducer, searchContext.formData);
-    // console.log(state)
-    // const [search, setSearch] = useState({});
     const searchQueryHandler = () => {
       searchContext.setFormData(state);
     };
