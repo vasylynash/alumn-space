@@ -7,7 +7,7 @@ import styled from 'styled-components';
 const Card = styled.div`
     display: flex;
     height: 80px;
-    width: 80%;
+    width: 80vw;
     background-color: #F5F5F5;
     border-radius: 10px;
     box-shadow: 0 3px 6px rgba(0,0,0,30%);
@@ -81,7 +81,6 @@ const Card = styled.div`
 
     .body {
         font-size: 12px;
-        margin: 0;
     }
 
     button {
@@ -90,11 +89,19 @@ const Card = styled.div`
         text-align: start;
     }
 
-
     i {
         font-size: 10px;
         color: red;
         transition: ease-in-out 0.3s;
+    }
+
+    .bodyContainer {
+        min-width: 50vw;
+        min-height: 5rem; 
+
+        p {
+            margin: 0;
+        }
     }
 `
 
@@ -117,7 +124,9 @@ const Post = ({post}) => {
             </div>
             <div className='right'>
                 <p className='date'>{post.dateCreated}</p>
-                <p className='body'>{post.body}</p>
+                <div className='bodyContainer'>
+                    <p className='body'>{post.body}</p>
+                </div>
             </div>
         </Card>
         </SearchProvider>
