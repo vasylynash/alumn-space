@@ -1,4 +1,4 @@
-import { UPDATE_KEYWORD, UPDATE_CATEGORY, UPDATE_LABEL, UPDATE_INPUT } from "./actions";
+import { UPDATE_KEYWORD, UPDATE_CATEGORY, UPDATE_LABEL } from "./actions";
 
 export const reducer = (state, action) => {
     switch (action.type) {
@@ -17,11 +17,6 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 label: action.payload
-            }  
-        case UPDATE_INPUT:
-            return {
-                ...state,
-                ...action.payload
             }  
         default:
             return state;

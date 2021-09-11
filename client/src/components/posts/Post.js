@@ -19,7 +19,6 @@ const Card = styled.div`
         transform: scale(1.1);
     }
     
-
     &:active {
         border:solid 1px #FF8985;
     }
