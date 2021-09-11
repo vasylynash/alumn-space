@@ -12,7 +12,6 @@ const  PostList = () => {
         variables:  { search: query }
     });
     const posts = postsResponse.data?.searchPosts.post || [] ;
-    console.log(posts)
 
     if (!posts.length) {
         return <VerticalDiv><h3 style={{color:'#C3C3C3'}}>No Posts Yet!</h3></VerticalDiv>;
