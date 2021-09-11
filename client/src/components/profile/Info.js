@@ -16,7 +16,7 @@ import Auth from '../../utils/auth';
 
 const Info = () => {
 
-    console.log(this.props)
+    console.log('this.props ->      ', this.props)
 
     // const [formState, setFormState] = useState({
     //     firstName = 
