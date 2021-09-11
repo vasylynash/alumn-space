@@ -114,7 +114,7 @@ const Post = ({post}) => {
                 <p className='author'>By: {post.author.username}</p>
                 <p className='category'>{post.category}</p>
                 <p className='label'>{post.label}</p>
-                <button><i className="fas fa-heart">{post.totalLikes} | Comments {post.comments.length}</i></button>
+                <button><i className="fas fa-heart">{post.totalLikes} | Comments {post.comments?.length || []}</i></button>
             </div>
             <div className='right'>
                 <p className='date'>{post.dateCreated}</p>
