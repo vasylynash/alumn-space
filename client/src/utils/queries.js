@@ -133,6 +133,7 @@ export const QUERY_SINGLE_POST = gql`
       title
       body
       author {
+        _id
         username
       }
       dateCreated

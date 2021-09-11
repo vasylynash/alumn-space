@@ -50,7 +50,7 @@ module.exports = {
     },
     post: async (_, args) => {
       try {
-        const post = await Post.findById(args.id);
+        const post = await Post.findById(args.id).populate('author');
         if (post) {
           return post;
         } else {
