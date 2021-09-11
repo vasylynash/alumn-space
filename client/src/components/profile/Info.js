@@ -10,9 +10,22 @@ import Select from '@material-ui/core/Select';
 import { LoginBtn, VerticalDiv } from '../../pages/Landing';
 import GlobalStyle from '../global.style';
 
-
+import { fromPromise, useMutation } from '@apollo/client';
+import { UPDATE_USER_PROFILE } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 const Info = () => {
+
+    console.log(this.props)
+
+    // const [formState, setFormState] = useState({
+    //     firstName = 
+    //     lastName = 
+    //     email = 
+    //     className = 
+    //     yearOfGraduation = 
+    //     bio = 
+    // })
 
     const [selectedDate, setSelectedDate] = useState(new Date('2021-01-01T21:11:54'));
 
