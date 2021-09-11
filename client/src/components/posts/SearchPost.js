@@ -73,8 +73,8 @@ export const Line = styled.div`
 export const DropDownContainer = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding: 0 20%;
+    justify-content: space-evenly;
+    /* padding: 0 20%; */
     margin: 0;
     
 `

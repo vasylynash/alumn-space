@@ -103,7 +103,7 @@ const  PostCard = ({post}) => {
    
     return (
         <>
-        <Link to='/post' style={{textDecoration: 'none', color:'black'}}>
+        {/* <Link to='/post' style={{textDecoration: 'none', color:'black'}}> */}
         <VerticalDiv>
         <Card>
             <div className='title'>
@@ -121,7 +121,7 @@ const  PostCard = ({post}) => {
             </div>
         </Card>
         </VerticalDiv>
-        </Link>
+        {/* </Link> */}
         </>
     );
 };
