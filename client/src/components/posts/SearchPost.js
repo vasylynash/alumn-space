@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import GlobalStyle from '../global.style'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import GlobalStyle from '../global.style';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -147,4 +147,4 @@ function SearchPost() {
     )
 }
 
-export default SearchPost
+export default SearchPost;
