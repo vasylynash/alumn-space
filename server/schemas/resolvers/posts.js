@@ -63,22 +63,30 @@ module.exports = {
     },
     searchPosts: async (_, args) => {
       const { search = null, page = 1, limit = 20 } = args;
+      let filters = [];
 
-      let searchQuery = {};
-
-      if(search) {
-        searchQuery = {
+      if(search.keyword) {
+        filters.push({
           $or: [
-            {title: {$regex: search, $options: 'i'}},
-            {body: {$regex: search, $options: 'i'}}
-          ]
-        };
+            {title: {$regex: search.keyword, $options: 'i'}},
+            {body: {$regex: search.keyword, $options: 'i'}}
+          ],      
+        })
       }
+      if (search.label) {
+        filters.push({label: search.label})
+      } 
+      if (search.category) {
+        filters.push({category: search.category})
+      }
+
+      let searchQuery = filters.length? {$and: filters} : {} ;
      
       const posts = await Post.find(searchQuery)
       .limit(limit)
       .skip((page-1) * limit)
-      .lean();
+      .lean()
+      .populate('author');
 
       const count = await Post.countDocuments(searchQuery);
 
@@ -115,7 +123,6 @@ module.exports = {
       return post;
     },
     removePost: async (parent, { id }, context)  => {
-      console.log('context.user:    ', context.user)
       return await Post.deleteOne({ _id: id });
     } 
   }    

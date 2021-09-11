@@ -15,8 +15,10 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import { DropDownContainer } from "../components/posts/SearchPost";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-const AddPostContainer = styled.div`
+
+export const AddPostContainer = styled.div`
     
     .title {
         margin: 0.5rem 0;
@@ -76,12 +78,13 @@ const AddPost = () => {
                 label='Title'
                 color='primary' 
                 type='text' 
+                fullWidth
                 required 
                 value={title} 
                 onChange={(e) => setTitle(e.target.value)}
                 />
                 <DropDownContainer>
-                    <FormControl style={{minWidth: 100}}>
+                    <FormControl style={{minWidth: 150, margin:'0 1rem'}}>
                     <InputLabel id="subject" name="category">Category</InputLabel>
                         <Select
                         labelId="subject"
@@ -94,7 +97,7 @@ const AddPost = () => {
                         <MenuItem value={'UIUX'}>UI/UX</MenuItem>
                         </Select>
                     </FormControl>
-                    <FormControl style={{minWidth: 100}}>
+                    <FormControl style={{minWidth: 150, margin:'0 1rem'}}>
                     <InputLabel id="subject" name="label">Label</InputLabel>
                         <Select
                         labelId="subject"
@@ -122,13 +125,15 @@ const AddPost = () => {
                 id="standard-multiline-static"
                 label="Body"
                 multiline
-                rows={4}
+                variant='outlined'
+                rows={20}
+                fullWidth
                 required
                 onChange={(e) => setBody(e.target.value)}
                 value={body}
                 />
                 { !isPending && <LoginBtn textColor='white' backgroundColor='#51BBB9'>Post </LoginBtn> }   
-                { isPending && <p style={{fontSize:'25px'}}>⏳</p> }
+                { isPending && <CircularProgress color="secondary" />}
                 </VerticalDiv>
                 </form>  
             </VerticalDiv>

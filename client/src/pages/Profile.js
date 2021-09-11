@@ -6,8 +6,20 @@ import GlobalStyle from '../components/global.style';
 import JaneDoe from '../images/janeDoe.jpg'
 import { VerticalDiv } from './Landing';
 import { Line } from '../components/posts/SearchPost';
-import { Button } from '@material-ui/core';
 import Index from '../components/profile/Index';
+
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
+const useStyles = makeStyles({
+    root: {
+      flexGrow: 1,
+      marginBottom:'1rem',
+      boxShadow:'none'
+    },
+  });
 
 const GradientContainer = styled.div`
     height: 180px;
@@ -35,21 +47,6 @@ const ProfilePic = styled.div`
     }
 `
 
-const TabContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-
-    .option {
-        margin: 0 1rem;
-        font-weight: bold;
-    }
-
-    .active {
-        color: #51BBB9;
-    }
-
-`
-
 const Profile = () => {
     const [componentState, setComponentState] = useState();
 
@@ -68,6 +65,13 @@ const Profile = () => {
         setComponentState('myPost')
     }
 
+    const classes = useStyles();
+    const [value, setValue] = React.useState(0);
+  
+    const handleChange = (event, newValue) => {
+      setValue(newValue);
+    }
+
     return ( 
         <>
         <GlobalStyle/>
@@ -82,12 +86,19 @@ const Profile = () => {
         <VerticalDiv>
             <h1 className='username' style={{fontSize:'25px', marginBottom:'0'}}>Jane Doe</h1>
             <Line/>
-            <TabContainer>
-                <Button className='option' onClick={handleChangeToMyPosts}>My posts</Button>
-                <Button className='option' onClick={handleChangeToInfo}>Info</Button>
-                <Button className='option' onClick={handleChangeToSecurity}>Security</Button>
-             </TabContainer>
-            <Line/>
+            <Paper className={classes.root}>
+                <Tabs
+                value={value}
+                onChange={handleChange}
+                indicatorColor="primary"
+                textColor="primary"
+                centered
+                >
+                    <Tab label="My posts" onClick={handleChangeToMyPosts}/>
+                    <Tab label="Info" onClick={handleChangeToInfo}/>
+                    <Tab label="Security" onClick={handleChangeToSecurity}/>
+                </Tabs>
+            </Paper>
             <Index section={componentState}/>
         </VerticalDiv>
         </>
