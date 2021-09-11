@@ -174,12 +174,15 @@ export const QUERY_LABEL_POSTS = gql`
 `;
 
 export const SEARCH_POSTS = gql `
-  query searchPosts($search: String) {
+  query searchPosts($search: SearchQuery) {
     searchPosts(search: $search) {
       post {
         title
         body
-        author
+        author {
+          _id
+          username
+        }
         dateCreated
       }
     }
