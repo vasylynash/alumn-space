@@ -82,13 +82,19 @@ const typeDefs = gql`
       totalPages: Int
     }
 
+    input SearchQuery {
+        keyword: String
+        category: String
+        label: String
+    }
+
   type Query {
     users: [User]
     user(id: ID!): User
     posts(category: Category, label: Label): [Post]
     post(id: ID!): Post
     postLikes(id: ID!): Post
-    searchPosts(search: String, page: Int, limit: Int): PostResult
+    searchPosts(search: SearchQuery, page: Int, limit: Int): PostResult
   }
 
     type Mutation {

@@ -13,7 +13,7 @@ import Auth from '../utils/auth';
 
 const Login = (props) => {
 const [formState, setFormState] = useState({ email: '', password: '' });
-console.log(formState)
+
   const [login, { error }] = useMutation(LOGIN_USER);
 
   const handleFormSubmit = async (event) => {
@@ -23,7 +23,6 @@ console.log(formState)
         variables: { email: formState.email, password: formState.password },
       });
       const token = mutationResponse.data.login.token;
-      console.log(token);
       Auth.login(token);
     } catch (e) {
       console.log(e);

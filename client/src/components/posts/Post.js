@@ -1,9 +1,8 @@
 import React from 'react';
+import { VerticalDiv } from '../../pages/Landing';
+import  SearchProvider  from '../../utils/SearchContext';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { VerticalDiv } from '../../pages/Landing';
-import { QUERY_SINGLE_POST } from '../../utils/queries';
-import { useQuery } from '@apollo/client';
 
 const Card = styled.div`
     display: flex;
@@ -19,7 +18,7 @@ const Card = styled.div`
     &:hover {
         transform: scale(1.1);
     }
-
+    
     &:active {
         border:solid 1px #FF8985;
     }
@@ -36,7 +35,7 @@ const Card = styled.div`
 
     h5 {
         margin:0;
-        font-size: 15px;
+        font-size: 12px;
     }
 
     .date {
@@ -99,11 +98,13 @@ const Card = styled.div`
     }
 `
 
-const  PostCard = ({post}) => {   
+const Post = ({post}) => {
+   
     return (
         <>
         <Link to={`/post/${post._id}`} style={{textDecoration: 'none', color:'black'}}>
         <VerticalDiv>
+        <SearchProvider>
         <Card>
             <div className='title'>
                 <h5>{post.title}</h5>
@@ -112,17 +113,18 @@ const  PostCard = ({post}) => {
                 <p className='author'>By: {post.author.username}</p>
                 <p className='category'>{post.category}</p>
                 <p className='label'>{post.label}</p>
-                <button><i className="fas fa-heart">{post.totalLikes} | Comments {post.comments.length}</i></button>
+                <button><i className="fas fa-heart">{post.totalLikes} | Comments {post.comments?.length || []}</i></button>
             </div>
             <div className='right'>
                 <p className='date'>{post.dateCreated}</p>
                 <p className='body'>{post.body}</p>
             </div>
         </Card>
+        </SearchProvider>
         </VerticalDiv>
         </Link>
         </>
     );
 };
 
-export default PostCard;
+export default Post;
