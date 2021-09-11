@@ -117,7 +117,7 @@ function PostCard() {
                 <p className='author'>By: Dmitriy</p>
                 <p className='category'>#FullStackFlex</p>
                 <p className='label'>Help</p>
-                <button><i class="fas fa-heart">3</i></button>
+                <button><i className="fas fa-heart">3</i></button>
             </div>
             <div className='right'>
                 <p className='date'>01/01/2021</p>
