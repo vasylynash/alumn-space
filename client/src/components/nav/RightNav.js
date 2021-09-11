@@ -57,6 +57,11 @@ function RightNav( { open }) {
     return (
         <List open={open}>
                 <li>
+                    <Link to='/Profile' style={{textDecoration:'none'}}>
+                        <p>Profile</p>
+                    </Link>
+                </li>
+                <li>
                     <Link to='/AddPost' style={{textDecoration:'none'}}>
                         <p>Create post</p>
                     </Link>

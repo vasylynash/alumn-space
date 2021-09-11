@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const BackArrow = styled.i`
     position: ${(props)=>props.position || 'fixed'};
-    color: black;
+    color: ${(props)=>props.color || 'black'};
     top: ${(props)=>props.top || '20px'};
     left: ${(props)=>props.left || '40px'};
     font-size: 30px;
