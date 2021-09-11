@@ -85,7 +85,6 @@ module.exports = {
       const posts = await Post.find(searchQuery)
       .limit(limit)
       .skip((page-1) * limit)
-      .lean()
       .populate('author');
 
       const count = await Post.countDocuments(searchQuery);
