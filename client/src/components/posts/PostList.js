@@ -1,22 +1,29 @@
 import React from 'react';
 import { VerticalDiv } from '../../pages/Landing';
-import PostCard from './Post';
+import Post from './Post';
+import { useQuery } from '@apollo/client';
+import { SEARCH_POSTS } from '../../utils/queries';
+import { useSearch } from '../../utils/SearchContext';
 
-const  Post = ({
-    posts
-}) => {
+const  PostList = () => {
+    const searchContext = useSearch();
+    const query = searchContext.formData;
+    const postsResponse = useQuery(SEARCH_POSTS, {
+        variables:  { search: query }
+    });
+    const posts = postsResponse.data?.searchPosts.post || [] ;
 
     if (!posts.length) {
         return <VerticalDiv><h3 style={{color:'#C3C3C3'}}>No Posts Yet!</h3></VerticalDiv>;
       }
-
+      
     return (
         <>
         <VerticalDiv>
             <VerticalDiv>
                 {posts.map((post) => {
                     return(   
-                   <PostCard post = {post} key={post._id}/>
+                   <Post post = {post} key={post._id}/>
                     );
                 })
                 }
@@ -26,4 +33,4 @@ const  Post = ({
     );
 };
 
-export default Post;
+export default PostList;
