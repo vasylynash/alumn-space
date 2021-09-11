@@ -66,9 +66,10 @@ const  FullPost= ()=> {
                 <p className='label'>{post.label}</p>
                 <ContentContainer>
                     <p>{post.body}</p>
+                    <button><i className="fas fa-heart">{post.totalLikes}</i></button>
                 </ContentContainer>
                 <Link to='/comments' style={{textDecoration:'none'}}>
-                    <p className='comments'>View Comments</p>
+                    <p className='comments'>View {post.comments.length} Comments</p>
                 </Link>
             </VerticalDiv>
         </FullPostContainer>
