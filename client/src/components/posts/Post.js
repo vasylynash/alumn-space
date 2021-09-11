@@ -1,16 +1,8 @@
 import React from 'react';
 import { VerticalDiv } from '../../pages/Landing';
-
 import  SearchProvider  from '../../utils/SearchContext';
-import { useState } from 'react';
-import { useReducer } from 'react';
-import { reducer } from '../../utils/reducers';
-import { SearchContext, useSearch } from '../../utils/SearchContext';
-import { useQuery } from '@apollo/client';
-import { SEARCH_POSTS } from '../../utils/queries';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { QUERY_SINGLE_POST } from '../../utils/queries';
 
 const Card = styled.div`
     display: flex;
@@ -108,8 +100,6 @@ const Card = styled.div`
 `
 
 const  Post = ({post}) => {
-       // const [results, setResults] = useState();
-
    
     return (
         <>

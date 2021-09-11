@@ -63,10 +63,11 @@ module.exports = {
     },
     searchPosts: async (_, args) => {
       const { search = null, page = 1, limit = 20 } = args;
+      console.log(args)
       let filters = [];
-      if (search === null) {
-        return Post.find().populate('author');
-      }
+      // if (search === null) {
+      //   return Post.find().populate('author');
+      // }
       if(search.keyword) {
         filters.push({
           $or: [
@@ -89,7 +90,8 @@ module.exports = {
       const posts = await Post.find(searchQuery)
       .limit(limit)
       .skip((page-1) * limit)
-      .lean();
+      .lean()
+      .populate('author');
 
       const count = await Post.countDocuments(searchQuery);
 

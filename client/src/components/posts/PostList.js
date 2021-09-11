@@ -8,12 +8,10 @@ import { useSearch } from '../../utils/SearchContext';
 const  PostList = () => {
     const searchContext = useSearch();
     const query = searchContext.formData;
-    console.log("QUERY")
-    console.log( query)
-    const posts = useQuery(SEARCH_POSTS, {
-        variables: query
+    const postsResponse = useQuery(SEARCH_POSTS, {
+        variables:  { search: query }
     });
-    // console.log(posts)
+    const posts = postsResponse.data?.searchPosts.post || [] ;
 
     if (!posts.length) {
         return <VerticalDiv><h3 style={{color:'#C3C3C3'}}>No Posts Yet!</h3></VerticalDiv>;
