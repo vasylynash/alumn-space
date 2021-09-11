@@ -102,5 +102,31 @@
         "likes": "18"
       }
     ]
+  },
+  {
+    "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+    "body": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "likes": [],
+    "totalLikes": 0,
+    "comments": [
+      {
+        "commentText": "Cool =) I adore the use of gradient and blur!",
+        "author": "Davit Sparrow",
+        "dateCreated": "05/17/2021",
+        "likes": "85"
+      },
+      {
+        "commentText": "I think clients would love this.",
+        "author": "Dmitriy Babich",
+        "dateCreated": "08/03/2021",
+        "likes": "12"
+      },
+      {
+        "commentText": "This is classic work :-)",
+        "author": "Hayk Mnatsakanyan",
+        "dateCreated": "08/28/2021",
+        "likes": "18"
+      }
+    ]
   }
 ]

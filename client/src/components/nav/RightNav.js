@@ -58,7 +58,7 @@ function RightNav( { open }) {
         <List open={open}>
                 <li>
                     <Link to='/Profile' style={{textDecoration:'none'}}>
-                        <p>Username</p>
+                        <p>Profile</p>
                     </Link>
                 </li>
                 <li>
