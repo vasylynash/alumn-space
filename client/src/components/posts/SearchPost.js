@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import { SearchContext, useSearch } from '../../utils/SearchContext';
+import React from 'react';
+import { useSearch } from '../../utils/SearchContext';
 import styled from 'styled-components';
 import GlobalStyle from '../global.style';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { useContext } from 'react';
-import { UPDATE_KEYWORD, UPDATE_CATEGORY, UPDATE_LABEL, UPDATE_INPUT } from '../../utils/actions';
+import { UPDATE_KEYWORD, UPDATE_CATEGORY, UPDATE_LABEL } from '../../utils/actions';
 import { useReducer } from 'react';
 import { reducer } from '../../utils/reducers';
 
@@ -78,8 +77,8 @@ export const Line = styled.div`
 export const DropDownContainer = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding: 0 20%;
+    justify-content: space-evenly;
+    /* padding: 0 20%; */
     margin: 0;
     
 `

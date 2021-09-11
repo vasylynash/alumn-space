@@ -16,6 +16,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Comments from './components/comments/Comments';
 import FullPost from './components/post/FullPost';
+import EditPost from './components/post/EditPost';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
@@ -77,7 +78,7 @@ function App() {
             <Route exact path="/home">
               <Home />
             </Route>
-            <Route exact path='/post'>
+            <Route exact path='/post/:postId'>
               <FullPost/>
             </Route>
             <Route exact path='/comments'>
@@ -89,8 +90,11 @@ function App() {
             <Route exact path="/addpost">
               <AddPost />
             </Route>
-            <Route exact path="/Profile">
+            <Route exact path="/profile">
               <Profile />
+            </Route>
+            <Route exact path="/edit-post">
+              <EditPost />
             </Route>
           </Switch>
         </div>

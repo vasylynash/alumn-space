@@ -20,11 +20,10 @@ const  PostList = () => {
     return (
         <>
         <VerticalDiv>
-            <h1 style={{fontSize:'39px', margin:'0'}}>Posts</h1>
             <VerticalDiv>
                 {posts.map((post) => {
                     return(   
-                   <Post post = {post}/>
+                   <Post post = {post} key={post._id}/>
                     );
                 })
                 }
