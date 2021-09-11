@@ -205,8 +205,11 @@ export const SEARCH_POSTS = gql `
   query searchPosts($search: SearchQuery) {
     searchPosts(search: $search) {
       post {
+        _id
         title
         body
+        label
+        category
         author {
           _id
           username
