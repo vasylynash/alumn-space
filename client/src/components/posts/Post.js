@@ -1,6 +1,6 @@
 import React from 'react';
 import { VerticalDiv } from '../../pages/Landing';
-import PostCard from './PostCard';
+
 import  SearchProvider  from '../../utils/SearchContext';
 import { useState } from 'react';
 import { useReducer } from 'react';
@@ -107,17 +107,9 @@ const Card = styled.div`
     }
 `
 
-const  PostCard = ({post}) => {
+const  Post = ({post}) => {
        // const [results, setResults] = useState();
-const searchContext = useSearch();
 
-// console.dir(searchContext.formData, {depth: 2})
-const query = searchContext.formData;
-// console.log(query)
-const posts = useQuery(SEARCH_POSTS, {
-    variables: searchContext.formData
-});
-console.log(posts)
    
     return (
         <>
@@ -146,4 +138,4 @@ console.log(posts)
     );
 };
 
-export default PostCard;
+export default Post;

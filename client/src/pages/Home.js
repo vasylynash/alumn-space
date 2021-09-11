@@ -12,15 +12,15 @@ import { useQuery } from '@apollo/client';
 
 const Home = () => {
     
-    const { loading, error, data } = useQuery(QUERY_ALL_POSTS);
-    const posts = data?.posts || [];
+    // const { loading, error, data } = useQuery(QUERY_ALL_POSTS);
+    // const posts = data?.posts || [];
 
     return ( 
         <div>
             <Navbar/>
             <SearchProvider>
             <SearchPost/>
-            <Post posts={posts} />
+            <Post />
             </SearchProvider>
         </div>
      );

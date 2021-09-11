@@ -83,6 +83,8 @@ module.exports = {
       }
 
       let searchQuery = filters.length? {$and: filters} : {} ;
+      console.log("SEARCH QUERY FROM RESOLVER")
+      console.log(searchQuery)
      
       const posts = await Post.find(searchQuery)
       .limit(limit)
@@ -124,7 +126,6 @@ module.exports = {
       return post;
     },
     removePost: async (parent, { id }, context)  => {
-      console.log('context.user:    ', context.user)
       return await Post.deleteOne({ _id: id });
     } 
   }    
