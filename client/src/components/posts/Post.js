@@ -99,11 +99,10 @@ const Card = styled.div`
     }
 `
 
-const  PostCard = ({post}) => {
-   
+const  PostCard = ({post}) => {   
     return (
         <>
-        <Link to='/post' style={{textDecoration: 'none', color:'black'}}>
+        <Link to={`/post/${post._id}`} style={{textDecoration: 'none', color:'black'}}>
         <VerticalDiv>
         <Card>
             <div className='title'>
