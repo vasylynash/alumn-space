@@ -78,7 +78,7 @@ function App() {
             <Route exact path="/home">
               <Home />
             </Route>
-            <Route exact path='/post'>
+            <Route exact path='/post/:postId'>
               <FullPost/>
             </Route>
             <Route exact path='/comments'>
