@@ -6,7 +6,6 @@ import { BackArrow } from '../icons.styles';
 import { Link } from 'react-router-dom';
 import Fab from '@material-ui/core/Fab';
 
-
 const FullPostContainer = styled.div`
 
     .author {
