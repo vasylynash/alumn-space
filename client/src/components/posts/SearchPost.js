@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSearch } from '../../utils/SearchContext';
 import styled from 'styled-components';
 import GlobalStyle from '../global.style';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { UPDATE_KEYWORD, UPDATE_CATEGORY, UPDATE_LABEL } from '../../utils/actions';
+import { useReducer } from 'react';
+import { reducer } from '../../utils/reducers';
 
 export const SearchInput = styled.input`
     width: 70%;
@@ -80,27 +84,24 @@ export const DropDownContainer = styled.div`
 `
 
 function SearchPost() {
-
-    const [Category, setCategory] = useState();
-
-    const handleCategoryChange = (event) => {
-        setCategory(event.target.value);
+    const searchContext = useSearch();
+    const [ state, dispatch ] = useReducer(reducer, searchContext.formData);
+    const searchQueryHandler = () => {
+      searchContext.setFormData(state);
     };
-
-    const [Label, setLabel] = useState();
-
-    const handleLabelChange = (event) => {
-        setLabel(event.target.value);
-    };
-
     return (
         <>
         <GlobalStyle/>
         <Line/>
         <SearchBar>
             <SearchIcon className='fas fa-search'/>
-            <SearchInput placeholder='Search Title'/>
-            <SearchBtn>Search</SearchBtn>
+            <SearchInput placeholder='Search Title' onChange={(e) => {
+                return dispatch({
+                    type: UPDATE_KEYWORD,
+                    payload: e.target.value
+                })   
+            }}/>
+            <SearchBtn onClick={searchQueryHandler}>Search</SearchBtn>
         </SearchBar>
         <DropDownContainer>
             <FormControl style={{minWidth: 100}}>
@@ -108,18 +109,17 @@ function SearchPost() {
                 <Select
                 labelId="subject"
                 id="subject-select"
-                value={Category}
-                onChange={handleCategoryChange}
+                // value={category}
+                onChange={(e) => {
+                    return dispatch({
+                        type: UPDATE_CATEGORY,
+                        payload: e.target.value
+                    })
+                }}
                 >
-                <MenuItem value={1}>Categoryt1</MenuItem>
-                <MenuItem value={2}>Categoryt2</MenuItem>
-                <MenuItem value={3}>Categoryt3</MenuItem>
-                <MenuItem value={4}>Categoryt4</MenuItem>
-                <MenuItem value={5}>Categoryt5</MenuItem>
-                <MenuItem value={6}>Categoryt6</MenuItem>
-                <MenuItem value={7}>Categoryt7</MenuItem>
-                <MenuItem value={8}>Categoryt8</MenuItem>
-                <MenuItem value={9}>Categoryt9</MenuItem>
+                <MenuItem value={'Coding'}>Coding</MenuItem>
+                <MenuItem value={'DataScience'}>Data Science</MenuItem>
+                <MenuItem value={'UIUX'}>UI/UX</MenuItem>
                 </Select>
             </FormControl>
             <FormControl style={{minWidth: 100}}>
@@ -127,18 +127,26 @@ function SearchPost() {
                 <Select
                 labelId="subject"
                 id="subject-select"
-                value={Label}
-                onChange={handleLabelChange}
+                // value={label}
+                onChange={(e) => {
+                    return dispatch({
+                        type: UPDATE_LABEL,
+                        payload: e.target.value
+                    })
+                } }
                 >
-                <MenuItem value={1}>Label1</MenuItem>
-                <MenuItem value={2}>Label2</MenuItem>
-                <MenuItem value={3}>Label3</MenuItem>
-                <MenuItem value={4}>Label4</MenuItem>
-                <MenuItem value={5}>Label5</MenuItem>
-                <MenuItem value={6}>Label6</MenuItem>
-                <MenuItem value={7}>Label7</MenuItem>
-                <MenuItem value={8}>Label8</MenuItem>
-                <MenuItem value={9}>Label9</MenuItem>
+                <MenuItem value={'Help'}>Help</MenuItem>
+                <MenuItem value={'SuccessStories'}>Success Stories</MenuItem>
+                <MenuItem value={'Jobs'}>Jobs</MenuItem>
+                <MenuItem value={'Discussion'}>Discussion</MenuItem>
+                <MenuItem value={'NodeJS'}>NodeJS</MenuItem>
+                <MenuItem value={'GraphQL'}>GraphQL</MenuItem>
+                <MenuItem value={'MONGODB'}>MongoDB</MenuItem>
+                <MenuItem value={'React'}>React</MenuItem>
+                <MenuItem value={'CSS'}>CSS</MenuItem>
+                <MenuItem value={'HTML'}>HTML</MenuItem>
+                <MenuItem value={'HandleBars'}>HandleBars</MenuItem>
+                <MenuItem value={'JavaScript'}>JavaScript</MenuItem>
                 </Select>
             </FormControl>
         </DropDownContainer>

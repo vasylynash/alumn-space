@@ -1,0 +1,3 @@
+export const UPDATE_KEYWORD = 'UPDATE_KEYWORD';
+export const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
+export const UPDATE_LABEL = 'UPDATE_LABEL';
