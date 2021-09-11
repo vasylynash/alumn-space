@@ -99,11 +99,10 @@ const Card = styled.div`
     }
 `
 
-const  PostCard = ({post}) => {
-   
+const  PostCard = ({post}) => {   
     return (
         <>
-        {/* <Link to='/post' style={{textDecoration: 'none', color:'black'}}> */}
+        <Link to={`/post/${post._id}`} style={{textDecoration: 'none', color:'black'}}>
         <VerticalDiv>
         <Card>
             <div className='title'>
@@ -113,7 +112,7 @@ const  PostCard = ({post}) => {
                 <p className='author'>By: {post.author.username}</p>
                 <p className='category'>{post.category}</p>
                 <p className='label'>{post.label}</p>
-                <button><i className="fas fa-heart">{post.totalLikes}</i></button>
+                <button><i className="fas fa-heart">{post.totalLikes} | Comments {post.comments.length}</i></button>
             </div>
             <div className='right'>
                 <p className='date'>{post.dateCreated}</p>
