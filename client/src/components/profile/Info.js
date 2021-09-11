@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
-import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
+import { MuiPickersUtilsProvider, KeyboardDatePicker, DatePicker } from '@material-ui/pickers';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -11,8 +11,8 @@ import { LoginBtn, VerticalDiv } from '../../pages/Landing';
 import GlobalStyle from '../global.style';
 
 import { fromPromise, useMutation } from '@apollo/client';
-import { UPDATE_USER_PROFILE } from '../utils/mutations';
-import Auth from '../utils/auth';
+import { UPDATE_USER_PROFILE } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 const Info = () => {
 
@@ -57,20 +57,17 @@ const Info = () => {
                         value={subject}
                         onChange={handleSubjectChange}
                         >
-                        <MenuItem value={1}>subject1</MenuItem>
-                        <MenuItem value={2}>subject2</MenuItem>
-                        <MenuItem value={3}>subject3</MenuItem>
-                        <MenuItem value={4}>subject4</MenuItem>
-                        <MenuItem value={5}>subject5</MenuItem>
-                        <MenuItem value={6}>subject6</MenuItem>
-                        <MenuItem value={7}>subject7</MenuItem>
-                        <MenuItem value={8}>subject8</MenuItem>
-                        <MenuItem value={9}>subject9</MenuItem>
+                        <MenuItem value={'Web Development'}>Web Development</MenuItem>
+                        <MenuItem value={'Data Analytics'}>Data Analytics</MenuItem>
+                        <MenuItem value={'UX/UI Design'}>UX/UI Design</MenuItem>
+                        <MenuItem value={'Cybersecurity'}>Cybersecurity</MenuItem>
+                        <MenuItem value={'FinTech'}>FinTech</MenuItem>
+                        <MenuItem value={'Digital Marketing'}>Digital Marketing</MenuItem>
                         </Select>
                     </FormControl>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <div style={{width:'80%'}}>
-                            <KeyboardDatePicker
+                            {/* <KeyboardDatePicker
                                 margin="normal"
                                 width={1}
                                 id="date-picker-dialog"
@@ -81,7 +78,13 @@ const Info = () => {
                                 KeyboardButtonProps={{
                                 'aria-label': 'change date',
                                 }}
-                            />
+                            /> */}
+                            <DatePicker
+                                views={["year"]}
+                                label="Year only"
+                                value={selectedDate}
+                                onChange={handleDateChange}
+                                />
                         </div>
                     </MuiPickersUtilsProvider>
                     <TextField
