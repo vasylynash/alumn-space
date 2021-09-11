@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import GlobalStyle from '../global.style'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import GlobalStyle from '../global.style';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -73,8 +73,8 @@ export const Line = styled.div`
 export const DropDownContainer = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding: 0 20%;
+    justify-content: space-evenly;
+    /* padding: 0 20%; */
     margin: 0;
     
 `
@@ -147,4 +147,4 @@ function SearchPost() {
     )
 }
 
-export default SearchPost
+export default SearchPost;

@@ -36,7 +36,7 @@ const Card = styled.div`
 
     h5 {
         margin:0;
-        font-size: 15px;
+        font-size: 12px;
     }
 
     .date {
