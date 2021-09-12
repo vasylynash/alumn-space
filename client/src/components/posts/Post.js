@@ -4,7 +4,7 @@ import  SearchProvider  from '../../utils/SearchContext';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Card = styled.div`
+export const Card = styled.div`
     display: flex;
     height: 80px;
     width: 80vw;

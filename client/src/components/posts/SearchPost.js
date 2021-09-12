@@ -78,7 +78,6 @@ export const DropDownContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    /* padding: 0 20%; */
     margin: 0;
     
 `
