@@ -3,7 +3,6 @@ import Info from './Info';
 import Security from './Security';
 import UserPosts from './UserPosts';
 
-
 function Index(props) {
     const { section } = props
     let component;
