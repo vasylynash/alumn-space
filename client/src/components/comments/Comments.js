@@ -15,19 +15,17 @@ function Comments() {
         <Link to='/post'>
             <BackArrow className="fas fa-arrow-left" top='65px' left='15px'></BackArrow>
         </Link>
-            <SearchBar>
-                <SearchIcon className='far fa-comment-alt'/>
-                <SearchInput placeholder='Add Comment'/>
-                <SearchBtn>Comment</SearchBtn>
-            </SearchBar>
-            <Line/>
             <VerticalDiv>
-                <h1 style={{fontSize:'39px', margin:'0'}}>Comments</h1>
-                <Line/>
+                <h1 style={{fontSize:'39px', marginTop:'0.5rem'}}>Comments</h1>
                 <Comment/>
                 <Comment/>
                 <Comment/>
                 <Comment/>
+                <SearchBar>
+                    <SearchIcon className='far fa-comment-alt'/>
+                    <SearchInput placeholder='Add Comment'/>
+                    <SearchBtn>Comment</SearchBtn>
+                </SearchBar>
             </VerticalDiv>
         </>
     )

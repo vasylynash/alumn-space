@@ -50,6 +50,20 @@ export const ButtonContainer = styled.div`
         margin: 0 1rem;
     }
 
+    .likeContainer {
+        i {
+            margin: 0;
+            margin-left: 0.5rem;
+            display: inline-flex;
+            flex-direction: row;
+            
+            p {
+                margin-left: 0.5rem;
+                font-family: 'Montserrat', sans-serif;
+            }
+        }
+    }
+    
 `
 
 const  FullPost= ()=> {
@@ -78,7 +92,6 @@ const  FullPost= ()=> {
                 <p className='label'>{post.label}</p>
                 <ContentContainer>
                     <p>{post.body}</p>
-                    <button><i className="fas fa-heart">{post.totalLikes}</i></button>
                 </ContentContainer>
                 <ButtonContainer>
                     <Link to='/comments' style={{textDecoration:'none'}}>
@@ -88,8 +101,9 @@ const  FullPost= ()=> {
                         aria-label='like'
                         size='small' 
                         style={{marginTop:'0.5rem'}}
+                        variant='extended'
                         >
-                            <i className="fas fa-comment"></i>
+                            <div className='likeContainer'><i className='fas fa-comment' style={{color:'white'}}><p>{post.totalLikes}</p></i></div>
                         </Fab>
                     </Link>
                     <Fab
@@ -98,8 +112,9 @@ const  FullPost= ()=> {
                     aria-label='comment'
                     size='small' 
                     style={{marginTop:'0.5rem'}}
+                    variant='extended'
                     >
-                        <i className='fas fa-heart'></i>
+                        <div className='likeContainer'><i className='fas fa-heart'><p>{post.totalLikes}</p></i></div>
                     </Fab>
                 </ButtonContainer>
             </VerticalDiv>

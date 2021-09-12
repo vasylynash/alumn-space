@@ -1,7 +1,7 @@
 import React from 'react';
 import Info from './Info';
 import Security from './Security';
-import UserPost from './UserPost';
+import UserPosts from './UserPosts';
 
 function Index(props) {
     const { section } = props
@@ -14,11 +14,10 @@ function Index(props) {
             component = <Security/>
             break
         case 'myPost':
-            component = <UserPost/>
+            component = <UserPosts/>
             break
             default:
-                // component = <UserPost/>
-                component = <Info/>
+                component = <UserPosts/>
     }
     return component;
 }

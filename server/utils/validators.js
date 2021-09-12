@@ -7,6 +7,11 @@ module.exports.validateRegisterInput = (
     className
     ) => {
     const errors = {};
+    const now = new Date().getFullYear();
+    const enteredYear = new Date(yearOfGraduation).getFullYear()
+
+
+
     if (username.trim() === '') {
         errors.username = 'Username cannot be empty';
     }
@@ -26,7 +31,10 @@ module.exports.validateRegisterInput = (
     
     if (yearOfGraduation === '') {
         errors.yearOfGraduation = 'Please specify the year';
+    } else if (enteredYear > now) {
+        errors.yearOfGraduation = 'Graduation year must not be in the future';
     }
+
     if (className === '') {
         errors.className = 'Please specify the class';
     }
