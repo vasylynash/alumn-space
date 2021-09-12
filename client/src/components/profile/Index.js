@@ -17,7 +17,8 @@ function Index(props) {
             component = <UserPost/>
             break
             default:
-                component = <UserPost/>
+                // component = <UserPost/>
+                component = <Info/>
     }
     return component;
 }

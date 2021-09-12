@@ -10,24 +10,24 @@ import Select from '@material-ui/core/Select';
 import { LoginBtn, VerticalDiv } from '../../pages/Landing';
 import GlobalStyle from '../global.style';
 
-import { fromPromise, useMutation } from '@apollo/client';
+import {  useMutation } from '@apollo/client';
 import { UPDATE_USER_PROFILE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 const Info = () => {
 
-    console.log('this.props ->      ', this.props)
+    const [formState, setFormState] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        className: '', 
+        yearOfGraduation: '',
+        bio: ''
+    })
 
-    // const [formState, setFormState] = useState({
-    //     firstName = 
-    //     lastName = 
-    //     email = 
-    //     className = 
-    //     yearOfGraduation = 
-    //     bio = 
-    // })
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
-    const [selectedDate, setSelectedDate] = useState(new Date('2021-01-01T21:11:54'));
+    const [updateUser, { error }] = useMutation(UPDATE_USER_PROFILE);
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
@@ -39,23 +39,58 @@ const Info = () => {
         setSubject(event.target.value);
     };
 
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+
+        setFormState({
+            ...formState,
+            [name]: value,
+        });
+    }; 
+
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            const mutationResponse = await updateUser ({
+                variables: {
+                    firstName: formState.firstName,
+                    lastName: formState.lastName,
+                    email: formState.email,
+                    className: formState.className,
+                    yearOfGraduation: selectedDate,
+                    linkedIn: formState.linkedIn,
+                    gitHub: formState.gitHub,
+                    bio: formState.bio
+                },
+            });
+
+            // const token = mutationRresponse.data.updateUser.token;
+            // Auth.login(token);
+
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
     return ( 
         <VerticalDiv>
             <GlobalStyle/>
-            <form noValidate autoComplete="off">
+            <form noValidate autoComplete="off" onSubmit={handleFormSubmit}>
                 <VerticalDiv>
                 <h1 style={{fontSize:'25px', margin:'0', color:'#51BBB9'}}>My information</h1>
                 <p style={{fontSize:'12px', color:'grey'}}>Update your info</p>
-                    <TextField id="firstName" label="First Name" color='primary' />
-                    <TextField id="lastName" label="Last Name" color='primary' />
+                    <TextField id="firstName" label="First Name" color='primary' name="firstName" onChange={handleChange} />
+                    <TextField id="lastName" label="Last Name" color='primary' name="lastName" onChange={handleChange} />
                     <TextField id="email" label="Email" color='primary' />
                     <FormControl style={{minWidth: 190}}>
-                    <InputLabel id="subject" >Your subject</InputLabel>
+                    <InputLabel id="subject" >Your class</InputLabel>
                         <Select
                         labelId="subject"
                         id="subject-select"
+                        name="className"
                         value={subject}
-                        onChange={handleSubjectChange}
+                        onChange={handleChange}
                         >
                         <MenuItem value={'Web Development'}>Web Development</MenuItem>
                         <MenuItem value={'Data Analytics'}>Data Analytics</MenuItem>
@@ -81,12 +116,14 @@ const Info = () => {
                             /> */}
                             <DatePicker
                                 views={["year"]}
-                                label="Year only"
+                                label="Year graduated"
                                 value={selectedDate}
-                                onChange={handleDateChange}
+                                onChange={setSelectedDate}
                                 />
                         </div>
                     </MuiPickersUtilsProvider>
+                    <TextField id="linkedin" label="LinkedIn" color='primary' name="linkedIn"  onChange={handleChange} />
+                    <TextField id="github" label="GitHub" color='primary' name="gitHub" onChange={handleChange} />
                     <TextField
                     className='input'
                     id="standard-multiline-static"
