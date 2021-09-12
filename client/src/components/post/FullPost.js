@@ -71,7 +71,7 @@ export const ButtonContainer = styled.div`
 
 const  FullPost= ()=> {
     const { postId } = useParams();
-    const [addLike, {err}] = useMutation(ADD_POST_LIKE, {refetchQueries: [QUERY_SINGLE_POST]})
+    const [addLike] = useMutation(ADD_POST_LIKE, {refetchQueries: [QUERY_SINGLE_POST]})
     const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
       variables: { id: postId },
     });
@@ -89,7 +89,6 @@ const  FullPost= ()=> {
                     postId: postId,
                     userId: Auth.getProfile().data._id
                 }
-                
             });
         } catch(e) {
             console.log(e)
