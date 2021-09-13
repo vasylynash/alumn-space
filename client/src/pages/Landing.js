@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../images/logo.png';
+import Logo from '../images/logo.png';
 import Hero from '../images/hero-graphic.png';
 import styled from 'styled-components';
 import GlobalStyle from '../components/global.style';
@@ -11,14 +11,12 @@ import GlobalStyle from '../components/global.style';
     align-items: center;
 `
 
-const LandingContainer = styled.div`
+export const LandingContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 10vh;
     transition: ease-in-out 0.1s;
-    box-shadow: 0px 3px  13px black;
 
     img {
         max-width: 25rem;
@@ -36,18 +34,34 @@ const LandingContainer = styled.div`
             display: block;
         }
 
+        .signupImg {
+            max-height: 50vh;
+            min-height: 10vh;
+            max-width: 20vw;
+            min-width: 50vw;
+        }
+
+
     @media (min-width: 768px) {
         background-color: #CECFD1;
+        padding-top: 10vh;
         width: 35vw;
-        height: 100vh;
+        height: 90vh;
         float: right;
         flex-shrink: 0;
+        box-shadow: 0px 3px  13px black;
 
         img {
-            min-height: 30vh;
-            min-height: 20vh;
-            max-width: 30vw;
+            min-height: 10vh;
+            max-width: 20vw;
             min-width: 20vw;
+        }
+
+        .signupImg {
+            max-height: 30vh;
+            min-height: 10vh;
+            max-width: 20vw;
+            min-width: 10vw;
         }
 
         .description {
@@ -66,7 +80,7 @@ const LandingContainer = styled.div`
     } 
 `
 
-const Title = styled.h1`
+export const Title = styled.h1`
     font-size: 37px;
     font-family: 'Besley, serif';
     margin: 0;
@@ -114,7 +128,7 @@ export const SignUpBtn = styled.button`
         color: black;
     }
 `
-const HeroContainer = styled.div`
+export const HeroContainer = styled.div`
  
  display: none;
 
@@ -135,6 +149,7 @@ const HeroContainer = styled.div`
          font-size: 25px;
          padding: 0 20px;
      }
+
  }
 `
 
@@ -150,7 +165,7 @@ const Landing = () => {
         </div>
         <LandingContainer>
             <GlobalStyle/>
-            <img src={logo}  alt="logo images"/>
+            <img src={Logo}  alt="logo images"/>
             <Title className='mobileTitle'>AlumSpace</Title>
             <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif'}} className='description'> A place for coding bootcamp Alumni to connect  with each other <br/> and share ideas.</p>
             <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif', padding:'0 30px'}} className='cta'> Please login or signup to continiue.</p>
