@@ -153,8 +153,8 @@ export const REMOVE_COMMENT = gql`
 `;
 
 export const ADD_POST_LIKE = gql`
-        mutation addPostLike($id: ID!, $userId: ID! ){
-            addPostLike(id: $postId, userId: $userId){
+        mutation addPostLike($postId: ID!, $userId: String! ){
+            addPostLike(postId: $postId, userId: $userId){
                 totalLikes
             }
         }
