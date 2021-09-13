@@ -69,7 +69,7 @@ export const ButtonContainer = styled.div`
     
 `
 
-const  FullPost= ()=> {
+const  FullPost= () => {
     const { postId } = useParams();
     const [addLike] = useMutation(ADD_POST_LIKE, {refetchQueries: [QUERY_SINGLE_POST]})
     const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
@@ -111,7 +111,7 @@ const  FullPost= ()=> {
                     <p>{post.body}</p>
                 </ContentContainer>
                 <ButtonContainer>
-                    <Link to='/comments' style={{textDecoration:'none'}}>
+                    <Link to={`/comments/${postId}`} style={{textDecoration:'none'}}>
                         <Fab
                         className='button'
                         color='primary' 

@@ -25,11 +25,11 @@ const Comment = styled.div`
     }
 `
 
-function UserComment() {
+const UserComment= ({comment}) => {
     return (
         <Comment>
-            <p><span>Dima:</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus reprehenderit ex enim dolorum odit, nemo praesentium qui neque magnam sed at molestias debitis veniam nulla amet harum minima? Laboriosam, corporis.</p>
-            <p className='date'>01/02/2021</p>
+            <p><span>{comment.author}</span>{comment.commentText}</p>
+            <p className='date'>{comment.dateCreated}</p>
         </Comment>
     )
 }
