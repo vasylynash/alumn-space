@@ -108,7 +108,6 @@ function SearchPost() {
                 <Select
                 labelId="subject"
                 id="subject-select"
-                // value={category}
                 onChange={(e) => {
                     return dispatch({
                         type: UPDATE_CATEGORY,
@@ -116,6 +115,7 @@ function SearchPost() {
                     })
                 }}
                 >
+                <MenuItem value={''}>None</MenuItem>
                 <MenuItem value={'Coding'}>Coding</MenuItem>
                 <MenuItem value={'DataScience'}>Data Science</MenuItem>
                 <MenuItem value={'UIUX'}>UI/UX</MenuItem>
@@ -126,7 +126,6 @@ function SearchPost() {
                 <Select
                 labelId="subject"
                 id="subject-select"
-                // value={label}
                 onChange={(e) => {
                     return dispatch({
                         type: UPDATE_LABEL,
@@ -134,6 +133,7 @@ function SearchPost() {
                     })
                 } }
                 >
+                <MenuItem value={''}>None</MenuItem>
                 <MenuItem value={'Help'}>Help</MenuItem>
                 <MenuItem value={'SuccessStories'}>Success Stories</MenuItem>
                 <MenuItem value={'Jobs'}>Jobs</MenuItem>
