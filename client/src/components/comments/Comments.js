@@ -13,13 +13,16 @@ import { ADD_COMMENT } from '../../utils/mutations';
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import Auth from '../../utils/auth';
+
 const  Comments = () => {
     const { postId } = useParams();
-    const [addComment] = useMutation(ADD_COMMENT)
-    const [commentText, setCommentText] = useState(''); 
+    const [addComment] = useMutation(ADD_COMMENT,{refetchQueries:[QUERY_SINGLE_POST]})
+    const [commentText, setCommentText] = useState('');
+
     const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
         variables: { id: postId },
       });
+
       const {comments} = data?.post || {};
   
       if (loading) {
@@ -40,6 +43,7 @@ const  Comments = () => {
             console.log(e)
         }
       }
+
    return (
         <>
         <GlobalStyle/>
@@ -52,7 +56,6 @@ const  Comments = () => {
                 {
                 comments.map(comment=>{
                     return (
-                        
                         <Comment key = {comment._id} comment={comment} />
                     )
                 })
