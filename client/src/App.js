@@ -81,7 +81,7 @@ function App() {
             <Route exact path='/post/:postId'>
               <FullPost/>
             </Route>
-            <Route exact path='/comments'>
+            <Route exact path='/comments/:postId'>
               <Comments/>
             </Route>
             <Route exact path="/profile">
