@@ -28,12 +28,13 @@ const Info = () => {
 
     const [selectedDate, handleDateChange] = useState(new Date());
 
-    const [updateUser, { err }] = useMutation(UPDATE_USER_PROFILE);
+    const [updateUser, { error }] = useMutation(UPDATE_USER_PROFILE);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log('selectedDate ->    ', selectedDate)
         console.log('formState ->    ', formState)
+        console.log('email ->    ', formState.email)
 
         try {
             const mutationResponse = await updateUser ({
