@@ -9,9 +9,14 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { QUERY_SINGLE_POST } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
+import { ADD_COMMENT } from '../../utils/mutations';
+import { useMutation } from "@apollo/client";
+import { useState } from "react";
+import Auth from '../../utils/auth';
 const  Comments = () => {
     const { postId } = useParams();
-
+    const [addComment] = useMutation(ADD_COMMENT)
+    const [commentText, setCommentText] = useState(''); 
     const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
         variables: { id: postId },
       });
@@ -20,7 +25,24 @@ const  Comments = () => {
       if (loading) {
         return <div>Loading...</div>;
       }
-  
+
+      const handleAddComment = async (e) => {
+        e.preventDefault();
+
+        try {
+            const {data} = await addComment({
+            variables: {
+                postId: postId, 
+                commentText:commentText, 
+                author: Auth.getProfile().data.username}
+            
+        });
+        console.log(data) 
+        } catch(e) {
+     
+         
+        }
+      }
    return (
         <>
         <GlobalStyle/>
@@ -33,14 +55,15 @@ const  Comments = () => {
                 {
                 comments.map(comment=>{
                     return (
-                        <Comment comment={comment} />
+                        
+                        <Comment key = {comment._id} comment={comment} />
                     )
                 })
                 }
                 <SearchBar>
                     <SearchIcon className='far fa-comment-alt'/>
-                    <SearchInput placeholder='Add Comment'/>
-                    <SearchBtn>Comment</SearchBtn>
+                    <SearchInput onChange={(e) => setCommentText(e.target.value)} placeholder='Add Comment'/>
+                    <SearchBtn onClick={handleAddComment}>Comment</SearchBtn>
                 </SearchBar>
             </VerticalDiv>
         </>

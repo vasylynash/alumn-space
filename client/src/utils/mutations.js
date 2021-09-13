@@ -93,21 +93,13 @@ export const REMOVE_POST = gql`
 
 //check ADD UPDATE & REMOVE COMMENT in future branch/PR
 export const ADD_COMMENT = gql`
-        mutation addComment($postId: ID!, $commentText: String!) {
-            addComment(postId: $postId, commentText: $commentText) {
+        mutation addComment($postId: ID!, $commentText: String!, $author: String!) {
+            addComment(postId: $postId, commentText: $commentText, author: $author) {
                 _id
-                title
-                body
+                commentText
                 author
                 dateCreated
-                totalLikes
-                comments {
-                    _id
-                    body
-                    author
-                    dateCreated
-                    likes
-                }
+                likes
             }
         }
 `;
@@ -123,7 +115,7 @@ export const UPDATE_COMMENT = gql`
                 totalLikes
                 comments {
                     _id
-                    body
+                    commentText
                     author
                     dateCreated
                     likes
@@ -143,7 +135,7 @@ export const REMOVE_COMMENT = gql`
                 totalLikes
                 comments {
                     _id
-                    body
+                    commentText
                     author
                     dateCreated
                     likes
@@ -186,4 +178,3 @@ export const REMOVE_USER = gql`
       }
   }
 `;
-
