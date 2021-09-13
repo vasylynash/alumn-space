@@ -1,5 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import Auth from '../../utils/auth';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const List = styled.ul`
@@ -72,7 +73,7 @@ function RightNav( { open }) {
                     </Link>
                 </li>
                 <li>
-                    <Link to='/' style={{textDecoration:'none'}}>
+                    <Link to='/' style={{textDecoration:'none'}} onClick={Auth.logout}>
                         <p>Logout</p>
                     </Link>
                 </li>

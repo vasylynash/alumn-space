@@ -10,11 +10,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import GlobalStyle from '../components/global.style';
-import { VerticalDiv } from './Landing';
+import { LandingContainer, VerticalDiv } from './Landing';
 import { LoginBtn } from './Landing';
 import { SignUpBtn } from './Landing';
 import { BackArrow } from '../components/icons.styles'
-
+import { HeroContainer, Title } from './Landing';
+import Hero from '../images/hero-graphic.png'
 import { fromPromise, useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
@@ -69,12 +70,19 @@ const Signup = () => {
     };
 
     return ( 
+        <>
+        <HeroContainer>
+          <Title className='desktopTitle'>AlumSpace</Title>
+          <img src={Hero}  alt="logo images"/>
+          <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif'}} className='desktopDescription'> A place for coding bootcamp Alumni to connect  with each other and share ideas.</p>
+        </HeroContainer> 
+        <LandingContainer>       
         <VerticalDiv>
             <GlobalStyle/>
             <Link to='/'>
-                <BackArrow className="fas fa-arrow-left"></BackArrow>
+                <BackArrow className="fas fa-arrow-left" left='5vw'></BackArrow>
             </Link>
-            <img src={logo}  alt="logo images" height='200px' width='50%'/>
+            <img src={logo}  alt="logo images" className='signupImg'/>
             <h1 style={{fontSize:'37px', margin:'0'}}>Welcome!</h1>
             <p style={{fontSize:'15px'}}>Please <span style={{color:'#51BBB9',fontWeight:'bold'}}>Sign up </span>to use AlumnSpace</p>
             <form noValidate autoComplete="off" onSubmit={handleFormSubmit}>
@@ -98,7 +106,7 @@ const Signup = () => {
                         </Select>
                     </FormControl>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <div style={{width:'80%'}}>
+                        <div style={{width:'100%', marginTop:'20px'}}>
                             {/* <KeyboardDatePicker
                                 margin="normal"
                                 width={1}
@@ -128,6 +136,8 @@ const Signup = () => {
                 </VerticalDiv>
             </form>
         </VerticalDiv>
+        </LandingContainer>
+        </>
      );
 };
  
