@@ -14,6 +14,8 @@ import {  useMutation } from '@apollo/client';
 import { UPDATE_USER_PROFILE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
+const user = Auth.getProfile().data
+
 const Info = () => {
 
     const [formState, setFormState] = useState({
@@ -21,39 +23,36 @@ const Info = () => {
         lastName: '',
         email: '',
         className: '', 
-        yearOfGraduation: '',
         bio: ''
     })
 
-    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [selectedDate, handleDateChange] = useState(new Date());
 
     const [updateUser, { error }] = useMutation(UPDATE_USER_PROFILE);
 
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
-      };
+    // const handleDateChange = (date) => {
+    //     setSelectedDate(date);
+    //   };
 
-    const [subject, setSubject] = useState();
+    // const [subject, setSubject] = useState();
 
-    const handleSubjectChange = (event) => {
-        setSubject(event.target.value);
-    };
-
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
-    }; 
+    // const handleSubjectChange = (event) => {
+    //     setSubject(event.target.value);
+    // };
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        console.log('selectedDate ->    ', selectedDate)
+        console.log('formState ->    ', formState)
+        
+        Auth.loggedIn()? (console.log(Auth.getProfile().data._id)) : (console.log('NO'))
+
+        console.log(user._id)
 
         try {
             const mutationResponse = await updateUser ({
                 variables: {
+                    id: user._id,
                     firstName: formState.firstName,
                     lastName: formState.lastName,
                     email: formState.email,
@@ -65,13 +64,22 @@ const Info = () => {
                 },
             });
 
-            // const token = mutationRresponse.data.updateUser.token;
+            // const token = mutationResponse.data.updateUser.token;
             // Auth.login(token);
 
         } catch (e) {
             console.error(e);
         }
     };
+    
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+
+        setFormState({
+            ...formState,
+            [name]: value,
+        });
+    }; 
 
     return ( 
         <VerticalDiv>
@@ -82,14 +90,14 @@ const Info = () => {
                 <p style={{fontSize:'12px', color:'grey'}}>Update your info</p>
                     <TextField id="firstName" label="First Name" color='primary' name="firstName" onChange={handleChange} />
                     <TextField id="lastName" label="Last Name" color='primary' name="lastName" onChange={handleChange} />
-                    <TextField id="email" label="Email" color='primary' />
+                    <TextField id="email" label="Email" color='primary' name="email" onChange={handleChange} />
                     <FormControl style={{minWidth: 190}}>
                     <InputLabel id="subject" >Your class</InputLabel>
                         <Select
                         labelId="subject"
                         id="subject-select"
                         name="className"
-                        value={subject}
+                        // value={subject}
                         onChange={handleChange}
                         >
                         <MenuItem value={'Web Development'}>Web Development</MenuItem>
@@ -118,7 +126,7 @@ const Info = () => {
                                 views={["year"]}
                                 label="Year graduated"
                                 value={selectedDate}
-                                onChange={setSelectedDate}
+                                onChange={handleDateChange}
                                 />
                         </div>
                     </MuiPickersUtilsProvider>
@@ -130,6 +138,8 @@ const Info = () => {
                     label="Bio"
                     multiline
                     rows={2}
+                    name="bio"
+                    onChange={handleChange}
                     />
                     <LoginBtn type='submit'>Update</LoginBtn>
                 </VerticalDiv>
