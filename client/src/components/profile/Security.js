@@ -3,7 +3,6 @@ import TextField from '@material-ui/core/TextField';
 import { LoginBtn, VerticalDiv } from '../../pages/Landing';
 import { Line } from '../posts/SearchPost';
 
-
 function Security() {
     const [disabledStatus, setDisabledStatus] = useState(true);
     const [buttonText, setButtonText] = useState('Change');
@@ -26,8 +25,8 @@ function Security() {
             setButtonText('Change');
             setSubmitStatus('button');
             setDisplay('none')
-        }
-    }
+        };
+    };
 
     const handleUsernameDisableChange = (event) => {
         event.preventDefault();
@@ -39,8 +38,8 @@ function Security() {
             setUsernameDisabledStatus(true);
             setUsernameButtonText('Change');
             setUsernameSubmitStatus('button');
-        }
-    }
+        };
+    };
 
     return (
         <>

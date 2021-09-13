@@ -9,9 +9,6 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { LoginBtn, VerticalDiv } from '../../pages/Landing';
 import GlobalStyle from '../global.style';
-import Input from '@material-ui/core/Input';
-
-
 
 const Info = () => {
 
@@ -39,8 +36,8 @@ const Info = () => {
             setDisabledStatus(true);
             setButtonText('Change');
             setSubmitStatus('button');
-        }
-    }
+        };
+    };
 
     return ( 
         <VerticalDiv>
