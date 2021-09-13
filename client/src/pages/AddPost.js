@@ -17,7 +17,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import { DropDownContainer } from "../components/posts/SearchPost";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-
 export const AddPostContainer = styled.div`
     
     .title {

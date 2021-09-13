@@ -11,8 +11,9 @@ const  PostList = () => {
     const postsResponse = useQuery(SEARCH_POSTS, {
         variables:  { search: query }
     });
+    
     const posts = postsResponse.data?.searchPosts.post || [] ;
-
+    let postsReversed =[...posts].reverse()
     if (!posts.length) {
         return <VerticalDiv><h3 style={{color:'#C3C3C3'}}>No Posts Yet!</h3></VerticalDiv>;
       }
@@ -21,7 +22,7 @@ const  PostList = () => {
         <>
         <VerticalDiv>
             <VerticalDiv>
-                {posts.map((post) => {
+                {postsReversed.map((post) => {
                     return(   
                    <Post post = {post} key={post._id}/>
                     );
