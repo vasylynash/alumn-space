@@ -82,7 +82,7 @@ const Signup = () => {
                     <TextField id="username" label="Username" color='primary' name="username" onChange={handleChange} />
                     <TextField id="email" label="Email" color='primary' name="email" onChange={handleChange} />
                     <FormControl style={{minWidth: 190}}>
-                    <InputLabel id="subject" >Your subject</InputLabel>
+                    <InputLabel id="subject" >Your class</InputLabel>
                         <Select
                         labelId="subject"
                         id="subject-select"
@@ -113,7 +113,7 @@ const Signup = () => {
                             /> */}
                             <DatePicker
                                 views={["year"]}
-                                label="Year only"
+                                label="Year graduated"
                                 value={selectedDate}
                                 onChange={handleDateChange}
                                 />

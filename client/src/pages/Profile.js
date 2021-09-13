@@ -13,6 +13,10 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
+import Auth from '../utils/auth';
+
+const user = Auth.getProfile().data
+
 const useStyles = makeStyles({
     root: {
       flexGrow: 1,
@@ -84,7 +88,7 @@ const Profile = () => {
             <img src={JaneDoe} alt="profile" className='img'/>
         </ProfilePic>
         <VerticalDiv>
-            <h1 className='username' style={{fontSize:'25px', marginBottom:'0'}}>Jane Doe</h1>
+            <h1 className='username' style={{fontSize:'25px', marginBottom:'0'}}>{user.username}</h1>
             <Line/>
             <Paper className={classes.root}>
                 <Tabs
