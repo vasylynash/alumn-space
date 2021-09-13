@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.png';
+import Hero from '../images/hero-graphic.png';
 import styled from 'styled-components';
 import GlobalStyle from '../components/global.style';
 
@@ -8,6 +9,61 @@ import GlobalStyle from '../components/global.style';
     display: flex;
     flex-direction: column;
     align-items: center;
+`
+
+const LandingContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 10vh;
+    transition: ease-in-out 0.1s;
+    box-shadow: 0px 3px  13px black;
+
+    img {
+        max-width: 25rem;
+    }
+
+    .description {
+        display: block;
+    }
+
+    .cta {
+        display: none;
+    }
+
+    .mobileTitle {
+            display: block;
+        }
+
+    @media (min-width: 768px) {
+        background-color: #CECFD1;
+        width: 35vw;
+        height: 100vh;
+        float: right;
+        flex-shrink: 0;
+
+        img {
+            min-height: 30vh;
+            min-height: 20vh;
+            max-width: 30vw;
+            min-width: 20vw;
+        }
+
+        .description {
+            display: none;
+        }
+
+        .cta {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .mobileTitle {
+            display: none;
+        }
+    } 
 `
 
 const Title = styled.h1`
@@ -28,6 +84,10 @@ export const LoginBtn = styled.button`
     margin: 20px 0;
     transition: ease-in-out 0.3s;
 
+    @media (min-width: 768px) {
+        font-size: 20px;
+    }
+
     &:hover {
         background-color: #FF8985;
         color: black;
@@ -42,22 +102,58 @@ export const SignUpBtn = styled.button`
     background-color: ${(props)=> props.backgroundColor};
     border: none;
     border-radius: 5px;
-    padding: 5px 43px;
+    padding: 5px 40px;
     transition: ease-in-out 0.3s;
+
+    @media (min-width: 768px) {
+        font-size: 20px;
+    }
     
     &:hover {
         background-color: #FF8985;
         color: black;
     }
 `
+const HeroContainer = styled.div`
+ 
+ display: none;
+
+ @media (min-width: 768px) {
+     display: flex;
+     flex-direction: column;
+     width: 55vw;
+     float: left;
+
+     .desktopTitle {
+         text-align: center;
+         font-size:60px;
+         margin-top: 10vh;
+         color: #707070;
+     }
+
+     .desktopDescription {
+         font-size: 25px;
+         padding: 0 20px;
+     }
+ }
+`
 
 const Landing = () => {
     return ( 
-        <VerticalDiv>
-            <GlobalStyle/> 
-            <img src={logo}  alt="logo images" height='20%' width='90%'/>
-            <Title>AlumSpace</Title>
-            <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif'}}> A place for coding bootcamp Alumni to connect  with each other <br/> and share ideas.</p>
+        <>
+        <div style={{display:'block',float:'left'}}>
+            <HeroContainer>
+            <Title className='desktopTitle'>AlumSpace</Title>
+            <img src={Hero}  alt="logo images"/>
+            <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif'}} className='desktopDescription'> A place for coding bootcamp Alumni to connect  with each other and share ideas.</p>
+            </HeroContainer>
+        </div>
+        <LandingContainer>
+            <GlobalStyle/>
+            <img src={logo}  alt="logo images"/>
+            <Title className='mobileTitle'>AlumSpace</Title>
+            <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif'}} className='description'> A place for coding bootcamp Alumni to connect  with each other <br/> and share ideas.</p>
+            <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif', padding:'0 30px'}} className='cta'> Please login or signup to continiue.</p>
             <Link to="/login">
                 <LoginBtn textColor='white' backgroundColor='#51BBB9'>
                     Login
@@ -68,7 +164,8 @@ const Landing = () => {
                     Sign up
                 </SignUpBtn>
             </Link>
-        </VerticalDiv>
+        </LandingContainer>
+        </>
      );
 }
  
