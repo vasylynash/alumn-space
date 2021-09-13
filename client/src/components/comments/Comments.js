@@ -24,7 +24,7 @@ const  Comments = () => {
       });
 
       const {comments} = data?.post || {};
-  
+      let commentsReversed =[...comments].reverse()
       if (loading) {
         return <div>Loading...</div>;
       }
@@ -53,18 +53,18 @@ const  Comments = () => {
         </Link>
             <VerticalDiv>
                 <h1 style={{fontSize:'39px', marginTop:'0.5rem'}}>Comments</h1>
+                 <SearchBar>
+                    <SearchIcon className='far fa-comment-alt'/>
+                    <SearchInput onChange={(e) => setCommentText(e.target.value)} placeholder='Add Comment'/>
+                    <SearchBtn onClick={handleAddComment}>Comment</SearchBtn>
+                </SearchBar>
                 {
-                comments.map(comment=>{
+                commentsReversed.map(comment=>{
                     return (
                         <Comment key = {comment._id} comment={comment} />
                     )
                 })
                 }
-                <SearchBar>
-                    <SearchIcon className='far fa-comment-alt'/>
-                    <SearchInput onChange={(e) => setCommentText(e.target.value)} placeholder='Add Comment'/>
-                    <SearchBtn onClick={handleAddComment}>Comment</SearchBtn>
-                </SearchBar>
             </VerticalDiv>
         </>
     )
