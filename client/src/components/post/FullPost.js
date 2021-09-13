@@ -8,6 +8,9 @@ import Fab from '@material-ui/core/Fab';
 import { useParams } from 'react-router-dom';
 import { QUERY_SINGLE_POST } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
+import Auth from '../../utils/auth';
+import { ADD_POST_LIKE } from '../../utils/mutations';
+import { useMutation } from "@apollo/client";
 
 const FullPostContainer = styled.div`
 
@@ -66,10 +69,10 @@ export const ButtonContainer = styled.div`
     
 `
 
-const  FullPost= ()=> {
+const  FullPost= () => {
     const { postId } = useParams();
-   
-    const { loading,error, data } = useQuery(QUERY_SINGLE_POST, {
+    const [addLike] = useMutation(ADD_POST_LIKE, {refetchQueries: [QUERY_SINGLE_POST]})
+    const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
       variables: { id: postId },
     });
     const post = data?.post || {};
@@ -77,6 +80,20 @@ const  FullPost= ()=> {
     if (loading) {
       return <div>Loading...</div>;
     }
+
+    const handleLike = async (e) => {
+        e.preventDefault();
+        try {
+            const {data} = await addLike({
+                variables: {
+                    postId: postId,
+                    userId: Auth.getProfile().data._id
+                }
+            });
+        } catch(e) {
+            console.log(e)
+        }
+    };
 
     return (
         <>
@@ -94,7 +111,7 @@ const  FullPost= ()=> {
                     <p>{post.body}</p>
                 </ContentContainer>
                 <ButtonContainer>
-                    <Link to='/comments' style={{textDecoration:'none'}}>
+                    <Link to={`/comments/${postId}`} style={{textDecoration:'none'}}>
                         <Fab
                         className='button'
                         color='primary' 
@@ -103,7 +120,7 @@ const  FullPost= ()=> {
                         style={{marginTop:'0.5rem'}}
                         variant='extended'
                         >
-                            <div className='likeContainer'><i className='fas fa-comment' style={{color:'white'}}><p>{post.totalLikes}</p></i></div>
+                            <div className='likeContainer'><i className='fas fa-comment' style={{color:'white'}}><p>{post.comments.length}</p></i></div>
                         </Fab>
                     </Link>
                     <Fab
@@ -114,7 +131,7 @@ const  FullPost= ()=> {
                     style={{marginTop:'0.5rem'}}
                     variant='extended'
                     >
-                        <div className='likeContainer'><i className='fas fa-heart'><p>{post.totalLikes}</p></i></div>
+                        <div onClick={handleLike} className='likeContainer'><i className='fas fa-heart'><p>{post.totalLikes}</p></i></div>
                     </Fab>
                 </ButtonContainer>
             </VerticalDiv>
