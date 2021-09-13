@@ -33,14 +33,11 @@ const  Comments = () => {
             const {data} = await addComment({
             variables: {
                 postId: postId, 
-                commentText:commentText, 
+                commentText: commentText, 
                 author: Auth.getProfile().data.username}
-            
         });
-        console.log(data) 
         } catch(e) {
-     
-         
+            console.log(e)
         }
       }
    return (

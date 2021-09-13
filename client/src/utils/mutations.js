@@ -93,7 +93,7 @@ export const REMOVE_POST = gql`
 
 //check ADD UPDATE & REMOVE COMMENT in future branch/PR
 export const ADD_COMMENT = gql`
-        mutation addComment($postId: ID!, $commentText: String!, $author: String!) {
+        mutation addComment($postId: String!, $commentText: String!, $author: String!) {
             addComment(postId: $postId, commentText: $commentText, author: $author) {
                 _id
                 commentText

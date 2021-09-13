@@ -11,8 +11,7 @@ module.exports = {
     const post = await Post.findById(postId);
     const newComment = {author:author, commentText:commentText}
     post.comments.push(newComment)
-    await Post.updateOne(post)
-    return post;
+    return await Post.updateOne({ "_id": postId},{"comments": post.comments})
     },
 
     // removeComment: async (parent, { id }, context)  => {
