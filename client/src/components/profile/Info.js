@@ -28,26 +28,12 @@ const Info = () => {
 
     const [selectedDate, handleDateChange] = useState(new Date());
 
-    const [updateUser, { error }] = useMutation(UPDATE_USER_PROFILE);
-
-    // const handleDateChange = (date) => {
-    //     setSelectedDate(date);
-    //   };
-
-    // const [subject, setSubject] = useState();
-
-    // const handleSubjectChange = (event) => {
-    //     setSubject(event.target.value);
-    // };
+    const [updateUser, { err }] = useMutation(UPDATE_USER_PROFILE);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log('selectedDate ->    ', selectedDate)
         console.log('formState ->    ', formState)
-        
-        Auth.loggedIn()? (console.log(Auth.getProfile().data._id)) : (console.log('NO'))
-
-        console.log(user._id)
 
         try {
             const mutationResponse = await updateUser ({
@@ -63,9 +49,6 @@ const Info = () => {
                     bio: formState.bio
                 },
             });
-
-            // const token = mutationResponse.data.updateUser.token;
-            // Auth.login(token);
 
         } catch (e) {
             console.error(e);
