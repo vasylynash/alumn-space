@@ -41,7 +41,6 @@ export const LandingContainer = styled.div`
             min-width: 50vw;
         }
 
-
     @media (min-width: 768px) {
         background-color: #CECFD1;
         padding-top: 10vh;
@@ -128,8 +127,8 @@ export const SignUpBtn = styled.button`
         color: black;
     }
 `
+
 export const HeroContainer = styled.div`
- 
  display: none;
 
  @media (min-width: 768px) {

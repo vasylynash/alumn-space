@@ -10,8 +10,8 @@ import TextField from '@material-ui/core/TextField';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
-import Hero from '../images/hero-graphic.png'
-import { Title } from './Landing'
+import Hero from '../images/hero-graphic.png';
+import { Title } from './Landing';
 
 const Login = (props) => {
 const [formState, setFormState] = useState({ email: '', password: '' });
