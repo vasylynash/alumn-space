@@ -25,7 +25,7 @@ const  Comments = () => {
         <>
         <GlobalStyle/>
         <Navbar/>
-        <Link to='/post'>
+        <Link to={`/post/${postId}`}>
             <BackArrow className="fas fa-arrow-left" top='65px' left='15px'></BackArrow>
         </Link>
             <VerticalDiv>
