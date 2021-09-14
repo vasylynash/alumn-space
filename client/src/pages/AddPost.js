@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useHistory } from 'react-router-dom';
 import { useMutation } from "@apollo/client";
 import { ADD_POST } from '../utils/mutations';
 import Auth from '../utils/auth';
@@ -35,15 +34,15 @@ const AddPost = () => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState(''); 
     const [isPending, setIsPending] = useState(false);
-    const [addPost, {error}] = useMutation(ADD_POST)
-    const history = useHistory();
+    const [addPost, {error}] = useMutation(ADD_POST);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         setIsPending(true);
         try {
-            const {data} = await addPost({
+            await addPost({
                 variables: {
                     title,
                     body,
@@ -53,7 +52,7 @@ const AddPost = () => {
                 }
             });
             setIsPending(false);
-            history.push('/home');
+            window.location.assign('/home')
         } catch(e) {
             console.log(e)
         }
@@ -91,6 +90,7 @@ const AddPost = () => {
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
                         >
+                        <MenuItem value={'None'}>None</MenuItem>
                         <MenuItem value={'Coding'}>Coding</MenuItem>
                         <MenuItem value={'DataScience'}>Data Science</MenuItem>
                         <MenuItem value={'UIUX'}>UI/UX</MenuItem>
@@ -104,6 +104,7 @@ const AddPost = () => {
                         value={label}
                         onChange={(e) => setLabel(e.target.value)}
                         >
+                        <MenuItem value={'None'}>None</MenuItem>
                         <MenuItem value={'Help'}>Help</MenuItem>
                         <MenuItem value={'SuccessStories'}>Success Stories</MenuItem>
                         <MenuItem value={'Jobs'}>Jobs</MenuItem>
