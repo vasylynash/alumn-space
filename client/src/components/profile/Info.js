@@ -18,30 +18,42 @@ import { QUERY_SINGLE_USER } from '../../utils/queries';
 
 const Info = () => {
     const user = Auth.getProfile().data;
-    console.log('user id ->   ', user._id)
+    console.log('user id ->   ', user._id);
+    
     const { loading, err, data } = useQuery(QUERY_SINGLE_USER, {
         variables: { id: user._id }
     })
     console.log('data ->   ', data)
-    // const info = data.user.bio;
-    // console.log('info ->  ', info)
+  
+
+    console.log('something else')
 
     const [formState, setFormState] = useState({
-        firstName: data.user.firstName,
-        lastName: data.user.lastName,
-        email: data.user.email,
-        className: data.user.className, 
-        bio: data.user.bio,
-        linkedIn: data.user.linkedIn,
-        gitHub: data.user.gitHub,
-        // firstName: '',
-        // lastName: '',
-        // email: '',
-        // className: '', 
-        // bio: '',
-        // linkedIn: '',
-        // gitHub: '',
-    })
+        // firstName: data.user.firstName,
+        // lastName: data.user.lastName,
+        // email: data.user.email,
+        // className: data.user.className, 
+        // bio: data.user.bio,
+        // linkedIn: data.user.linkedIn,
+        // gitHub: data.user.gitHub,
+        firstName: '',
+        lastName: '',
+        email: '',
+        className: '', 
+        bio: '',
+        linkedIn: '',
+        gitHub: '',
+    });
+
+    // setFormState({
+    //     firstName: data.user.firstName,
+    //     lastName: data.user.lastName,
+    //     email: data.user.email,
+    //     className: data.user.className, 
+    //     bio: data.user.bio,
+    //     linkedIn: data.user.linkedIn,
+    //     gitHub: data.user.gitHub,
+    // })
 
     const [selectedDate, handleDateChange] = useState(new Date());
 
@@ -86,9 +98,9 @@ const Info = () => {
                 <VerticalDiv>
                 <h1 style={{fontSize:'25px', margin:'0', color:'#51BBB9'}}>My information</h1>
                 <p style={{fontSize:'12px', color:'grey'}}>Update your info</p>
-                    <TextField id="firstName" label="First Name" color='primary' name="firstName" value={formState.firstName} onChange={handleChange} />
-                    <TextField id="lastName" label="Last Name" color='primary' name="lastName"  value={formState.lastName} onChange={handleChange} />
-                    <TextField id="email" label="Email" color='primary' name="email" value={formState.email} onChange={handleChange} />
+                    <TextField id="firstName" label="First Name" color='primary' name="firstName" value={formState.firstName} />
+                    <TextField id="lastName" label="Last Name" color='primary' name="lastName"  value={formState.lastName}  />
+                    <TextField id="email" label="Email" color='primary' name="email" value={formState.email}  />
                     <FormControl style={{minWidth: 190}}>
                     <InputLabel id="subject" >Your class</InputLabel>
                         <Select
@@ -96,7 +108,7 @@ const Info = () => {
                         id="subject-select"
                         name="className"
                         value={formState.className}
-                        onChange={handleChange}
+                        // onChange={handleChange}
                         >
                         <MenuItem value={'Web Development'}>Web Development</MenuItem>
                         <MenuItem value={'Data Analytics'}>Data Analytics</MenuItem>
@@ -112,12 +124,12 @@ const Info = () => {
                                 views={["year"]}
                                 label="Year graduated"
                                 value={selectedDate}
-                                onChange={handleDateChange}
+                                // onChange={handleDateChange}
                                 />
                         </div>
                     </MuiPickersUtilsProvider>
-                    <TextField id="linkedin" label="LinkedIn" color='primary' name="linkedIn" value={formState.linkedIn} onChange={handleChange} />
-                    <TextField id="github" label="GitHub" color='primary' name="gitHub" value={formState.gitHub} onChange={handleChange} />
+                    <TextField id="linkedin" label="LinkedIn" color='primary' name="linkedIn" value={formState.linkedIn}  />
+                    <TextField id="github" label="GitHub" color='primary' name="gitHub" value={formState.gitHub}  />
                     <TextField
                     className='input'
                     id="standard-multiline-static"
@@ -126,7 +138,7 @@ const Info = () => {
                     rows={2}
                     name="bio"
                     value={formState.bio}
-                    onChange={handleChange}
+                    // onChange={handleChange}
                     />
                     <LoginBtn type='submit'>Update</LoginBtn>
                 </VerticalDiv>

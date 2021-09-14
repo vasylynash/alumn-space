@@ -48,11 +48,11 @@ const Signup = () => {
                     confirmPassword: formState.confirmPassword,
                     yearOfGraduation: selectedDate,
                     className: formState.className,
-                    firstName: ' ',
-                    lastName: ' ',
-                    bio: ' ',
-                    linkedIn: ' ',
-                    gitHub: ' '
+                    firstName: '',
+                    lastName: '',
+                    bio: '',
+                    linkedIn: '',
+                    gitHub: ''
                     }
                  },
             });
