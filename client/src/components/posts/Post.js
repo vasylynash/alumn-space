@@ -157,7 +157,7 @@ const Post = ({post}) => {
                 <p className='author'>By: {post.author.username}</p>
                 <p className='category'>{post.category}</p>
                 <p className='label'>{post.label}</p>
-                <div className='likeContainer'><i className={post.likes.includes(Auth.getProfile().data._id)?'fas fa-heart':'fas fa-heart-broken'}><p style={{fontFamily:'Montserrat, san-serif'}}>{post.totalLikes}</p></i><i class="fas fa-comment comment"><p style={{fontFamily:'Montserrat, san-serif'}}></p></i>
+                <div className='likeContainer'><i className={post.likes.includes(Auth.getProfile().data._id)?'fas fa-heart':'fas fa-heart-broken'}><p style={{fontFamily:'Montserrat, san-serif'}}>{post.totalLikes}</p></i><i className="fas fa-comment comment"><p style={{fontFamily:'Montserrat, san-serif'}}></p></i>
                 </div>
             </div>
             <div className='right'>

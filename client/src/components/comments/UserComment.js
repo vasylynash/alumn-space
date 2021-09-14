@@ -7,6 +7,11 @@ const Comment = styled.div`
     font-size: 12px;
     margin: 1rem 0;
 
+    @media (min-width: 768px) {
+        display: block;
+        text-align: left;
+    }
+
     p {
         margin: 0;
     }
@@ -16,6 +21,7 @@ const Comment = styled.div`
         font-size: 15px;
         color:#51BBB9;
         margin-right: 10px;
+        margin-left: 0;
     }
 
     .date {
