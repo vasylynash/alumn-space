@@ -30,7 +30,6 @@ const Signup = () => {
         className: ''
     });
 
-    // date picker
     const [selectedDate, handleDateChange] = useState(new Date());
     
     const [addUser, { error }] = useMutation(ADD_USER);
@@ -94,7 +93,7 @@ const Signup = () => {
                 <VerticalDiv>
                     <TextField id="username" label="Username" color='primary' name="username" onChange={handleChange} />
                     <TextField id="email" label="Email" color='primary' name="email" onChange={handleChange} />
-                    <FormControl style={{minWidth: 190}}>
+                    <FormControl style={{minWidth: 170}}>
                     <InputLabel id="subject" >Your class</InputLabel>
                         <Select
                         labelId="subject"
@@ -112,18 +111,6 @@ const Signup = () => {
                     </FormControl>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <div style={{width:'100%', marginTop:'20px'}}>
-                            {/* <KeyboardDatePicker
-                                margin="normal"
-                                width={1}
-                                id="date-picker-dialog"
-                                label="Date picker dialog"
-                                format="MM/dd/yyyy"
-                                value={selectedDate}
-                                onChange={handleDateChange}
-                                KeyboardButtonProps={{
-                                'aria-label': 'change date',
-                                }}
-                            /> */}
                             <DatePicker
                                 views={["year"]}
                                 label="Year graduated"

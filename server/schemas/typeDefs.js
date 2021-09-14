@@ -108,7 +108,7 @@ const typeDefs = gql`
         addPost(title: String!, body: String!, category: Category, label: Label): Post
         updatePost(id: ID!, title: String!, body: String!, category: Category, label: Label): Post
         removePost(id: ID!): Post
-        addComment(postId: ID!, commentText: String!): Post
+        addComment(postId: String!, commentText: String!, author: String!): Comment
         updateComment(commentId: ID!, commentText: String!): Post
         removeComment(id: ID!): Post
         updateUser(id: ID!, firstName: String, lastName: String, image: String, role: String, bio: String, yearOfGraduation: String!, linkedIn: String, gitHub: String, className: String!, email: String): User
