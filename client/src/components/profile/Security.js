@@ -28,7 +28,7 @@ function Security() {
     return (
         <>
             <h1 style={{fontSize:'25px', margin:'0', color:'#51BBB9'}}>Security</h1>
-            <p style={{fontSize:'12px', color:'grey'}}>Change your usernmae and passowrd</p>
+            <p style={{fontSize:'12px', color:'grey'}}>Change your passowrd</p>
             <form>
                 <VerticalDiv>
                     <h2 style={{fontSize:'20px', marginTop:'1rem'}}>Change password</h2>

@@ -15,8 +15,18 @@ export const Card = styled.div`
     transition: ease-in-out 0.3s;
     border:solid 1px rgba(0,0,0,0%);
 
+    @media (min-width: 768px) {
+        height: 120px;
+        width: 80vw;
+        max-width: 1000px;
+    }
+
+    .comment {
+        color: #51BBB9;
+    }
+
     &:hover {
-        transform: scale(1.1);
+        transform: scale(1.02);
     }
     
     &:active {
@@ -25,7 +35,7 @@ export const Card = styled.div`
 
     .title {
         position: absolute;
-        height: 20px;
+        height: 30px;
         width: 50%;
         padding-left: 0.5rem;
         padding-top: 0.5rem;
@@ -36,11 +46,16 @@ export const Card = styled.div`
     h5 {
         margin:0;
         font-size: 12px;
+
+        @media (min-width: 768px) {
+            font-size: 20px;
+        }
     }
 
     .date {
         font-size: 10px;
         font-weight: lighter;
+
     }
 
     .right {
@@ -61,11 +76,19 @@ export const Card = styled.div`
         flex-direction: column;
         justify-content: space-evenly;
 
+        @media (min-width: 768px) {
+            height: 110px;
+        }
+
         p {
             font-size: 10px;
             margin: 0;
             margin-left: 0.5rem;
             color: #707070;
+
+            @media (min-width: 768px) {
+                font-size: 12px;
+            }
         }
 
         .category {
@@ -134,7 +157,10 @@ const Post = ({post}) => {
                 <p className='author'>By: {post.author.username}</p>
                 <p className='category'>{post.category}</p>
                 <p className='label'>{post.label}</p>
-                <div className='likeContainer'><i className="fas fa-heart"><p style={{fontFamily:'Montserrat, san-serif'}}>{post.totalLikes}</p></i></div>
+                <div className='likeContainer'>
+                    <i className="fas fa-heart"><p style={{fontFamily:'Montserrat, san-serif'}}>{post.totalLikes}</p></i>
+                    <i class="fas fa-comment comment"><p style={{fontFamily:'Montserrat, san-serif'}}></p></i>
+                </div>
             </div>
             <div className='right'>
                 <p className='date'>{post.dateCreated}</p>

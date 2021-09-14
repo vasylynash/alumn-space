@@ -94,7 +94,7 @@ const Info = () => {
                 <FormContainer>
                 <VerticalDiv>
                 <h1 style={{fontSize:'25px', margin:'0', color:'#51BBB9'}}>My information</h1>
-                <p style={{fontSize:'12px', color:'grey'}}>Update your info</p>
+                <p style={{fontSize:'12px', color:'grey'}}>Update your information</p>
                     <TextField  className='textfield' disabled={disabledStatus} value='Dmitriy' id='firstName' label='First Name' color='primary' onChange={handleChange} name='firstName' />
                     <TextField className='textfield' disabled={disabledStatus} value='Babich' id='lastName' label='Last Name' color='primary' onChange={handleChange} name='lastName' />
                     <FormControl disabled={disabledStatus} style={{minWidth: 190}}>
