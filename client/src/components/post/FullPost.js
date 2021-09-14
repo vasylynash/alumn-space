@@ -13,7 +13,6 @@ import { ADD_POST_LIKE } from '../../utils/mutations';
 import { useMutation } from "@apollo/client";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import DesktopComments from '../comments/DesktopComments';
-import { Line } from '../posts/SearchPost';
 
 const FullPostContainer = styled.div`
 
@@ -38,6 +37,15 @@ const FullPostContainer = styled.div`
     .label {
         font-size: 15px;
         color:#FF8985;
+    }
+
+    .body {
+
+        @media (min-width: 768px) {
+            width: 70vw;
+            margin: auto;
+        }
+
     }
 
     p {
@@ -146,7 +154,7 @@ const  FullPost= () => {
                 <p className='category'>{post.category}</p>
                 <p className='label'>{post.label}</p>
                 <ContentContainer>
-                    <p>{post.body}</p>
+                    <p className='body'>{post.body}</p>
                 </ContentContainer>
                 <ButtonContainer>
                     <MobileBtn>
