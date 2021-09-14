@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
@@ -17,21 +17,44 @@ import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_USER } from '../../utils/queries';
 
 const Info = () => {
-    const user = Auth.getProfile().data;
+    
+    
 
+    // useEffect(() => {
+
+        const user = Auth.getProfile().data;
+        console.log('user id ->   ', user._id)
     const { loading, err, data } = useQuery(QUERY_SINGLE_USER, {
         variables: { id: user._id }
     })
-    const info = data.user;
 
     const [formState, setFormState] = useState({
-        firstName: info.firstName,
-        lastName: info.lastName,
-        email: info.email,
-        className: info.className, 
-        bio: info.bio,
-        linkedIn: info.linkedIn,
-        gitHub: info.gitHub,
+        firstName: '',
+        lastName: '',
+        email: '',
+        className: '', 
+        bio: '',
+        linkedIn: '',
+        gitHub: '',
+    });
+
+
+    
+
+    if (!loading) {
+    console.log('data ->   ', data)
+    
+    // const info = data.user.bio;
+    // console.log('info ->  ', info)
+
+    setFormState({
+        firstName: data.user.firstName,
+        lastName: data.user.lastName,
+        email: data.user.email,
+        className: data.user.className, 
+        bio: data.user.bio,
+        linkedIn: data.user.linkedIn,
+        gitHub: data.user.gitHub,
         // firstName: '',
         // lastName: '',
         // email: '',
@@ -39,7 +62,20 @@ const Info = () => {
         // bio: '',
         // linkedIn: '',
         // gitHub: '',
-    })
+    });
+}
+
+// }, [])
+
+    // setFormState({
+    //     firstName: data.user.firstName,
+    //     lastName: data.user.lastName,
+    //     email: data.user.email,
+    //     className: data.user.className, 
+    //     bio: data.user.bio,
+    //     linkedIn: data.user.linkedIn,
+    //     gitHub: data.user.gitHub,
+    // })
 
     const [selectedDate, handleDateChange] = useState(new Date());
 
@@ -69,13 +105,15 @@ const Info = () => {
     };
     
     const handleChange = (event) => {
-        const { name, value } = event.target;
+        // const { name, value } = event.target;
 
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
+        // setFormState({
+        //     ...formState,
+        //     [name]: value,
+        // });
     }; 
+
+    console.log('formState ->    ', formState);
 
     return ( 
         <VerticalDiv>
