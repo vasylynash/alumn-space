@@ -211,6 +211,8 @@ export const SEARCH_POSTS = gql `
         title
         body
         label
+        totalLikes
+        likes
         category
         author {
           _id
