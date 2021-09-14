@@ -3,6 +3,7 @@ import { VerticalDiv } from '../../pages/Landing';
 import  SearchProvider  from '../../utils/SearchContext';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Auth from '../../utils/auth';
 
 export const Card = styled.div`
     display: flex;
@@ -120,7 +121,6 @@ export const Card = styled.div`
 `
 
 const Post = ({post}) => {
-   
     return (
         <>
         <Link to={`/post/${post._id}`} style={{textDecoration: 'none', color:'black'}}>
@@ -134,7 +134,7 @@ const Post = ({post}) => {
                 <p className='author'>By: {post.author.username}</p>
                 <p className='category'>{post.category}</p>
                 <p className='label'>{post.label}</p>
-                <div className='likeContainer'><i className="fas fa-heart"><p style={{fontFamily:'Montserrat, san-serif'}}>{post.totalLikes}</p></i></div>
+                <div className='likeContainer'><i className={post.likes.includes(Auth.getProfile().data._id)?'fas fa-heart':'fas fa-heart-broken'}><p>{post.totalLikes}</p></i></div>
             </div>
             <div className='right'>
                 <p className='date'>{post.dateCreated}</p>
