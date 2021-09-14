@@ -16,8 +16,8 @@ module.exports = {
   },
 
   Mutation: {
-    addUser: async (_, {registerInput: { username, email, password, confirmPassword, yearOfGraduation, className }}) => {
-      const { errors, valid } = validateRegisterInput(username, email, password, confirmPassword, yearOfGraduation, className);
+    addUser: async (_, {registerInput: { username, email, password, confirmPassword, yearOfGraduation, className, firstName, lastName, bio, linkedIn, gitHub }}) => {
+      const { errors, valid } = validateRegisterInput(username, email, password, confirmPassword, yearOfGraduation, className, firstName, lastName, bio, linkedIn, gitHub );
       if (!valid) {
         throw new UserInputError('Errors', { errors })
       }
@@ -54,9 +54,9 @@ module.exports = {
 
       const correctPw = await user.isCorrectPassword(password);
 
-      // if (!correctPw) {
-      //   throw new AuthenticationError('Incorrect credentials');
-      // }
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
 
       const token = signToken(user);
       return { token, user };

@@ -47,7 +47,12 @@ const Signup = () => {
                     password: formState.password,
                     confirmPassword: formState.confirmPassword,
                     yearOfGraduation: selectedDate,
-                    className: formState.className
+                    className: formState.className,
+                    firstName: ' ',
+                    lastName: ' ',
+                    bio: ' ',
+                    linkedIn: ' ',
+                    gitHub: ' '
                     }
                  },
             });

@@ -13,17 +13,32 @@ import GlobalStyle from '../global.style';
 import {  useMutation } from '@apollo/client';
 import { UPDATE_USER_PROFILE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-
+import { useQuery } from '@apollo/client';
+import { QUERY_SINGLE_USER } from '../../utils/queries';
 
 const Info = () => {
     const user = Auth.getProfile().data;
 
+    const { loading, err, data } = useQuery(QUERY_SINGLE_USER, {
+        variables: { id: user._id }
+    })
+    const info = data.user;
+
     const [formState, setFormState] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        className: '', 
-        bio: ''
+        firstName: info.firstName,
+        lastName: info.lastName,
+        email: info.email,
+        className: info.className, 
+        bio: info.bio,
+        linkedIn: info.linkedIn,
+        gitHub: info.gitHub,
+        // firstName: '',
+        // lastName: '',
+        // email: '',
+        // className: '', 
+        // bio: '',
+        // linkedIn: '',
+        // gitHub: '',
     })
 
     const [selectedDate, handleDateChange] = useState(new Date());
@@ -32,9 +47,6 @@ const Info = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log('selectedDate ->    ', selectedDate)
-        console.log('formState ->    ', formState)
-        console.log('email ->    ', formState.email)
 
         try {
             const mutationResponse = await updateUser ({
@@ -72,16 +84,16 @@ const Info = () => {
                 <VerticalDiv>
                 <h1 style={{fontSize:'25px', margin:'0', color:'#51BBB9'}}>My information</h1>
                 <p style={{fontSize:'12px', color:'grey'}}>Update your info</p>
-                    <TextField id="firstName" label="First Name" color='primary' name="firstName" onChange={handleChange} />
-                    <TextField id="lastName" label="Last Name" color='primary' name="lastName" onChange={handleChange} />
-                    <TextField id="email" label="Email" color='primary' name="email" onChange={handleChange} />
+                    <TextField id="firstName" label="First Name" color='primary' name="firstName" value={formState.firstName} onChange={handleChange} />
+                    <TextField id="lastName" label="Last Name" color='primary' name="lastName"  value={formState.lastName} onChange={handleChange} />
+                    <TextField id="email" label="Email" color='primary' name="email" value={formState.email} onChange={handleChange} />
                     <FormControl style={{minWidth: 190}}>
                     <InputLabel id="subject" >Your class</InputLabel>
                         <Select
                         labelId="subject"
                         id="subject-select"
                         name="className"
-                        // value={subject}
+                        value={formState.className}
                         onChange={handleChange}
                         >
                         <MenuItem value={'Web Development'}>Web Development</MenuItem>
@@ -94,18 +106,6 @@ const Info = () => {
                     </FormControl>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <div style={{width:'80%'}}>
-                            {/* <KeyboardDatePicker
-                                margin="normal"
-                                width={1}
-                                id="date-picker-dialog"
-                                label="Date picker dialog"
-                                format="MM/dd/yyyy"
-                                value={selectedDate}
-                                onChange={handleDateChange}
-                                KeyboardButtonProps={{
-                                'aria-label': 'change date',
-                                }}
-                            /> */}
                             <DatePicker
                                 views={["year"]}
                                 label="Year graduated"
@@ -114,8 +114,8 @@ const Info = () => {
                                 />
                         </div>
                     </MuiPickersUtilsProvider>
-                    <TextField id="linkedin" label="LinkedIn" color='primary' name="linkedIn"  onChange={handleChange} />
-                    <TextField id="github" label="GitHub" color='primary' name="gitHub" onChange={handleChange} />
+                    <TextField id="linkedin" label="LinkedIn" color='primary' name="linkedIn" value={formState.linkedIn} onChange={handleChange} />
+                    <TextField id="github" label="GitHub" color='primary' name="gitHub" value={formState.gitHub} onChange={handleChange} />
                     <TextField
                     className='input'
                     id="standard-multiline-static"
@@ -123,6 +123,7 @@ const Info = () => {
                     multiline
                     rows={2}
                     name="bio"
+                    value={formState.bio}
                     onChange={handleChange}
                     />
                     <LoginBtn type='submit'>Update</LoginBtn>

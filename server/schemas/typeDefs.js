@@ -70,10 +70,15 @@ const typeDefs = gql`
     input RegisterInput {
         username: String!
         email: String!
-        password: String!,
-        confirmPassword: String!,
-        yearOfGraduation: String!,
+        password: String!
+        confirmPassword: String!
+        yearOfGraduation: String!
         className: String!
+        firstName: String
+        lastName: String
+        bio: String
+        linkedIn: String
+        gitHub: String
     }
 
     type PostResult {

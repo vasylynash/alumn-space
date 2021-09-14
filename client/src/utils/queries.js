@@ -29,7 +29,10 @@ export const QUERY_ALL_USERS = gql`
         _id
         title
         body
-        author {_id}
+        author {
+          _id
+          username
+        }
         dateCreated
         likes
         comments {
@@ -64,7 +67,10 @@ export const QUERY_SINGLE_USER = gql`
         _id
         title
         body
-        author
+        author{
+          _id
+          username
+        }
         dateCreated
         likes
         comments {
