@@ -107,6 +107,7 @@ export const QUERY_ALL_POSTS = gql`
             _id
             title
             body
+            likes
             author {
               _id
               username
@@ -140,6 +141,7 @@ export const QUERY_SINGLE_POST = gql`
       totalLikes
       category
       label
+      likes
       comments {
         _id
         commentText

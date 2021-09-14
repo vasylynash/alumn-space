@@ -131,7 +131,7 @@ const  FullPost= () => {
                     style={{marginTop:'0.5rem'}}
                     variant='extended'
                     >
-                        <div onClick={handleLike} className='likeContainer'><i className='fas fa-heart'><p>{post.totalLikes}</p></i></div>
+                        <div onClick={handleLike} className='likeContainer'><i className={post.likes.includes(Auth.getProfile().data._id)?'fas fa-heart':'fas fa-heart-broken'}><p>{post.totalLikes}</p></i></div>
                     </Fab>
                 </ButtonContainer>
             </VerticalDiv>
