@@ -12,10 +12,8 @@ import GlobalStyle from '../global.style';
 import {  useMutation } from '@apollo/client';
 import { UPDATE_USER_PROFILE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-<<<<<<< HEAD
 import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_USER } from '../../utils/queries';
-=======
 import styled from 'styled-components';
 
 const FormContainer = styled.div`
@@ -23,7 +21,6 @@ const FormContainer = styled.div`
         margin-top: 10px;
     }
 `
->>>>>>> main
 
 const Info = () => {
     const user = Auth.getProfile().data;
@@ -124,20 +121,6 @@ const Info = () => {
                 <FormContainer>
                 <VerticalDiv>
                 <h1 style={{fontSize:'25px', margin:'0', color:'#51BBB9'}}>My information</h1>
-<<<<<<< HEAD
-                <p style={{fontSize:'12px', color:'grey'}}>Update your info</p>
-                    <TextField id="firstName" label="First Name" color='primary' name="firstName" value={formState.firstName} />
-                    <TextField id="lastName" label="Last Name" color='primary' name="lastName"  value={formState.lastName}  />
-                    <TextField id="email" label="Email" color='primary' name="email" value={formState.email}  />
-                    <FormControl style={{minWidth: 190}}>
-                    <InputLabel id="subject" >Your class</InputLabel>
-                        <Select
-                        labelId="subject"
-                        id="subject-select"
-                        name="className"
-                        value={formState.className}
-                        // onChange={handleChange}
-=======
                 <p style={{fontSize:'12px', color:'grey'}}>Update your information</p>
                     <TextField  className='textfield' disabled={disabledStatus} value='Dmitriy' id='firstName' label='First Name' color='primary' onChange={handleChange} name='firstName' />
                     <TextField className='textfield' disabled={disabledStatus} value='Babich' id='lastName' label='Last Name' color='primary' onChange={handleChange} name='lastName' />
@@ -149,7 +132,6 @@ const Info = () => {
                         name='className'
                         onChange={handleChange}
                         value={formState.className}
->>>>>>> main
                         >
                         <MenuItem value={'Web Development'}>Web Development</MenuItem>
                         <MenuItem value={'Data Analytics'}>Data Analytics</MenuItem>
@@ -160,23 +142,11 @@ const Info = () => {
                         </Select>
                     </FormControl>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-<<<<<<< HEAD
-                        <div style={{width:'80%'}}>
-=======
                         <div style={{width:'100%', marginTop:'20px', marginLeft:'15px'}}>
->>>>>>> main
                             <DatePicker
                                 views={['year']}
                                 label='Year graduated'
                                 value={selectedDate}
-<<<<<<< HEAD
-                                // onChange={handleDateChange}
-                                />
-                        </div>
-                    </MuiPickersUtilsProvider>
-                    <TextField id="linkedin" label="LinkedIn" color='primary' name="linkedIn" value={formState.linkedIn}  />
-                    <TextField id="github" label="GitHub" color='primary' name="gitHub" value={formState.gitHub}  />
-=======
                                 onChange={handleChange}
                                 disabled={disabledStatus}
                                 />
@@ -184,7 +154,6 @@ const Info = () => {
                     </MuiPickersUtilsProvider>
                     <TextField className='textfield' value='Dmitriy Linked in' id='linkedin' label='LinkedIn' color='primary' name='linkedIn'  onChange={handleChange} disabled={disabledStatus} />
                     <TextField className='textfield' value='Dmitriy Github' id='github' label='GitHub' color='primary' name='gitHub' onChange={handleChange} disabled={disabledStatus} />
->>>>>>> main
                     <TextField
                     disabled={disabledStatus}
                     value='My bio goes here'
@@ -193,14 +162,8 @@ const Info = () => {
                     label='Bio'
                     multiline
                     rows={2}
-<<<<<<< HEAD
-                    name="bio"
-                    value={formState.bio}
-                    // onChange={handleChange}
-=======
                     name='bio'
                     onChange={handleChange}
->>>>>>> main
                     />
                     <LoginBtn onClick={handleDisableChange} type={submitStatus}>{buttonText}</LoginBtn>
                 </VerticalDiv>
