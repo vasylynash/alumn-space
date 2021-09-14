@@ -12,6 +12,13 @@ import GlobalStyle from '../global.style';
 import {  useMutation } from '@apollo/client';
 import { UPDATE_USER_PROFILE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import styled from 'styled-components';
+
+const FormContainer = styled.div`
+    .textfield {
+        margin-top: 10px;
+    }
+`
 
 const Info = () => {
     const user = Auth.getProfile().data;
@@ -84,20 +91,20 @@ const Info = () => {
         <VerticalDiv>
             <GlobalStyle/>
             <form noValidate autoComplete="off" onSubmit={handleFormSubmit}>
+                <FormContainer>
                 <VerticalDiv>
                 <h1 style={{fontSize:'25px', margin:'0', color:'#51BBB9'}}>My information</h1>
                 <p style={{fontSize:'12px', color:'grey'}}>Update your info</p>
-                    <TextField disabled={disabledStatus} id="firstName" label="First Name" color='primary' onChange={handleChange} />
-                    <TextField disabled={disabledStatus} id="lastName" label="Last Name" color='primary' onChange={handleChange} />
-                    <TextField disabled={disabledStatus} id="email" label="Email" color='primary' onChange={handleChange} />
+                    <TextField  className='textfield' disabled={disabledStatus} value='Dmitriy' id="firstName" label="First Name" color='primary' onChange={handleChange} />
+                    <TextField className='textfield' disabled={disabledStatus} value='Babich' id="lastName" label="Last Name" color='primary' onChange={handleChange} />
                     <FormControl disabled={disabledStatus} style={{minWidth: 190}}>
                     <InputLabel id="subject" >Your subject</InputLabel>
                         <Select
                         labelId="subject"
                         id="subject-select"
                         name="className"
-                        // value={subject}
                         onChange={handleChange}
+                        value={formState.className}
                         >
                         <MenuItem value={'Web Development'}>Web Development</MenuItem>
                         <MenuItem value={'Data Analytics'}>Data Analytics</MenuItem>
@@ -118,11 +125,12 @@ const Info = () => {
                                 />
                         </div>
                     </MuiPickersUtilsProvider>
-                    <TextField id="linkedin" label="LinkedIn" color='primary' name="linkedIn"  onChange={handleChange} disabled={disabledStatus} />
-                    <TextField id="github" label="GitHub" color='primary' name="gitHub" onChange={handleChange} disabled={disabledStatus} />
+                    <TextField className='textfield' value='Dmitriy Linked in' id="linkedin" label="LinkedIn" color='primary' name="linkedIn"  onChange={handleChange} disabled={disabledStatus} />
+                    <TextField className='textfield' value='Dmitriy Github' id="github" label="GitHub" color='primary' name="gitHub" onChange={handleChange} disabled={disabledStatus} />
                     <TextField
                     disabled={disabledStatus}
-                    className='input'
+                    value='My bio goes here'
+                    className='input textfield'
                     id="standard-multiline-static"
                     label="Bio"
                     multiline
@@ -130,8 +138,9 @@ const Info = () => {
                     name="bio"
                     onChange={handleChange}
                     />
-                    <LoginBtn onClick={handleDisableChange} type= {submitStatus}>{buttonText}</LoginBtn>
+                    <LoginBtn onClick={handleDisableChange} type={submitStatus}>{buttonText}</LoginBtn>
                 </VerticalDiv>
+                </FormContainer>
             </form>
         </VerticalDiv>
      );
