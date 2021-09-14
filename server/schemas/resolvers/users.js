@@ -74,6 +74,14 @@ module.exports = {
       return await User.deleteOne(
         { _id: id }
         );
+    },
+
+    changePassword: async(_, {id, password, confirmPassword}) => {
+      return await User.findOneAndUpdate(
+        {_id: id},
+        { password, confirmPassword },
+        { new: true }
+      );
     }
   }    
 };
