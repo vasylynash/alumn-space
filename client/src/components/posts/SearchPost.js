@@ -63,6 +63,12 @@ export const SearchBar = styled.div`
     border: solid 1px #51BBB9;
     border-radius: 5px;
     background-color: #EDEDED;
+
+    @media (min-width: 768px) {
+        margin: 5vh auto 0.5rem auto;
+        width: 40%;
+        max-width: 500px;
+    }
     
 `
 
@@ -79,6 +85,11 @@ export const DropDownContainer = styled.div`
     flex-direction: row;
     justify-content: space-evenly;
     margin: 0;
+
+    @media (min-width: 768px) {
+        justify-content: space-around;
+        padding: 0 35vw;
+    }
     
 `
 
@@ -91,7 +102,6 @@ function SearchPost() {
     return (
         <>
         <GlobalStyle/>
-        <Line/>
         <SearchBar>
             <SearchIcon className='fas fa-search'/>
             <SearchInput placeholder='Search Title' onChange={(e) => {
@@ -108,7 +118,6 @@ function SearchPost() {
                 <Select
                 labelId="subject"
                 id="subject-select"
-                // value={category}
                 onChange={(e) => {
                     return dispatch({
                         type: UPDATE_CATEGORY,
@@ -116,6 +125,7 @@ function SearchPost() {
                     })
                 }}
                 >
+                <MenuItem value={''}>None</MenuItem>
                 <MenuItem value={'Coding'}>Coding</MenuItem>
                 <MenuItem value={'DataScience'}>Data Science</MenuItem>
                 <MenuItem value={'UIUX'}>UI/UX</MenuItem>
@@ -126,7 +136,6 @@ function SearchPost() {
                 <Select
                 labelId="subject"
                 id="subject-select"
-                // value={label}
                 onChange={(e) => {
                     return dispatch({
                         type: UPDATE_LABEL,
@@ -134,6 +143,7 @@ function SearchPost() {
                     })
                 } }
                 >
+                <MenuItem value={''}>None</MenuItem>
                 <MenuItem value={'Help'}>Help</MenuItem>
                 <MenuItem value={'SuccessStories'}>Success Stories</MenuItem>
                 <MenuItem value={'Jobs'}>Jobs</MenuItem>

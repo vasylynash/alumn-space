@@ -9,15 +9,26 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { LoginBtn, VerticalDiv } from '../../pages/Landing';
 import GlobalStyle from '../global.style';
-
 import {  useMutation } from '@apollo/client';
 import { UPDATE_USER_PROFILE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import styled from 'styled-components';
 
+const FormContainer = styled.div`
+    .textfield {
+        margin-top: 10px;
+    }
+`
 
 const Info = () => {
     const user = Auth.getProfile().data;
 
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [subject, setSubject] = useState();
+    const [disabledStatus, setDisabledStatus] = useState(true);
+    const [buttonText, setButtonText] = useState('Change');
+    const [submitStatus, setSubmitStatus] = useState ('button')
+    
     const [formState, setFormState] = useState({
         firstName: '',
         lastName: '',
@@ -25,8 +36,6 @@ const Info = () => {
         className: '', 
         bio: ''
     })
-
-    const [selectedDate, handleDateChange] = useState(new Date());
 
     const [updateUser, { error }] = useMutation(UPDATE_USER_PROFILE);
 
@@ -65,24 +74,37 @@ const Info = () => {
         });
     }; 
 
+    const handleDisableChange = (event) => {
+        event.preventDefault();
+        setDisabledStatus(false);
+        setButtonText('Update');
+        setSubmitStatus('Submit');
+
+        if (disabledStatus === false) {
+            setDisabledStatus(true);
+            setButtonText('Change');
+            setSubmitStatus('button');
+        };
+    };
+
     return ( 
         <VerticalDiv>
             <GlobalStyle/>
-            <form noValidate autoComplete="off" onSubmit={handleFormSubmit}>
+            <form noValidate autoComplete='off' onSubmit={handleFormSubmit}>
+                <FormContainer>
                 <VerticalDiv>
                 <h1 style={{fontSize:'25px', margin:'0', color:'#51BBB9'}}>My information</h1>
-                <p style={{fontSize:'12px', color:'grey'}}>Update your info</p>
-                    <TextField id="firstName" label="First Name" color='primary' name="firstName" onChange={handleChange} />
-                    <TextField id="lastName" label="Last Name" color='primary' name="lastName" onChange={handleChange} />
-                    <TextField id="email" label="Email" color='primary' name="email" onChange={handleChange} />
-                    <FormControl style={{minWidth: 190}}>
-                    <InputLabel id="subject" >Your class</InputLabel>
+                <p style={{fontSize:'12px', color:'grey'}}>Update your information</p>
+                    <TextField  className='textfield' disabled={disabledStatus} value='Dmitriy' id='firstName' label='First Name' color='primary' onChange={handleChange} name='firstName' />
+                    <TextField className='textfield' disabled={disabledStatus} value='Babich' id='lastName' label='Last Name' color='primary' onChange={handleChange} name='lastName' />
+                    <FormControl disabled={disabledStatus} style={{minWidth: 190}}>
+                    <InputLabel id='subject' >Your subject</InputLabel>
                         <Select
-                        labelId="subject"
-                        id="subject-select"
-                        name="className"
-                        // value={subject}
+                        labelId='subject'
+                        id='subject-select'
+                        name='className'
                         onChange={handleChange}
+                        value={formState.className}
                         >
                         <MenuItem value={'Web Development'}>Web Development</MenuItem>
                         <MenuItem value={'Data Analytics'}>Data Analytics</MenuItem>
@@ -93,42 +115,35 @@ const Info = () => {
                         </Select>
                     </FormControl>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <div style={{width:'80%'}}>
-                            {/* <KeyboardDatePicker
-                                margin="normal"
-                                width={1}
-                                id="date-picker-dialog"
-                                label="Date picker dialog"
-                                format="MM/dd/yyyy"
-                                value={selectedDate}
-                                onChange={handleDateChange}
-                                KeyboardButtonProps={{
-                                'aria-label': 'change date',
-                                }}
-                            /> */}
+                        <div style={{width:'100%', marginTop:'20px', marginLeft:'15px'}}>
                             <DatePicker
-                                views={["year"]}
-                                label="Year graduated"
+                                views={['year']}
+                                label='Year graduated'
                                 value={selectedDate}
-                                onChange={handleDateChange}
+                                onChange={handleChange}
+                                disabled={disabledStatus}
                                 />
                         </div>
                     </MuiPickersUtilsProvider>
-                    <TextField id="linkedin" label="LinkedIn" color='primary' name="linkedIn"  onChange={handleChange} />
-                    <TextField id="github" label="GitHub" color='primary' name="gitHub" onChange={handleChange} />
+                    <TextField className='textfield' value='Dmitriy Linked in' id='linkedin' label='LinkedIn' color='primary' name='linkedIn'  onChange={handleChange} disabled={disabledStatus} />
+                    <TextField className='textfield' value='Dmitriy Github' id='github' label='GitHub' color='primary' name='gitHub' onChange={handleChange} disabled={disabledStatus} />
                     <TextField
-                    className='input'
-                    id="standard-multiline-static"
-                    label="Bio"
+                    disabled={disabledStatus}
+                    value='My bio goes here'
+                    className='input textfield'
+                    id='standard-multiline-static'
+                    label='Bio'
                     multiline
                     rows={2}
-                    name="bio"
+                    name='bio'
                     onChange={handleChange}
                     />
-                    <LoginBtn type='submit'>Update</LoginBtn>
+                    <LoginBtn onClick={handleDisableChange} type={submitStatus}>{buttonText}</LoginBtn>
                 </VerticalDiv>
+                </FormContainer>
             </form>
         </VerticalDiv>
      );
 };
+
 export default Info;

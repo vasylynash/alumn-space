@@ -58,12 +58,11 @@ const theme = createTheme({
   }
 });
 
-
 function App() {
   if(!Auth.loggedIn()) {
     return (
       <ApolloProvider client={client}>
-      
+      <ThemeProvider theme={ theme }>
       <Router>
       <Switch>
               <Route exact path="/">
@@ -77,8 +76,9 @@ function App() {
             </Route>
             <Route path="*"><Landing/></Route>
             </Switch>
-              </Router>
-              </ApolloProvider>
+            </Router>
+    </ThemeProvider>
+    </ApolloProvider>
             
     )
   }

@@ -19,11 +19,11 @@ const List = styled.ul`
         margin-top: 0;
         font-weight: bold;
         transition: ease-in-out 0.3s;
+        margin-right: 5vw;
     }
 
     p:hover {
         color: #FF8985;
-        
     }
 
     @media (max-width: 768px) {
@@ -37,7 +37,6 @@ const List = styled.ul`
         height: 100%;
         padding-top: 3.5rem;
         transition: transform 0.3s ease-in-out;
-
 
         p {
         color: #707070;
@@ -56,7 +55,7 @@ const List = styled.ul`
 
 function RightNav( { open }) {
     return (
-        <List open={open}>
+        <List open={open}>           
                 <li>
                     <Link to='/Profile' style={{textDecoration:'none'}}>
                         <p>Profile</p>
@@ -81,4 +80,4 @@ function RightNav( { open }) {
     )
 }
 
-export default RightNav
+export default RightNav;

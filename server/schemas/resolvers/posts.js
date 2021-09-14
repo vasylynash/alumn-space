@@ -97,7 +97,14 @@ module.exports = {
     }
   },
   Mutation: {
-    addPost: async (_, { title, body, category, label }, context) => {
+    addPost: async (_, { title, body, category, label}, context) => {
+      if (!category) {
+        throw new UserInputError('Please select category')
+      }
+      if (!label) {
+        throw new UserInputError('Please select label')
+      }
+      
       const post = await Post.create({title: title, body: body, category: category, label: label, author: context.user._id });
       await User.findByIdAndUpdate(
                 { _id: context.user._id },
@@ -108,10 +115,10 @@ module.exports = {
     },
     updatePost: async (_, { id, title, body, category, label }) => {
       if(!title) {
-        throw new UserInputError("The title cannot be empty");
+        throw new UserInputError('The title cannot be empty');
       }
       if(!body) {
-        throw new UserInputError("The body of the post cannot be empty");
+        throw new UserInputError('The body of the post cannot be empty');
       }
       const post = await Post.findById({_id: id});
       post.title = title;
