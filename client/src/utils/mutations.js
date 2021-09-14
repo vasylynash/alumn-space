@@ -178,3 +178,13 @@ export const REMOVE_USER = gql`
       }
   }
 `;
+
+export const CHANGE_PASSWORD = gql`
+  mutation changePassword($id: ID!, $password: String!, $confirmPassword: String!) {
+      changePassword(id:$id, password:$password, confirmPassword:$confirmPassword) {
+          _id
+          password
+          confirmPassword
+      }
+  }
+`;
