@@ -17,6 +17,7 @@ import Signup from './pages/Signup';
 import Comments from './components/comments/Comments';
 import FullPost from './components/post/FullPost';
 import EditPost from './components/post/EditPost';
+import Auth from './utils/auth';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
@@ -57,8 +58,30 @@ const theme = createTheme({
   }
 });
 
-
 function App() {
+  if(!Auth.loggedIn()) {
+    return (
+      <ApolloProvider client={client}>
+      <ThemeProvider theme={ theme }>
+      <Router>
+      <Switch>
+              <Route exact path="/">
+              <Landing />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+            <Route path="*"><Landing/></Route>
+            </Switch>
+            </Router>
+    </ThemeProvider>
+    </ApolloProvider>
+            
+    )
+  }
   return (
 <ApolloProvider client={client}>
     <ThemeProvider theme={ theme }>

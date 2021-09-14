@@ -8,7 +8,7 @@ import { VerticalDiv } from './Landing';
 const Home = () => {
 
     return ( 
-        <div>
+     <div>
             <Navbar/>
             <SearchProvider>
             <SearchPost/>

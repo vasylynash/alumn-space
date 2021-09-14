@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import GlobalStyle from '../components/global.style';
-import { VerticalDiv } from './Landing';
+import { HeroContainer, LandingContainer, VerticalDiv } from './Landing';
 import { LoginBtn } from './Landing';
 import { SignUpBtn } from './Landing';
 import { BackArrow } from '../components/icons.styles'
-import logo from '../images/logo.png';
+import Logo from '../images/logo.png';
 import TextField from '@material-ui/core/TextField';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+import Hero from '../images/hero-graphic.png';
+import { Title } from './Landing';
 
 const Login = (props) => {
 const [formState, setFormState] = useState({ email: '', password: '' });
@@ -38,12 +40,18 @@ const [formState, setFormState] = useState({ email: '', password: '' });
   };
 
     return ( 
-        <VerticalDiv>
+      <>
+        <HeroContainer>
+          <Title className='desktopTitle'>AlumSpace</Title>
+          <img src={Hero}  alt="logo images"/>
+          <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif'}} className='desktopDescription'> A place for coding bootcamp Alumni to connect  with each other and share ideas.</p>
+        </HeroContainer>
+          <LandingContainer>
             <GlobalStyle/>
             <Link to='/'>
-                <BackArrow className="fas fa-arrow-left"></BackArrow>
+                <BackArrow className="fas fa-arrow-left" left='5vw'></BackArrow>
             </Link>
-            <img src={logo}  alt="logo images" height='200px' width='50%'/>
+            <img src={Logo}  alt="logo images"/>
             <h1 style={{fontSize:'37px', margin:'0'}}>Hello!</h1>
             <p style={{fontSize:'15px'}}>Please <span style={{color:'#51BBB9',fontWeight:'bold'}}>login </span>to use AlumnSpace</p>
             <form noValidate autoComplete="off" onSubmit={handleFormSubmit}>
@@ -56,7 +64,8 @@ const [formState, setFormState] = useState({ email: '', password: '' });
                     </Link>
                 </VerticalDiv>
             </form>
-        </VerticalDiv>
+            </LandingContainer>
+      </>
      );
 }
  

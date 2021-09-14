@@ -2,29 +2,70 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
-import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
+import { MuiPickersUtilsProvider, KeyboardDatePicker, DatePicker } from '@material-ui/pickers';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { LoginBtn, VerticalDiv } from '../../pages/Landing';
 import GlobalStyle from '../global.style';
+import {  useMutation } from '@apollo/client';
+import { UPDATE_USER_PROFILE } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 const Info = () => {
+    const user = Auth.getProfile().data;
 
-    const [selectedDate, setSelectedDate] = useState(new Date('2021-01-01T21:11:54'));
+    const [selectedDate, setSelectedDate] = useState(new Date());
     const [subject, setSubject] = useState();
     const [disabledStatus, setDisabledStatus] = useState(true);
     const [buttonText, setButtonText] = useState('Change');
     const [submitStatus, setSubmitStatus] = useState ('button')
+    
+    const [formState, setFormState] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        className: '', 
+        bio: ''
+    })
 
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
-      };
+    const [updateUser, { error }] = useMutation(UPDATE_USER_PROFILE);
 
-    const handleSubjectChange = (event) => {
-        setSubject(event.target.value);
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        console.log('selectedDate ->    ', selectedDate)
+        console.log('formState ->    ', formState)
+        console.log('email ->    ', formState.email)
+
+        try {
+            const mutationResponse = await updateUser ({
+                variables: {
+                    id: user._id,
+                    firstName: formState.firstName,
+                    lastName: formState.lastName,
+                    email: formState.email,
+                    className: formState.className,
+                    yearOfGraduation: selectedDate,
+                    linkedIn: formState.linkedIn,
+                    gitHub: formState.gitHub,
+                    bio: formState.bio
+                },
+            });
+
+        } catch (e) {
+            console.error(e);
+        }
     };
+    
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+
+        setFormState({
+            ...formState,
+            [name]: value,
+        });
+    }; 
 
     const handleDisableChange = (event) => {
         event.preventDefault();
@@ -42,49 +83,43 @@ const Info = () => {
     return ( 
         <VerticalDiv>
             <GlobalStyle/>
-            <form noValidate autoComplete="off">
+            <form noValidate autoComplete="off" onSubmit={handleFormSubmit}>
                 <VerticalDiv>
                 <h1 style={{fontSize:'25px', margin:'0', color:'#51BBB9'}}>My information</h1>
                 <p style={{fontSize:'12px', color:'grey'}}>Update your info</p>
-                    <TextField disabled={disabledStatus} id="firstName" label="First Name" color='primary' />
-                    <TextField disabled={disabledStatus} id="lastName" label="Last Name" color='primary' />
-                    <TextField disabled={disabledStatus} id="email" label="Email" color='primary' />
+                    <TextField disabled={disabledStatus} id="firstName" label="First Name" color='primary' onChange={handleChange} />
+                    <TextField disabled={disabledStatus} id="lastName" label="Last Name" color='primary' onChange={handleChange} />
+                    <TextField disabled={disabledStatus} id="email" label="Email" color='primary' onChange={handleChange} />
                     <FormControl disabled={disabledStatus} style={{minWidth: 190}}>
                     <InputLabel id="subject" >Your subject</InputLabel>
                         <Select
                         labelId="subject"
                         id="subject-select"
-                        value={subject}
-                        onChange={handleSubjectChange}
+                        name="className"
+                        // value={subject}
+                        onChange={handleChange}
                         >
-                        <MenuItem value={1}>subject1</MenuItem>
-                        <MenuItem value={2}>subject2</MenuItem>
-                        <MenuItem value={3}>subject3</MenuItem>
-                        <MenuItem value={4}>subject4</MenuItem>
-                        <MenuItem value={5}>subject5</MenuItem>
-                        <MenuItem value={6}>subject6</MenuItem>
-                        <MenuItem value={7}>subject7</MenuItem>
-                        <MenuItem value={8}>subject8</MenuItem>
-                        <MenuItem value={9}>subject9</MenuItem>
+                        <MenuItem value={'Web Development'}>Web Development</MenuItem>
+                        <MenuItem value={'Data Analytics'}>Data Analytics</MenuItem>
+                        <MenuItem value={'UX/UI Design'}>UX/UI Design</MenuItem>
+                        <MenuItem value={'Cybersecurity'}>Cybersecurity</MenuItem>
+                        <MenuItem value={'FinTech'}>FinTech</MenuItem>
+                        <MenuItem value={'Digital Marketing'}>Digital Marketing</MenuItem>
                         </Select>
                     </FormControl>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <div style={{width:'80%'}}>
-                            <KeyboardDatePicker
-                                disabled={disabledStatus}
-                                margin="normal"
-                                width={1}
-                                id="date-picker-dialog"
-                                label="Date picker dialog"
-                                format="MM/dd/yyyy"
+                        <div style={{width:'100%', marginTop:'20px', marginLeft:'15px'}}>
+                            <DatePicker
+                                views={["year"]}
+                                label="Year graduated"
                                 value={selectedDate}
-                                onChange={handleDateChange}
-                                KeyboardButtonProps={{
-                                'aria-label': 'change date',
-                                }}
-                            />
+                                onChange={handleChange}
+                                disabled={disabledStatus}
+                                />
                         </div>
                     </MuiPickersUtilsProvider>
+                    <TextField id="linkedin" label="LinkedIn" color='primary' name="linkedIn"  onChange={handleChange} disabled={disabledStatus} />
+                    <TextField id="github" label="GitHub" color='primary' name="gitHub" onChange={handleChange} disabled={disabledStatus} />
                     <TextField
                     disabled={disabledStatus}
                     className='input'
@@ -92,6 +127,8 @@ const Info = () => {
                     label="Bio"
                     multiline
                     rows={2}
+                    name="bio"
+                    onChange={handleChange}
                     />
                     <LoginBtn onClick={handleDisableChange} type= {submitStatus}>{buttonText}</LoginBtn>
                 </VerticalDiv>
@@ -99,4 +136,5 @@ const Info = () => {
         </VerticalDiv>
      );
 };
+
 export default Info;
