@@ -52,7 +52,7 @@ const postSchema = new Schema({
     type: String,
     enum: ['Coding', 'DataScience', 'UIUX', 'None'],
     default: 'None',
-    // required: true
+    required: true
   },
   label: {
     type: String, 
@@ -72,7 +72,7 @@ const postSchema = new Schema({
       'None'
     ],
     default: 'None',
-    // required: true
+    required: true
   },
   dateCreated: {
     type: Date,

@@ -36,9 +36,6 @@ const AddPost = () => {
     const [isPending, setIsPending] = useState(false);
     const [addPost, {error}] = useMutation(ADD_POST);
 
-    if (error) {
-        return `Submission error! ${error.message}`;
-    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
