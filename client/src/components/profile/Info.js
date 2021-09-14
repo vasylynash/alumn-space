@@ -34,8 +34,6 @@ const Info = () => {
 
     console.log('something else')
 
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    const [subject, setSubject] = useState();
     const [disabledStatus, setDisabledStatus] = useState(true);
     const [buttonText, setButtonText] = useState('Change');
     const [submitStatus, setSubmitStatus] = useState ('button')
@@ -66,6 +64,8 @@ const Info = () => {
     //     linkedIn: data.user.linkedIn,
     //     gitHub: data.user.gitHub,
     // })
+
+    const [selectedDate, handleDateChange] = useState(new Date());
 
     const [updateUser, { error }] = useMutation(UPDATE_USER_PROFILE);
 
@@ -147,7 +147,7 @@ const Info = () => {
                                 views={['year']}
                                 label='Year graduated'
                                 value={selectedDate}
-                                onChange={handleChange}
+                                onChange={handleDateChange}
                                 disabled={disabledStatus}
                                 />
                         </div>

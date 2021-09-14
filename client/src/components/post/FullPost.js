@@ -70,12 +70,15 @@ export const ButtonContainer = styled.div`
 `
 
 const  FullPost= () => {
+    console.log('aslfkjaskdfjdlkj')
     const { postId } = useParams();
     const [addLike] = useMutation(ADD_POST_LIKE, {refetchQueries: [QUERY_SINGLE_POST]})
     const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
       variables: { id: postId },
     });
     const post = data?.post || {};
+
+    console.log('post ->     ', post)
 
     if (loading) {
       return <div>Loading...</div>;

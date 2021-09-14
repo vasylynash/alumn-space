@@ -6,6 +6,8 @@ import SearchProvider from '../utils/SearchContext';
 import { VerticalDiv } from './Landing';
 
 const Home = () => {
+    
+    console.log('HOME')
 
     return ( 
      <div>

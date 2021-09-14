@@ -4,6 +4,7 @@ import { LoginBtn, VerticalDiv } from '../../pages/Landing';
 import { Line } from '../posts/SearchPost';
 
 function Security() {
+    console.log('security')
     const [disabledStatus, setDisabledStatus] = useState(true);
     const [buttonText, setButtonText] = useState('Change');
     const [submitStatus, setSubmitStatus] = useState('button');
