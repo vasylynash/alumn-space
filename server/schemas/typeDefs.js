@@ -114,6 +114,7 @@ const typeDefs = gql`
         updateUser(id: ID!, firstName: String, lastName: String, image: String, role: String, bio: String, yearOfGraduation: String!, linkedIn: String, gitHub: String, className: String!, email: String): User
         addPostLike(postId: ID!, userId: String!): Post
         removeUser(id:ID!): User
+        changePassword(id: ID!, password: String!, confirmPassword: String!): User
     }
 `;
 
