@@ -90,19 +90,19 @@ const Info = () => {
     return ( 
         <VerticalDiv>
             <GlobalStyle/>
-            <form noValidate autoComplete="off" onSubmit={handleFormSubmit}>
+            <form noValidate autoComplete='off' onSubmit={handleFormSubmit}>
                 <FormContainer>
                 <VerticalDiv>
                 <h1 style={{fontSize:'25px', margin:'0', color:'#51BBB9'}}>My information</h1>
                 <p style={{fontSize:'12px', color:'grey'}}>Update your info</p>
-                    <TextField  className='textfield' disabled={disabledStatus} value='Dmitriy' id="firstName" label="First Name" color='primary' onChange={handleChange} />
-                    <TextField className='textfield' disabled={disabledStatus} value='Babich' id="lastName" label="Last Name" color='primary' onChange={handleChange} />
+                    <TextField  className='textfield' disabled={disabledStatus} value='Dmitriy' id='firstName' label='First Name' color='primary' onChange={handleChange} name='firstName' />
+                    <TextField className='textfield' disabled={disabledStatus} value='Babich' id='lastName' label='Last Name' color='primary' onChange={handleChange} name='lastName' />
                     <FormControl disabled={disabledStatus} style={{minWidth: 190}}>
-                    <InputLabel id="subject" >Your subject</InputLabel>
+                    <InputLabel id='subject' >Your subject</InputLabel>
                         <Select
-                        labelId="subject"
-                        id="subject-select"
-                        name="className"
+                        labelId='subject'
+                        id='subject-select'
+                        name='className'
                         onChange={handleChange}
                         value={formState.className}
                         >
@@ -117,25 +117,25 @@ const Info = () => {
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <div style={{width:'100%', marginTop:'20px', marginLeft:'15px'}}>
                             <DatePicker
-                                views={["year"]}
-                                label="Year graduated"
+                                views={['year']}
+                                label='Year graduated'
                                 value={selectedDate}
                                 onChange={handleChange}
                                 disabled={disabledStatus}
                                 />
                         </div>
                     </MuiPickersUtilsProvider>
-                    <TextField className='textfield' value='Dmitriy Linked in' id="linkedin" label="LinkedIn" color='primary' name="linkedIn"  onChange={handleChange} disabled={disabledStatus} />
-                    <TextField className='textfield' value='Dmitriy Github' id="github" label="GitHub" color='primary' name="gitHub" onChange={handleChange} disabled={disabledStatus} />
+                    <TextField className='textfield' value='Dmitriy Linked in' id='linkedin' label='LinkedIn' color='primary' name='linkedIn'  onChange={handleChange} disabled={disabledStatus} />
+                    <TextField className='textfield' value='Dmitriy Github' id='github' label='GitHub' color='primary' name='gitHub' onChange={handleChange} disabled={disabledStatus} />
                     <TextField
                     disabled={disabledStatus}
                     value='My bio goes here'
                     className='input textfield'
-                    id="standard-multiline-static"
-                    label="Bio"
+                    id='standard-multiline-static'
+                    label='Bio'
                     multiline
                     rows={2}
-                    name="bio"
+                    name='bio'
                     onChange={handleChange}
                     />
                     <LoginBtn onClick={handleDisableChange} type={submitStatus}>{buttonText}</LoginBtn>
