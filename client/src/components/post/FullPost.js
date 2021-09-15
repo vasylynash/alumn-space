@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { VerticalDiv } from '../../pages/Landing';
 import Navbar from '../nav/Navbar';
 import styled from 'styled-components';
@@ -11,8 +11,18 @@ import { useQuery } from '@apollo/client';
 import Auth from '../../utils/auth';
 import { ADD_POST_LIKE } from '../../utils/mutations';
 import { useMutation } from "@apollo/client";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import DesktopComments from '../comments/DesktopComments';
 
 const FullPostContainer = styled.div`
+
+    .show {
+        display: block;
+    }
+
+    .hidden {
+        display: none;
+    }
 
     .author {
         color: #707070;
@@ -27,6 +37,15 @@ const FullPostContainer = styled.div`
     .label {
         font-size: 15px;
         color:#FF8985;
+    }
+
+    .body {
+
+        @media (min-width: 768px) {
+            width: 70vw;
+            margin: auto;
+        }
+
     }
 
     p {
@@ -69,7 +88,25 @@ export const ButtonContainer = styled.div`
     
 `
 
+const MobileBtn = styled.div`
+
+    display: block;
+
+    @media (min-width: 768px) {
+        display: none;
+    }
+`
+
+const DesktopBtn = styled.div`
+    display: none;
+
+    @media (min-width: 768px) {
+        display: block;
+    }
+`
+
 const  FullPost= () => {
+    const [commentToggle, setCommentToggle] = useState('hidden toggle ')
     const { postId } = useParams();
     const [addLike] = useMutation(ADD_POST_LIKE, {refetchQueries: [QUERY_SINGLE_POST]})
     const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
@@ -78,7 +115,7 @@ const  FullPost= () => {
     const post = data?.post || {};
 
     if (loading) {
-      return <div>Loading...</div>;
+      return <div style={{margin:'auto'}}><CircularProgress color="secondary" /></div>;
     }
 
     const handleLike = async (e) => {
@@ -95,6 +132,15 @@ const  FullPost= () => {
         }
     };
 
+    const handleCommentToggle = (e) => {
+        e.preventDefault();
+        setCommentToggle('show toggle');
+
+        if (commentToggle === 'show toggle') {
+            setCommentToggle('hidden toggle');
+        }
+    }
+
     return (
         <>
         <Navbar/>
@@ -108,9 +154,10 @@ const  FullPost= () => {
                 <p className='category'>{post.category}</p>
                 <p className='label'>{post.label}</p>
                 <ContentContainer>
-                    <p>{post.body}</p>
+                    <p className='body'>{post.body}</p>
                 </ContentContainer>
                 <ButtonContainer>
+                    <MobileBtn>
                     <Link to={`/comments/${postId}`} style={{textDecoration:'none'}}>
                         <Fab
                         className='button'
@@ -123,6 +170,20 @@ const  FullPost= () => {
                             <div className='likeContainer'><i className='fas fa-comment' style={{color:'white'}}><p>{post.comments.length}</p></i></div>
                         </Fab>
                     </Link>
+                    </MobileBtn>
+                    <DesktopBtn>
+                        <Fab
+                            className='button'
+                            color='primary' 
+                            aria-label='like'
+                            size='small' 
+                            style={{marginTop:'0.5rem'}}
+                            variant='extended'
+                            onClick={handleCommentToggle}
+                            >
+                                <div className='likeContainer'><i className='fas fa-comment' style={{color:'white'}}><p>{post.comments.length}</p></i></div>
+                        </Fab>
+                    </DesktopBtn>
                     <Fab
                     className='button'
                     color='secondary' 
@@ -134,6 +195,9 @@ const  FullPost= () => {
                         <div onClick={handleLike} className='likeContainer'><i className={post.likes.includes(Auth.getProfile().data._id)?'fas fa-heart':'fas fa-heart-broken'}><p>{post.totalLikes}</p></i></div>
                     </Fab>
                 </ButtonContainer>
+                <div className={commentToggle}>
+                    <DesktopComments/>
+                </div>
             </VerticalDiv>
         </FullPostContainer>
         </>
