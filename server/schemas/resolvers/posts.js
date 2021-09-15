@@ -115,12 +115,14 @@ module.exports = {
       return await post.populate('author').execPopulate();
     },
     updatePost: async (_, { id, title, body, category, label }) => {
+      console.log("title",title)
       if(!title) {
         throw new UserInputError('The title cannot be empty');
       }
       if(!body) {
         throw new UserInputError('The body of the post cannot be empty');
       }
+      console.log(title)
       const post = await Post.findById({_id: id});
       post.title = title;
       post.body = body;

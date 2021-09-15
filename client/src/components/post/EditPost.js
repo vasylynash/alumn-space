@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { UPDATE_POST } from '../../utils/mutations';
+import { UPDATE_POST, REMOVE_POST } from '../../utils/mutations';
 import { QUERY_SINGLE_POST } from '../../utils/queries'
-import Auth from '../../utils/auth';
 import { Link } from 'react-router-dom';
 import { BackArrow } from '../../components/icons.styles';
-import { LoginBtn, VerticalDiv } from '../../pages/Landing';
+import { VerticalDiv } from '../../pages/Landing';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -34,15 +33,26 @@ function EditPost() {
     const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
         variables: { id: postId },
       });
-    const [updatePost] = useMutation(UPDATE_POST)
-    //   const {post} = data?.post || {};
-      
-    const [category, setCategory] = useState(data.post.category);
-    const [label, setLabel] = useState(data.post.label);
-    const [title, setTitle] = useState(data.post.title);
-    const [body, setBody] = useState(data.post.body); 
+    const [updatePost] = useMutation(UPDATE_POST);
+    const [deletePost] = useMutation(REMOVE_POST);
+    const [category, setCategory] = useState(!data?'':data.post.category);
+    const [label, setLabel] = useState(!data?'':data.post.label);
+    const [title, setTitle] = useState(!data?'':data.post.title);
+    const [body, setBody] = useState(!data?'':data.post.body); 
     const [isPending, setIsPending] = useState(false);
 
+const handleDelete = async (e) => {
+    try {
+        await deletePost({
+            variables: {
+                id: postId
+            }
+        });
+        window.location.assign('/Profile')
+} catch(e) {
+    console.log(e)
+}
+}
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -50,15 +60,15 @@ function EditPost() {
         try {
             await updatePost({
                 variables: {
-                    postId,
-                    title,
-                    body,
-                    category,
-                    label,
+                    id: postId,
+                    title: title,
+                    body: body,
+                    category:category,
+                    label: label,
                 }
             });
             setIsPending(false);
-            window.location.assign('/Profile');
+            window.location.assign('/Profile')
         } catch(e) {
             console.log(e)
         }
@@ -68,7 +78,7 @@ function EditPost() {
         <>
         <AddPostContainer>
             <GlobalStyle/>
-            <Link to='/home'>
+            <Link to='/profile'>
                 <BackArrow className='fas fa-arrow-left' top='25px' left='20px'/>
             </Link>
             <VerticalDiv>
@@ -140,7 +150,7 @@ function EditPost() {
                 <ButtonContainer>
                     { !isPending && <Fab style={{color:'white'}} type='submit' className='button' color='primary' size='small' aria-label='post'><i className="fas fa-check"></i></Fab>  }   
                     { isPending &&  <CircularProgress color="secondary" />}
-                    <Fab className='button' color='secondary' size='small' aria-label='delete'><i class="fas fa-trash"></i></Fab>
+                    <Fab className='button' onClick={handleDelete} color='secondary' size='small' aria-label='delete'><i class="fas fa-trash"></i></Fab>
                 </ButtonContainer>
                 </VerticalDiv>
                 </form>
