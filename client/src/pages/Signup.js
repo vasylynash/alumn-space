@@ -93,7 +93,7 @@ const Signup = () => {
                 <VerticalDiv>
                     <TextField id="username" label="Username" color='primary' name="username" onChange={handleChange} />
                     <TextField id="email" label="Email" color='primary' name="email" onChange={handleChange} />
-                    <FormControl style={{minWidth: 170}}>
+                    <FormControl style={{minWidth: 185}}>
                     <InputLabel id="subject" >Your class</InputLabel>
                         <Select
                         labelId="subject"
