@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { UPDATE_POST, REMOVE_POST } from '../../utils/mutations';
@@ -27,18 +27,30 @@ const EditPostContainer = styled.div`
     }
 `
 
-function EditPost() {
+const  EditPost = () => {
     const { postId } = useParams();
+    const setUserData = () =>{
+        console.log(data)
+    }
+
     const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
         variables: { id: postId },
       });
-    const [updatePost] = useMutation(UPDATE_POST);
+
+    const [updatePost] =  useMutation(UPDATE_POST);
     const [deletePost] = useMutation(REMOVE_POST);
     const [category, setCategory] = useState(!data?'':data.post.category);
     const [label, setLabel] = useState(!data?'':data.post.label);
     const [title, setTitle] = useState(!data?'':data.post.title);
     const [body, setBody] = useState(!data?'':data.post.body); 
     const [isPending, setIsPending] = useState(false);
+
+    useEffect(() => {
+        setCategory(!data?'':data.post.category)
+        setLabel(!data?'':data.post.label)
+        setTitle(!data?'':data.post.title)
+        setBody(!data?'':data.post.body)
+      }, [data])
 
     const handleDelete = async (e) => {
     try {
