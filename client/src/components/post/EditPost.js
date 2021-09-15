@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { ADD_POST } from '../../utils/mutations';
-import Auth from '../../utils/auth';
+import { UPDATE_POST, REMOVE_POST } from '../../utils/mutations';
+import { QUERY_SINGLE_POST } from '../../utils/queries'
 import { Link } from 'react-router-dom';
 import { BackArrow } from '../../components/icons.styles';
-import { LoginBtn, VerticalDiv } from '../../pages/Landing';
+import { VerticalDiv } from '../../pages/Landing';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -18,6 +18,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Fab from '@material-ui/core/Fab';
 import { ButtonContainer } from './FullPost';
 import styled from 'styled-components';
+import { useQuery } from '@apollo/client';
+import { useParams } from 'react-router-dom';
 
 const EditPostContainer = styled.div`
     @media (min-width: 768px) {
@@ -25,31 +27,56 @@ const EditPostContainer = styled.div`
     }
 `
 
-function EditPost() {
-    const [category, setCategory] = useState('');
-    const [label, setLabel] = useState('');
-    const [title, setTitle] = useState('');
-    const [body, setBody] = useState(''); 
+const  EditPost = () => {
+    const { postId } = useParams();
+    const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
+        variables: { id: postId },
+      });
+
+    const [updatePost] =  useMutation(UPDATE_POST);
+    const [deletePost] = useMutation(REMOVE_POST);
+    const [category, setCategory] = useState(!data?'':data.post.category);
+    const [label, setLabel] = useState(!data?'':data.post.label);
+    const [title, setTitle] = useState(!data?'':data.post.title);
+    const [body, setBody] = useState(!data?'':data.post.body); 
     const [isPending, setIsPending] = useState(false);
-    const [addPost, {error}] = useMutation(ADD_POST)
-    const history = useHistory();
+
+    useEffect(() => {
+        setCategory(!data?'':data.post.category)
+        setLabel(!data?'':data.post.label)
+        setTitle(!data?'':data.post.title)
+        setBody(!data?'':data.post.body)
+      }, [data])
+
+    const handleDelete = async (e) => {
+    try {
+        await deletePost({
+            variables: {
+                id: postId
+            }
+        });
+        window.location.assign('/Profile')
+    } catch(e) {
+    console.log(e)
+    }
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         setIsPending(true);
         try {
-            const {data} = await addPost({
+            await updatePost({
                 variables: {
-                    title,
-                    body,
+                    id: postId,
+                    title: title,
+                    body: body,
                     category,
-                    label,
-                    author: Auth.getProfile().data._id
+                    label
                 }
             });
             setIsPending(false);
-            history.push('/home');
+            window.location.assign('/Profile')
         } catch(e) {
             console.log(e)
         }
@@ -59,7 +86,7 @@ function EditPost() {
         <>
         <AddPostContainer>
             <GlobalStyle/>
-            <Link to='/home'>
+            <Link to='/profile'>
                 <BackArrow className='fas fa-arrow-left' top='25px' left='20px'/>
             </Link>
             <VerticalDiv>
@@ -129,9 +156,9 @@ function EditPost() {
                 value={body}
                 />
                 <ButtonContainer>
-                    { !isPending && <Fab style={{color:'white'}} className='button' color='primary' size='small' aria-label='post'><i className="fas fa-check"></i></Fab>  }   
+                    { !isPending && <Fab style={{color:'white'}} type='submit' className='button' color='primary' size='small' aria-label='post'><i className="fas fa-check"></i></Fab>  }   
                     { isPending &&  <CircularProgress color="secondary" />}
-                    <Fab className='button' color='secondary' size='small' aria-label='delete'><i class="fas fa-trash"></i></Fab>
+                    <Fab className='button' onClick={handleDelete} color='secondary' size='small' aria-label='delete'><i class="fas fa-trash"></i></Fab>
                 </ButtonContainer>
                 </VerticalDiv>
                 </form>
@@ -141,6 +168,5 @@ function EditPost() {
         </>
      );
 }
-
 
 export default EditPost;

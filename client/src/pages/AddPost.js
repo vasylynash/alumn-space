@@ -13,11 +13,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
-import { DropDownContainer, Line } from "../components/posts/SearchPost";
+import { DropDownContainer } from "../components/posts/SearchPost";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 export const AddPostContainer = styled.div`
-    
+
     .title {
         margin: 0.5rem 0;
         text-align: center;
@@ -104,7 +104,7 @@ const AddPost = () => {
                     color='primary' 
                     type='text'
                     required
-                    inputProps={{ maxLength: 20 }} 
+                    inputProps={{ maxLength: 35 }} 
                     value={title} 
                     onChange={(e) => setTitle(e.target.value)}
                     />
@@ -118,7 +118,6 @@ const AddPost = () => {
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
                             >
-                            <MenuItem value={'None'}>None</MenuItem>
                             <MenuItem value={'Coding'}>Coding</MenuItem>
                             <MenuItem value={'DataScience'}>Data Science</MenuItem>
                             <MenuItem value={'UIUX'}>UI/UX</MenuItem>
@@ -133,7 +132,6 @@ const AddPost = () => {
                             value={label}
                             onChange={(e) => setLabel(e.target.value)}
                             >
-                            <MenuItem value={'None'}>None</MenuItem>
                             <MenuItem value={'Help'}>Help</MenuItem>
                             <MenuItem value={'SuccessStories'}>Success Stories</MenuItem>
                             <MenuItem value={'Jobs'}>Jobs</MenuItem>
