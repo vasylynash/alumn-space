@@ -27,7 +27,7 @@ const  Comments = () => {
       const {comments} = data?.post || {};
       let commentsReversed =[...comments].reverse()
       if (loading) {
-        return <div><CircularProgress color="secondary" /></div>;
+        return <div style={{margin:'auto'}}><CircularProgress color="secondary" /></div>;
       }
 
       const handleAddComment = async (e) => {
