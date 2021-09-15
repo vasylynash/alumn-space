@@ -106,11 +106,7 @@ const DesktopBtn = styled.div`
 `
 
 const  FullPost= () => {
-<<<<<<< HEAD
-    console.log('aslfkjaskdfjdlkj')
-=======
     const [commentToggle, setCommentToggle] = useState('hidden toggle ')
->>>>>>> main
     const { postId } = useParams();
     const [addLike] = useMutation(ADD_POST_LIKE, {refetchQueries: [QUERY_SINGLE_POST]})
     const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
