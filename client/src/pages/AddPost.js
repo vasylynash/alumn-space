@@ -94,7 +94,6 @@ const AddPost = () => {
             <CreateContainer>
                 <h1 className='title' style={{color:'#51BBB9'}}>Create Post</h1>
                 <p className='text'>Post your idea, tutorial, question, or advice. Here. </p>
-                <Line className='line'/>
                 <form onSubmit={handleSubmit}>
                     <VerticalDiv>
                     <TextField
@@ -103,9 +102,9 @@ const AddPost = () => {
                     name='title'
                     label='Title'
                     color='primary' 
-                    type='text' 
-                    fullWidth
-                    required 
+                    type='text'
+                    required
+                    inputProps={{ maxLength: 20 }} 
                     value={title} 
                     onChange={(e) => setTitle(e.target.value)}
                     />
@@ -115,6 +114,7 @@ const AddPost = () => {
                             <Select
                             labelId="subject"
                             id="subject-select"
+                            required
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
                             >
@@ -129,6 +129,7 @@ const AddPost = () => {
                             <Select
                             labelId="subject"
                             id="subject-select"
+                            required
                             value={label}
                             onChange={(e) => setLabel(e.target.value)}
                             >
