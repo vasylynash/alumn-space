@@ -41,7 +41,7 @@ function EditPost() {
     const [body, setBody] = useState(!data?'':data.post.body); 
     const [isPending, setIsPending] = useState(false);
 
-const handleDelete = async (e) => {
+    const handleDelete = async (e) => {
     try {
         await deletePost({
             variables: {
@@ -49,10 +49,11 @@ const handleDelete = async (e) => {
             }
         });
         window.location.assign('/Profile')
-} catch(e) {
+    } catch(e) {
     console.log(e)
-}
-}
+    }
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -63,8 +64,8 @@ const handleDelete = async (e) => {
                     id: postId,
                     title: title,
                     body: body,
-                    category:category,
-                    label: label,
+                    category,
+                    label
                 }
             });
             setIsPending(false);

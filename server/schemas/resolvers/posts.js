@@ -122,12 +122,13 @@ module.exports = {
       if(!body) {
         throw new UserInputError('The body of the post cannot be empty');
       }
-      console.log(title)
       const post = await Post.findById({_id: id});
       post.title = title;
       post.body = body;
       post.category = category;
       post.label = label;
+      console.log(post)
+      await Post.updateOne({ "_id": id},post);
       return post;
     },
     removePost: async (parent, { id }, context)  => {
