@@ -104,7 +104,7 @@ const AddPost = () => {
                     color='primary' 
                     type='text'
                     required
-                    inputProps={{ maxLength: 20 }} 
+                    inputProps={{ maxLength: 35 }} 
                     value={title} 
                     onChange={(e) => setTitle(e.target.value)}
                     />
