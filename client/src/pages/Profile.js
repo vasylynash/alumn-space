@@ -47,7 +47,6 @@ const ProfilePic = styled.div`
 `
 
 const Profile = () => {
-    console.log('profile')
     const user = Auth.getProfile().data;
     const [componentState, setComponentState] = useState();
 

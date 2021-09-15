@@ -114,8 +114,6 @@ const  FullPost= () => {
     });
     const post = data?.post || {};
 
-    console.log('post ->     ', post)
-
     if (loading) {
       return <div style={{margin:'auto'}}><CircularProgress color="secondary" /></div>;
     }

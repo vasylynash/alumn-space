@@ -7,10 +7,8 @@ import { CHANGE_PASSWORD } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 function Security() {
-    console.log('security')
 
     const user = Auth.getProfile().data
-    console.log('user ->     ', user)
 
     const [disabledStatus, setDisabledStatus] = useState(true);
     const [buttonText, setButtonText] = useState('Change');
@@ -44,8 +42,6 @@ function Security() {
         event.preventDefault();
 
         try {
-            console.log('HERE')
-            console.log(passwordState)
 
             const mutationResponse = await changePassword ({
                 variables: {
