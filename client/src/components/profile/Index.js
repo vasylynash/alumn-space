@@ -2,8 +2,12 @@ import React from 'react';
 import Info from './Info';
 import Security from './Security';
 import UserPosts from './UserPosts';
+import Auth from '../../utils/auth';
+import { useQuery } from '@apollo/client';
+import { QUERY_SINGLE_USER } from '../../utils/queries';
 
 function Index(props) {
+
     const { section } = props
     let component;
     switch(section) {

@@ -12,7 +12,10 @@ import GlobalStyle from '../global.style';
 import {  useMutation } from '@apollo/client';
 import { UPDATE_USER_PROFILE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-import styled from 'styled-components';
+import { useQuery } from '@apollo/client';
+import { QUERY_SINGLE_USER } from '../../utils/queries';
+import styled from 'styled-components'; 
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const FormContainer = styled.div`
     .textfield {
@@ -22,28 +25,35 @@ const FormContainer = styled.div`
 
 const Info = () => {
     const user = Auth.getProfile().data;
+    
+    const { loading, err, data } = useQuery(QUERY_SINGLE_USER, {
+        variables: { id: user._id }
+    });
 
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    const [subject, setSubject] = useState();
     const [disabledStatus, setDisabledStatus] = useState(true);
     const [buttonText, setButtonText] = useState('Change');
     const [submitStatus, setSubmitStatus] = useState ('button')
     
     const [formState, setFormState] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        className: '', 
-        bio: ''
-    })
+        firstName: data.user.firstName,
+        lastName: data.user.lastName,
+        email: data.user.email,
+        className: data.user.className, 
+        bio: data.user.bio,
+        linkedIn: data.user.linkedIn,
+        gitHub: data.user.gitHub,
+    });
+
+    const [selectedDate, handleDateChange] = useState(new Date());
 
     const [updateUser, { error }] = useMutation(UPDATE_USER_PROFILE);
 
+    if (loading) {
+        return <CircularProgress color="secondary" />;
+      }
+
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log('selectedDate ->    ', selectedDate)
-        console.log('formState ->    ', formState)
-        console.log('email ->    ', formState.email)
 
         try {
             const mutationResponse = await updateUser ({
@@ -75,15 +85,15 @@ const Info = () => {
     }; 
 
     const handleDisableChange = (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         setDisabledStatus(false);
         setButtonText('Update');
-        setSubmitStatus('Submit');
+        setSubmitStatus('button');
 
         if (disabledStatus === false) {
             setDisabledStatus(true);
             setButtonText('Change');
-            setSubmitStatus('button');
+            setSubmitStatus('submit');
         };
     };
 
@@ -95,8 +105,8 @@ const Info = () => {
                 <VerticalDiv>
                 <h1 style={{fontSize:'25px', margin:'0', color:'#51BBB9'}}>My information</h1>
                 <p style={{fontSize:'12px', color:'grey'}}>Update your information</p>
-                    <TextField  className='textfield' disabled={disabledStatus} value='Dmitriy' id='firstName' label='First Name' color='primary' onChange={handleChange} name='firstName' />
-                    <TextField className='textfield' disabled={disabledStatus} value='Babich' id='lastName' label='Last Name' color='primary' onChange={handleChange} name='lastName' />
+                    <TextField  className='textfield' disabled={disabledStatus} value={formState.firstName} id='firstName' label='First Name' color='primary' onChange={handleChange} name='firstName' />
+                    <TextField className='textfield' disabled={disabledStatus} value={formState.lastName} id='lastName' label='Last Name' color='primary' onChange={handleChange} name='lastName' />
                     <FormControl disabled={disabledStatus} style={{minWidth: 190}}>
                     <InputLabel id='subject' >Your subject</InputLabel>
                         <Select
@@ -120,16 +130,16 @@ const Info = () => {
                                 views={['year']}
                                 label='Year graduated'
                                 value={selectedDate}
-                                onChange={handleChange}
+                                onChange={handleDateChange}
                                 disabled={disabledStatus}
                                 />
                         </div>
                     </MuiPickersUtilsProvider>
-                    <TextField className='textfield' value='Dmitriy Linked in' id='linkedin' label='LinkedIn' color='primary' name='linkedIn'  onChange={handleChange} disabled={disabledStatus} />
-                    <TextField className='textfield' value='Dmitriy Github' id='github' label='GitHub' color='primary' name='gitHub' onChange={handleChange} disabled={disabledStatus} />
+                    <TextField className='textfield' value={formState.linkedIn} id='linkedin' label='LinkedIn' color='primary' name='linkedIn'  onChange={handleChange} disabled={disabledStatus} />
+                    <TextField className='textfield' value={formState.gitHub} id='github' label='GitHub' color='primary' name='gitHub' onChange={handleChange} disabled={disabledStatus} />
                     <TextField
                     disabled={disabledStatus}
-                    value='My bio goes here'
+                    value={formState.bio}
                     className='input textfield'
                     id='standard-multiline-static'
                     label='Bio'

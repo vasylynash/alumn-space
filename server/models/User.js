@@ -21,10 +21,12 @@ const userSchema = new Schema(
         required: true,
     },
     firstName: {
-      type: String
+      type: String,
+      default: ''
     },
     lastName: {
-      type: String
+      type: String,
+      default: ''
     },
     image: {
         type: String,
@@ -40,16 +42,19 @@ const userSchema = new Schema(
         type: String
     },
     bio: {
-        type: String
+        type: String,
+        default: ''
     },
     yearOfGraduation: {
         type: Date
     },
     linkedIn: {
-        type: String
+        type: String,
+        default: ''
     },
     gitHub: {
-        type: String
+        type: String,
+        default: ''
     },
     className: {
         type: String,
