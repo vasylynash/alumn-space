@@ -62,7 +62,7 @@ module.exports = {
       }
     },
     searchPosts: async (_, args) => {
-      const { search = null, page = 1, limit = 20 } = args;
+      const { search = null, page = 1, limit = 40 } = args;
       let filters = [];
 
       if(search.keyword) {
