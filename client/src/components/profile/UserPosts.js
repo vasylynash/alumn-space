@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import UserPost from '../posts/UserPost';
 
 function UserPosts() {
-
     const { loading, error, data } = useQuery(QUERY_ALL_POSTS);
     const posts = data?.posts || [];
 
