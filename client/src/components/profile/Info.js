@@ -24,23 +24,11 @@ const FormContainer = styled.div`
 `
 
 const Info = () => {
-    console.log('info')
-    // console.log('currentuser ->   ', currentUser)
     const user = Auth.getProfile().data;
-    console.log('user ->    ', user)
-    console.log('user id ->   ', user._id);
     
     const { loading, err, data } = useQuery(QUERY_SINGLE_USER, {
         variables: { id: user._id }
     });
-
-    
-    console.log('data ->   ', data)
-
-    
-    // const { currentUser } = useUser();
-
-    // console.log('currentUser ->   ', currentUser)
 
     const [disabledStatus, setDisabledStatus] = useState(true);
     const [buttonText, setButtonText] = useState('Change');
@@ -54,24 +42,7 @@ const Info = () => {
         bio: data.user.bio,
         linkedIn: data.user.linkedIn,
         gitHub: data.user.gitHub,
-        // firstName: '',
-        // lastName: '',
-        // email: '',
-        // className: '', 
-        // bio: '',
-        // linkedIn: '',
-        // gitHub: '',
     });
-
-    // setFormState({
-    //     firstName: data.user.firstName,
-    //     lastName: data.user.lastName,
-    //     email: data.user.email,
-    //     className: data.user.className, 
-    //     bio: data.user.bio,
-    //     linkedIn: data.user.linkedIn,
-    //     gitHub: data.user.gitHub,
-    // })
 
     const [selectedDate, handleDateChange] = useState(new Date());
 
@@ -83,10 +54,8 @@ const Info = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log('in form submit')
 
         try {
-            console.log('in try of the form submit')
             const mutationResponse = await updateUser ({
                 variables: {
                     id: user._id,
