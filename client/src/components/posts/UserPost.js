@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { Card } from '../posts/Post';
 
 const UserPost = ({post}) => {
-console.log(post)
     return (
         <>
         <Link to={`/edit-post/${post._id}`} style={{textDecoration: 'none', color:'black'}}>

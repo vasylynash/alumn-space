@@ -49,6 +49,7 @@ module.exports = {
       }
     },
     post: async (_, args) => {
+      console.log('args',args)
       try {
         const post = await Post.findById(args.id).populate('author');
         if (post) {

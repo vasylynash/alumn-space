@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { useParams } from 'react-router-dom';
 import { UPDATE_POST } from '../../utils/mutations';
 import { QUERY_SINGLE_POST } from '../../utils/queries'
 import Auth from '../../utils/auth';
@@ -19,24 +18,31 @@ import GlobalStyle from '../global.style';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Fab from '@material-ui/core/Fab';
 import { ButtonContainer } from './FullPost';
+import styled from 'styled-components';
 import { useQuery } from '@apollo/client';
+import { useParams } from 'react-router-dom';
 
-const EditPost = () => {
+const EditPostContainer = styled.div`
+    @media (min-width: 768px) {
+        width: 80vw;
+    }
+`
+
+function EditPost() {
     const { postId } = useParams();
+    console.log(postId)
     const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
         variables: { id: postId },
       });
-console.log(data)
-    const [updatePost] = useMutation(UPDATE_POST);
+    const [updatePost] = useMutation(UPDATE_POST)
+    //   const {post} = data?.post || {};
+      
     const [category, setCategory] = useState(data.post.category);
     const [label, setLabel] = useState(data.post.label);
     const [title, setTitle] = useState(data.post.title);
     const [body, setBody] = useState(data.post.body); 
     const [isPending, setIsPending] = useState(false);
-      
 
-
-console.log(data)
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -44,7 +50,7 @@ console.log(data)
         try {
             await updatePost({
                 variables: {
-                    id: postId,
+                    postId,
                     title,
                     body,
                     category,
@@ -52,16 +58,11 @@ console.log(data)
                 }
             });
             setIsPending(false);
-           // window.location.assign('/Profile')
+            window.location.assign('/Profile');
         } catch(e) {
             console.log(e)
         }
     };
-
-    if (loading) {
-        return <div>Loading...</div>;
-      }
-
 
     return ( 
         <>
@@ -71,8 +72,9 @@ console.log(data)
                 <BackArrow className='fas fa-arrow-left' top='25px' left='20px'/>
             </Link>
             <VerticalDiv>
-            <h1>Your Post</h1>
+            <h1 style={{color:'#51BBB9'}}>Your Post</h1>
             <Line/>
+            <EditPostContainer>
             <form onSubmit={handleSubmit} style={{margin:'-1.5rem'}}>
                 <VerticalDiv>
                 <TextField
@@ -130,23 +132,23 @@ console.log(data)
                 variant='outlined'
                 fullWidth
                 multiline
-                rows={25}
+                rows={20}
                 required
                 onChange={(e) => setBody(e.target.value)}
                 value={body}
                 />
                 <ButtonContainer>
-                    { !isPending && <Fab className='button' type='submit' color='primary' size='small' aria-label='post'><i className="fas fa-check"></i></Fab>  }   
+                    { !isPending && <Fab style={{color:'white'}} type='submit' className='button' color='primary' size='small' aria-label='post'><i className="fas fa-check"></i></Fab>  }   
                     { isPending &&  <CircularProgress color="secondary" />}
-                    <Fab className='button' color='secondary' size='small' aria-label='delete'><i className="fas fa-trash"></i></Fab>
+                    <Fab className='button' color='secondary' size='small' aria-label='delete'><i class="fas fa-trash"></i></Fab>
                 </ButtonContainer>
                 </VerticalDiv>
-                </form>  
+                </form>
+                </EditPostContainer>  
             </VerticalDiv>
             </AddPostContainer>
         </>
      );
 }
-
 
 export default EditPost;
