@@ -29,7 +29,6 @@ const EditPostContainer = styled.div`
 
 function EditPost() {
     const { postId } = useParams();
-    console.log(postId)
     const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
         variables: { id: postId },
       });

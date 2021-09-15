@@ -49,7 +49,6 @@ module.exports = {
       }
     },
     post: async (_, args) => {
-      console.log('args',args)
       try {
         const post = await Post.findById(args.id).populate('author');
         if (post) {
@@ -127,7 +126,6 @@ module.exports = {
       post.body = body;
       post.category = category;
       post.label = label;
-      console.log(post)
       await Post.updateOne({ "_id": id},post);
       return post;
     },
