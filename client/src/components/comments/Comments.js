@@ -13,6 +13,7 @@ import { ADD_COMMENT } from '../../utils/mutations';
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import Auth from '../../utils/auth';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const  Comments = () => {
     const { postId } = useParams();
@@ -26,7 +27,7 @@ const  Comments = () => {
       const {comments} = data?.post || {};
       let commentsReversed =[...comments].reverse()
       if (loading) {
-        return <div>Loading...</div>;
+        return <div style={{margin:'auto'}}><CircularProgress color="secondary" /></div>;
       }
 
       const handleAddComment = async (e) => {
