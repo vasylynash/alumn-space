@@ -13,11 +13,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
-import { DropDownContainer, Line } from "../components/posts/SearchPost";
+import { DropDownContainer } from "../components/posts/SearchPost";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 export const AddPostContainer = styled.div`
-    
+
     .title {
         margin: 0.5rem 0;
         text-align: center;
