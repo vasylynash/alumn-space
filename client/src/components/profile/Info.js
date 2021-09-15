@@ -15,7 +15,7 @@ import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_USER } from '../../utils/queries';
 import styled from 'styled-components'; 
-import { useUser } from '../../utils/UserContext';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const FormContainer = styled.div`
     .textfield {
@@ -32,10 +32,13 @@ const Info = () => {
     
     const { loading, err, data } = useQuery(QUERY_SINGLE_USER, {
         variables: { id: user._id }
-    })
+    });
+
+    
     console.log('data ->   ', data)
 
-    const { currentUser } = useUser();
+    
+    // const { currentUser } = useUser();
 
     // console.log('currentUser ->   ', currentUser)
 
@@ -74,10 +77,16 @@ const Info = () => {
 
     const [updateUser, { error }] = useMutation(UPDATE_USER_PROFILE);
 
+    if (loading) {
+        return <CircularProgress color="secondary" />;
+      }
+
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        console.log('in form submit')
 
         try {
+            console.log('in try of the form submit')
             const mutationResponse = await updateUser ({
                 variables: {
                     id: user._id,
@@ -107,15 +116,15 @@ const Info = () => {
     }; 
 
     const handleDisableChange = (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         setDisabledStatus(false);
         setButtonText('Update');
-        setSubmitStatus('Submit');
+        setSubmitStatus('button');
 
         if (disabledStatus === false) {
             setDisabledStatus(true);
             setButtonText('Change');
-            setSubmitStatus('button');
+            setSubmitStatus('submit');
         };
     };
 

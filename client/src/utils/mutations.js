@@ -153,15 +153,13 @@ export const ADD_POST_LIKE = gql`
 `;
 //UPDATE_USER_PROFILE works
 export const UPDATE_USER_PROFILE = gql`
-mutation updateUser($id:ID!, $firstName: String, $lastName:String, $image:String, $role:String, $bio:String, $yearOfGraduation:String!, $linkedIn: String, $gitHub: String, $className: String!, $email: String) {
-    updateUser(id:$id, firstName:$firstName, lastName:$lastName, image:$image, role:$role, bio:$bio, yearOfGraduation:$yearOfGraduation, linkedIn:$linkedIn, gitHub:$gitHub, className:$className, email:$email) {
+mutation updateUser($id:ID!, $firstName: String, $lastName:String, $bio:String, $yearOfGraduation:String!, $linkedIn: String, $gitHub: String, $className: String!, $email: String!) {
+    updateUser(id:$id, firstName:$firstName, lastName:$lastName, bio:$bio, yearOfGraduation:$yearOfGraduation, linkedIn:$linkedIn, gitHub:$gitHub, className:$className, email:$email) {
             _id
       		username
-      		email
            firstName
-      		lastName
-      		image
-      		role	
+      		lastName	
+            email  
       		bio	
       		yearOfGraduation
       		linkedIn

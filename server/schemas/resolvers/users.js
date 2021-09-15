@@ -62,10 +62,10 @@ module.exports = {
       return { token, user };
     }, 
 
-    updateUser: async (_, {id, firstName, lastName, image, role, bio, yearOfGraduation, linkedIn, gitHub, className, email }) => {
+    updateUser: async (_, {id, firstName, lastName, bio, yearOfGraduation, linkedIn, gitHub, className, email }) => {
       return await User.findOneAndUpdate(
         {_id: id},
-        { firstName, lastName, image, role, bio, yearOfGraduation, linkedIn, gitHub, className, email },
+        { firstName, lastName, bio, yearOfGraduation, linkedIn, gitHub, className, email},
         { new: true }
       );
     },
