@@ -85,14 +85,14 @@ const AddPost = () => {
 
     return ( 
         <>
-            <Navbar/>
+        <Navbar/>
         <AddPostContainer>
             <Link to="/home">
                 <BackArrow className="fas fa-arrow-left" top='60px' left='20px'/>
             </Link>
             <VerticalDiv>
             <CreateContainer>
-                <h1 className='title'>Create Post</h1>
+                <h1 className='title' style={{color:'#51BBB9'}}>Create Post</h1>
                 <p className='text'>Post your idea, tutorial, question, or advice. Here. </p>
                 <Line className='line'/>
                 <form onSubmit={handleSubmit}>
