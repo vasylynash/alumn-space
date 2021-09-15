@@ -29,10 +29,6 @@ const EditPostContainer = styled.div`
 
 const  EditPost = () => {
     const { postId } = useParams();
-    const setUserData = () =>{
-        console.log(data)
-    }
-
     const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
         variables: { id: postId },
       });
