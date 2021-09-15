@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { ADD_POST } from '../../utils/mutations';
+import { useParams } from 'react-router-dom';
+import { UPDATE_POST } from '../../utils/mutations';
+import { QUERY_SINGLE_POST } from '../../utils/queries'
 import Auth from '../../utils/auth';
 import { Link } from 'react-router-dom';
 import { BackArrow } from '../../components/icons.styles';
@@ -17,36 +19,49 @@ import GlobalStyle from '../global.style';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Fab from '@material-ui/core/Fab';
 import { ButtonContainer } from './FullPost';
+import { useQuery } from '@apollo/client';
 
-function EditPost() {
-    const [category, setCategory] = useState('');
-    const [label, setLabel] = useState('');
-    const [title, setTitle] = useState('');
-    const [body, setBody] = useState(''); 
+const EditPost = () => {
+    const { postId } = useParams();
+    const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
+        variables: { id: postId },
+      });
+console.log(data)
+    const [updatePost] = useMutation(UPDATE_POST);
+    const [category, setCategory] = useState(data.post.category);
+    const [label, setLabel] = useState(data.post.label);
+    const [title, setTitle] = useState(data.post.title);
+    const [body, setBody] = useState(data.post.body); 
     const [isPending, setIsPending] = useState(false);
-    const [addPost, {error}] = useMutation(ADD_POST)
-    const history = useHistory();
+      
 
+
+console.log(data)
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         setIsPending(true);
         try {
-            const {data} = await addPost({
+            await updatePost({
                 variables: {
+                    id: postId,
                     title,
                     body,
                     category,
                     label,
-                    author: Auth.getProfile().data._id
                 }
             });
             setIsPending(false);
-            history.push('/home');
+           // window.location.assign('/Profile')
         } catch(e) {
             console.log(e)
         }
     };
+
+    if (loading) {
+        return <div>Loading...</div>;
+      }
+
 
     return ( 
         <>
@@ -121,9 +136,9 @@ function EditPost() {
                 value={body}
                 />
                 <ButtonContainer>
-                    { !isPending && <Fab className='button' color='primary' size='small' aria-label='post'><i className="fas fa-check"></i></Fab>  }   
+                    { !isPending && <Fab className='button' type='submit' color='primary' size='small' aria-label='post'><i className="fas fa-check"></i></Fab>  }   
                     { isPending &&  <CircularProgress color="secondary" />}
-                    <Fab className='button' color='secondary' size='small' aria-label='delete'><i class="fas fa-trash"></i></Fab>
+                    <Fab className='button' color='secondary' size='small' aria-label='delete'><i className="fas fa-trash"></i></Fab>
                 </ButtonContainer>
                 </VerticalDiv>
                 </form>  

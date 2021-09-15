@@ -66,7 +66,10 @@ export const ADD_POST = gql`
           _id
           title
           body
-          author
+          author {
+            _id
+            username
+        }
           dateCreated
           comments {
               _id

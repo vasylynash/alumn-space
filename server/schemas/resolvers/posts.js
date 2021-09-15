@@ -108,7 +108,7 @@ module.exports = {
       const post = await Post.create({title: title, body: body, category: category, label: label, author: context.user._id });
       await User.findByIdAndUpdate(
                 { _id: context.user._id },
-                { $push: { posts: post._id } },
+                { $push: { posts: post } },
                 { new: true }
               );
       return await post.populate('author').execPopulate();
@@ -125,7 +125,6 @@ module.exports = {
       post.body = body;
       post.category = category;
       post.label = label;
-      
       return post;
     },
     removePost: async (parent, { id }, context)  => {
