@@ -118,7 +118,6 @@ const AddPost = () => {
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
                             >
-                            <MenuItem value={'None'}>None</MenuItem>
                             <MenuItem value={'Coding'}>Coding</MenuItem>
                             <MenuItem value={'DataScience'}>Data Science</MenuItem>
                             <MenuItem value={'UIUX'}>UI/UX</MenuItem>
@@ -133,7 +132,6 @@ const AddPost = () => {
                             value={label}
                             onChange={(e) => setLabel(e.target.value)}
                             >
-                            <MenuItem value={'None'}>None</MenuItem>
                             <MenuItem value={'Help'}>Help</MenuItem>
                             <MenuItem value={'SuccessStories'}>Success Stories</MenuItem>
                             <MenuItem value={'Jobs'}>Jobs</MenuItem>
