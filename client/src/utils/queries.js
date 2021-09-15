@@ -220,6 +220,9 @@ export const SEARCH_POSTS = gql `
         totalLikes
         likes
         category
+        comments {
+          likes
+        }
         author {
           _id
           username

@@ -17,6 +17,13 @@ import GlobalStyle from '../global.style';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Fab from '@material-ui/core/Fab';
 import { ButtonContainer } from './FullPost';
+import styled from 'styled-components';
+
+const EditPostContainer = styled.div`
+    @media (min-width: 768px) {
+        width: 80vw;
+    }
+`
 
 function EditPost() {
     const [category, setCategory] = useState('');
@@ -56,8 +63,9 @@ function EditPost() {
                 <BackArrow className='fas fa-arrow-left' top='25px' left='20px'/>
             </Link>
             <VerticalDiv>
-            <h1>Your Post</h1>
+            <h1 style={{color:'#51BBB9'}}>Your Post</h1>
             <Line/>
+            <EditPostContainer>
             <form onSubmit={handleSubmit} style={{margin:'-1.5rem'}}>
                 <VerticalDiv>
                 <TextField
@@ -115,18 +123,19 @@ function EditPost() {
                 variant='outlined'
                 fullWidth
                 multiline
-                rows={25}
+                rows={20}
                 required
                 onChange={(e) => setBody(e.target.value)}
                 value={body}
                 />
                 <ButtonContainer>
-                    { !isPending && <Fab className='button' color='primary' size='small' aria-label='post'><i className="fas fa-check"></i></Fab>  }   
+                    { !isPending && <Fab style={{color:'white'}} className='button' color='primary' size='small' aria-label='post'><i className="fas fa-check"></i></Fab>  }   
                     { isPending &&  <CircularProgress color="secondary" />}
                     <Fab className='button' color='secondary' size='small' aria-label='delete'><i class="fas fa-trash"></i></Fab>
                 </ButtonContainer>
                 </VerticalDiv>
-                </form>  
+                </form>
+                </EditPostContainer>  
             </VerticalDiv>
             </AddPostContainer>
         </>
