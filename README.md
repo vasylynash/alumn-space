@@ -28,11 +28,11 @@ To run locally:
 
  
 ## Usage: 
-[Click here for deployed app](PUT LINK HERE)   
+[Click here for deployed app](https://alumnspace.herokuapp.com/)   
 
 On the Home page you can either click the **Login** or **Signup** buttons to log in or register.  You must be registered and logged in to use the site.  Once logged in, you will see all of the posts with the newest posts on the top.  You can use the search feature find posts with particular category and/or label as well as specific text in the title.  Put your text in the search field and use the **category** and **label** drop down fields if you wish then hit the **search** button and the relevant posts will be listed below.   
 
-When you click on an individual post from the list you will be able to view the entirety of the post text along with the comments.  Click on the heart icon to like the post.  If you change your mind, you can click the broken heart to unlike the post. Click on the blue comment icon to add a comment.  
+When you click on an individual post from the list you will be able to view the entirety of the post text along with the comments.  Click on the broken heart icon to like the post and the icon will change to an unbroken heart.  If you change your mind and want to un-like the post, you can click the heart icon and it will change back to the broken heart icon. Click on the blue comment icon to add a comment.  
 
 To create a new post, click **Create Post** in the Navbar.  Enter a title, choose an appropriate category and label, add your post to the body section then click the **Post** button below. 
 
