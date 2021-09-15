@@ -23,41 +23,40 @@ const FormContainer = styled.div`
     }
 `
 
-const Info = () => {
+const Information = () => {
     console.log('info')
     // console.log('currentuser ->   ', currentUser)
-    const user = Auth.getProfile().data;
-    console.log('user ->    ', user)
-    console.log('user id ->   ', user._id);
+    // const user = Auth.getProfile().data;
+    // console.log('user id ->   ', user._id);
     
-    const { loading, err, data } = useQuery(QUERY_SINGLE_USER, {
-        variables: { id: user._id }
-    })
-    console.log('data ->   ', data)
+    // const { loading, err, data } = useQuery(QUERY_SINGLE_USER, {
+    //     variables: { id: user._id }
+    // })
+    // console.log('data ->   ', data)
 
     const { currentUser } = useUser();
 
-    // console.log('currentUser ->   ', currentUser)
+    console.log('currentUser ->   ', currentUser)
 
     const [disabledStatus, setDisabledStatus] = useState(true);
     const [buttonText, setButtonText] = useState('Change');
     const [submitStatus, setSubmitStatus] = useState ('button')
     
     const [formState, setFormState] = useState({
-        firstName: data.user.firstName,
-        lastName: data.user.lastName,
-        email: data.user.email,
-        className: data.user.className, 
-        bio: data.user.bio,
-        linkedIn: data.user.linkedIn,
-        gitHub: data.user.gitHub,
-        // firstName: '',
-        // lastName: '',
-        // email: '',
-        // className: '', 
-        // bio: '',
-        // linkedIn: '',
-        // gitHub: '',
+        // firstName: data.user.firstName,
+        // lastName: data.user.lastName,
+        // email: data.user.email,
+        // className: data.user.className, 
+        // bio: data.user.bio,
+        // linkedIn: data.user.linkedIn,
+        // gitHub: data.user.gitHub,
+        firstName: '',
+        lastName: '',
+        email: '',
+        className: '', 
+        bio: '',
+        linkedIn: '',
+        gitHub: '',
     });
 
     // setFormState({
@@ -80,7 +79,7 @@ const Info = () => {
         try {
             const mutationResponse = await updateUser ({
                 variables: {
-                    id: user._id,
+                    // id: user._id,
                     firstName: formState.firstName,
                     lastName: formState.lastName,
                     email: formState.email,
@@ -127,8 +126,8 @@ const Info = () => {
                 <VerticalDiv>
                 <h1 style={{fontSize:'25px', margin:'0', color:'#51BBB9'}}>My information</h1>
                 <p style={{fontSize:'12px', color:'grey'}}>Update your information</p>
-                    <TextField  className='textfield' disabled={disabledStatus} value={formState.firstName} id='firstName' label='First Name' color='primary' onChange={handleChange} name='firstName' />
-                    <TextField className='textfield' disabled={disabledStatus} value={formState.lastName} id='lastName' label='Last Name' color='primary' onChange={handleChange} name='lastName' />
+                    <TextField  className='textfield' disabled={disabledStatus} value='Dmitriy' id='firstName' label='First Name' color='primary' onChange={handleChange} name='firstName' />
+                    <TextField className='textfield' disabled={disabledStatus} value='Babich' id='lastName' label='Last Name' color='primary' onChange={handleChange} name='lastName' />
                     <FormControl disabled={disabledStatus} style={{minWidth: 190}}>
                     <InputLabel id='subject' >Your subject</InputLabel>
                         <Select
@@ -157,11 +156,11 @@ const Info = () => {
                                 />
                         </div>
                     </MuiPickersUtilsProvider>
-                    <TextField className='textfield' value={formState.linkedIn} id='linkedin' label='LinkedIn' color='primary' name='linkedIn'  onChange={handleChange} disabled={disabledStatus} />
-                    <TextField className='textfield' value={formState.gitHub} id='github' label='GitHub' color='primary' name='gitHub' onChange={handleChange} disabled={disabledStatus} />
+                    <TextField className='textfield' value='Dmitriy Linked in' id='linkedin' label='LinkedIn' color='primary' name='linkedIn'  onChange={handleChange} disabled={disabledStatus} />
+                    <TextField className='textfield' value='Dmitriy Github' id='github' label='GitHub' color='primary' name='gitHub' onChange={handleChange} disabled={disabledStatus} />
                     <TextField
                     disabled={disabledStatus}
-                    value={formState.bio}
+                    value='My bio goes here'
                     className='input textfield'
                     id='standard-multiline-static'
                     label='Bio'
@@ -178,4 +177,4 @@ const Info = () => {
      );
 };
 
-export default Info;
+export default Information;

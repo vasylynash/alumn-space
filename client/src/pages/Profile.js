@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Auth from '../utils/auth';
+import UserProvider from '../utils/UserContext.js';
 
 const useStyles = makeStyles({
     root: {
@@ -78,6 +79,7 @@ const Profile = () => {
     return ( 
         <>
         <GlobalStyle/>
+        <UserProvider>
         <GradientContainer>
         <Link to='/Home'>
             <BackArrow className='fas fa-arrow-left' color='white' left='20px'/>
@@ -104,6 +106,7 @@ const Profile = () => {
             </Paper>
             <Index section={componentState}/>
         </VerticalDiv>
+        </UserProvider>
         </>
      );
 }
