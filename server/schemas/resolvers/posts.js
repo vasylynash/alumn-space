@@ -108,12 +108,13 @@ module.exports = {
       const post = await Post.create({title: title, body: body, category: category, label: label, author: context.user._id });
       await User.findByIdAndUpdate(
                 { _id: context.user._id },
-                { $push: { posts: post._id } },
+                { $push: { posts: post } },
                 { new: true }
               );
       return await post.populate('author').execPopulate();
     },
     updatePost: async (_, { id, title, body, category, label }) => {
+      console.log("title",title)
       if(!title) {
         throw new UserInputError('The title cannot be empty');
       }
@@ -125,7 +126,7 @@ module.exports = {
       post.body = body;
       post.category = category;
       post.label = label;
-      
+      await Post.updateOne({ "_id": id},post);
       return post;
     },
     removePost: async (parent, { id }, context)  => {

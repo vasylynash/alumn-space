@@ -113,7 +113,10 @@ function App() {
             <Route exact path="/addpost">
               <AddPost />
             </Route>
-            <Route exact path="/edit-post">
+            <Route exact path="/profile">
+              <Profile />
+            </Route>
+            <Route exact path="/edit-post/:postId">
               <EditPost />
             </Route>
           </Switch>
