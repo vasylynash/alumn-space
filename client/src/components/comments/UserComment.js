@@ -7,12 +7,7 @@ const Comment = styled.div`
     width: 80%;
     font-size: 12px;
     margin: 1rem 0;
-
-    /* @media (min-width: 768px) {
-        display: block;
-        text-align: left;
-    } */
-
+    
     p {
         margin: 0;
     }
