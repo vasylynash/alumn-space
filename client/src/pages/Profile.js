@@ -13,6 +13,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Auth from '../utils/auth';
 import UserProvider from '../utils/UserContext.js';
+import Navbar from '../components/nav/Navbar';
 
 const useStyles = makeStyles({
     root: {
@@ -43,6 +44,23 @@ const ProfilePic = styled.div`
         height: 100px;
         width: 100px;
         font-size: 40px;
+    }
+`
+
+export const NavDisplay = styled.div`
+
+    display: none;
+
+    @media (min-width: 768px) {
+        display: block;
+    }
+`
+
+export const ArrowDisplay = styled.div`
+    display: block;
+
+    @media (min-width: 768px) {
+        display: none;
     }
 `
 
@@ -83,9 +101,14 @@ const Profile = () => {
         <GlobalStyle/>
         <UserProvider>
         <GradientContainer>
-        <Link to='/Home'>
+        <NavDisplay>
+        <Navbar/>
+        </NavDisplay>
+        <ArrowDisplay>
+        <Link to='/Home' className='arrow'>
             <BackArrow className='fas fa-arrow-left' color='white' left='20px'/>
         </Link>
+        </ArrowDisplay>
         </GradientContainer>
         <ProfilePic>
             <Avatar className='avatar' style={{backgroundColor:`${color}`}} >{profile}</Avatar>

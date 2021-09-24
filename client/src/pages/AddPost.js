@@ -15,6 +15,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import { DropDownContainer } from "../components/posts/SearchPost";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { ArrowDisplay } from './Profile'
 
 export const AddPostContainer = styled.div`
 
@@ -87,9 +88,11 @@ const AddPost = () => {
         <>
         <Navbar/>
         <AddPostContainer>
+            <ArrowDisplay>
             <Link to="/home">
-                <BackArrow className="fas fa-arrow-left" top='60px' left='20px'/>
+                <BackArrow className="fas fa-arrow-left" top='80px' left='20px'/>
             </Link>
+            </ArrowDisplay>
             <VerticalDiv>
             <CreateContainer>
                 <h1 className='title' style={{color:'#51BBB9'}}>Create Post</h1>
