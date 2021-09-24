@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_POST } from '../utils/mutations';
 import Auth from '../utils/auth';
-
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import { BackArrow } from "../components/icons.styles";
@@ -61,7 +60,6 @@ const AddPost = () => {
     const [body, setBody] = useState(''); 
     const [isPending, setIsPending] = useState(false);
     const [addPost, {error}] = useMutation(ADD_POST);
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();

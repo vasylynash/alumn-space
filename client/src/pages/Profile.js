@@ -134,6 +134,6 @@ const Profile = () => {
         </UserProvider>
         </>
      );
-}
+};
  
 export default Profile;
