@@ -158,7 +158,7 @@ const  EditPost = () => {
                 <ButtonContainer>
                     { !isPending && <Fab style={{color:'white'}} type='submit' className='button' color='primary' size='small' aria-label='post'><i className="fas fa-check"></i></Fab>  }   
                     { isPending &&  <CircularProgress color="secondary" />}
-                    <Fab className='button' onClick={handleDelete} color='secondary' size='small' aria-label='delete'><i class="fas fa-trash"></i></Fab>
+                    <Fab className='button' onClick={handleDelete} color='secondary' size='small' aria-label='delete'><i className="fas fa-trash"></i></Fab>
                 </ButtonContainer>
                 </VerticalDiv>
                 </form>

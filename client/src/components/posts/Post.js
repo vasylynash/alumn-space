@@ -64,9 +64,16 @@ export const Card = styled.div`
         justify-content: flex-start;
         align-items: flex-end;
         flex-direction: column;
+        text-align: left;
         width: 70%;
         padding-right: 0.5rem;
         overflow: hidden;
+        margin-bottom: 0.8em;
+
+        @media (max-width: 768px) {
+        
+                margin-bottom: 1em;
+        }
     }
 
     .left {
@@ -134,8 +141,8 @@ export const Card = styled.div`
     }
 
     .bodyContainer {
-        min-width: 50vw;
-        min-height: 5rem; 
+        /* min-width: 50vw; */
+        min-height: 5rem;
 
         p {
             margin: 0;
