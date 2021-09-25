@@ -33,7 +33,7 @@ const Info = () => {
     const [disabledStatus, setDisabledStatus] = useState(true);
     const [buttonText, setButtonText] = useState('Change');
     const [submitStatus, setSubmitStatus] = useState ('button')
-    
+
     const [formState, setFormState] = useState({
         firstName: data.user.firstName,
         lastName: data.user.lastName,
@@ -44,7 +44,7 @@ const Info = () => {
         gitHub: data.user.gitHub,
     });
 
-    const [selectedDate, handleDateChange] = useState(new Date());
+    const [selectedDate, handleDateChange] = useState(new Date(parseInt(data.user.yearOfGraduation)).toDateString());
 
     const [updateUser, { error }] = useMutation(UPDATE_USER_PROFILE);
 
