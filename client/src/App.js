@@ -20,6 +20,9 @@ import EditPost from './components/post/EditPost';
 import Auth from './utils/auth';
 
 const httpLink = createHttpLink({
+  // For local
+  // uri: 'http://localhost:3001/graphql',
+  // For heroku
   uri: '/graphql',
   // uri: 'http://localhost:3001/graphql',
 });
