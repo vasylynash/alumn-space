@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_POST } from '../utils/mutations';
 import Auth from '../utils/auth';
-
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import { BackArrow } from "../components/icons.styles";
@@ -15,6 +14,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import { DropDownContainer } from "../components/posts/SearchPost";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { ArrowDisplay } from './Profile'
 
 export const AddPostContainer = styled.div`
 
@@ -61,7 +61,6 @@ const AddPost = () => {
     const [isPending, setIsPending] = useState(false);
     const [addPost, {error}] = useMutation(ADD_POST);
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -87,9 +86,11 @@ const AddPost = () => {
         <>
         <Navbar/>
         <AddPostContainer>
+            <ArrowDisplay>
             <Link to="/home">
-                <BackArrow className="fas fa-arrow-left" top='60px' left='20px'/>
+                <BackArrow className="fas fa-arrow-left" top='80px' left='20px'/>
             </Link>
+            </ArrowDisplay>
             <VerticalDiv>
             <CreateContainer>
                 <h1 className='title' style={{color:'#51BBB9'}}>Create Post</h1>
@@ -138,7 +139,7 @@ const AddPost = () => {
                             <MenuItem value={'Discussion'}>Discussion</MenuItem>
                             <MenuItem value={'NodeJS'}>NodeJS</MenuItem>
                             <MenuItem value={'GraphQL'}>GraphQL</MenuItem>
-                            <MenuItem value={'MONGODB'}>MongoDB</MenuItem>
+                            <MenuItem value={'MongoDB'}>MongoDB</MenuItem>
                             <MenuItem value={'React'}>React</MenuItem>
                             <MenuItem value={'CSS'}>CSS</MenuItem>
                             <MenuItem value={'HTML'}>HTML</MenuItem>

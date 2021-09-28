@@ -26,7 +26,7 @@ const CommentContainer =styled.div`
 const  DesktopComments = () => {
     const { postId } = useParams();
     const [addComment] = useMutation(ADD_COMMENT,{refetchQueries:[QUERY_SINGLE_POST]})
-    const [commentText, setCommentText] = useState('hide');
+    const [commentText, setCommentText] = useState('');
 
     const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
         variables: { id: postId },
