@@ -23,6 +23,21 @@ const FormContainer = styled.div`
     }
 `
 
+const Input = styled.input`
+    font-size: 12px;
+    color: grey;
+`
+
+const ChooseImg = styled.button`
+    border: none;
+    background-color: white;
+    transition: ease-in-out 0.3s;
+
+    &:hover {
+        color: #FF8985;
+    }
+`
+
 const Info = () => {
     const user = Auth.getProfile().data;
     
@@ -33,6 +48,7 @@ const Info = () => {
     const [disabledStatus, setDisabledStatus] = useState(true);
     const [buttonText, setButtonText] = useState('Change');
     const [submitStatus, setSubmitStatus] = useState ('button')
+    const [profileImg, setProfileImg] = useState(null);
 
     const [formState, setFormState] = useState({
         firstName: data.user.firstName,
@@ -97,6 +113,13 @@ const Info = () => {
         };
     };
 
+    const handleFileSelect = (event) => {
+        setProfileImg({
+            selectedFile: event.target.files[0]
+        })
+        console.log(profileImg);
+    };
+
     return ( 
         <VerticalDiv>
             <GlobalStyle/>
@@ -105,6 +128,8 @@ const Info = () => {
                 <VerticalDiv>
                 <h1 style={{fontSize:'25px', margin:'0', color:'#51BBB9'}}>My information</h1>
                 <p style={{fontSize:'12px', color:'grey'}}>Update your information</p>
+                <p style={{fontSize:'15px', color:'grey', margin:'0'}}> Upload profile picture</p>
+                    <Input type='file' accept='image/*' onChange={handleFileSelect} style={{marginLeft:'100px', marginBottom:'10px', marginTop:'10px'}}/>
                     <TextField  className='textfield' disabled={disabledStatus} value={formState.firstName} id='firstName' label='First Name' color='primary' onChange={handleChange} name='firstName' />
                     <TextField className='textfield' disabled={disabledStatus} value={formState.lastName} id='lastName' label='Last Name' color='primary' onChange={handleChange} name='lastName' />
                     <FormControl disabled={disabledStatus} style={{minWidth: 190}}>
@@ -125,7 +150,7 @@ const Info = () => {
                         </Select>
                     </FormControl>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <div style={{width:'100%', marginTop:'20px', marginLeft:'15px'}}>
+                        <div style={{width:'100%', marginTop:'20px', marginLeft:'185px'}}>
                             <DatePicker
                                 views={['year']}
                                 label='Year graduated'

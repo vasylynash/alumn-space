@@ -49,16 +49,16 @@ const Navbar = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav ms-auto">
-                <NavLink className="nav-link" activeClassName='active' exact to='/Home'>
+                <NavLink className="nav-link" activeclassname='active' exact to='/Home'>
                     <p>Home</p>
                 </NavLink>
-                <NavLink className="nav-link" activeClassName='active' exact to='/AddPost'>
+                <NavLink className="nav-link" activeclassname='active' exact to='/AddPost'>
                     <p>Create post</p>
                 </NavLink>
-                <NavLink className="nav-link" activeClassName='active' exact to='/Profile'>
+                <NavLink className="nav-link" activeclassname='active' exact to='/Profile'>
                     <p>Profile</p>
                 </NavLink>
-                <Link className="nav-link" activeClassName='active' exact to='/' onClick={Auth.logout}>
+                <Link className="nav-link" activeclassname='active' exact to='/' onClick={Auth.logout}>
                     <p>Logout</p>
                 </Link>
             </div>
