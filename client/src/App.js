@@ -94,7 +94,7 @@ function App() {
         <div className="content">
           <Switch>
             <Route exact path="/">
-              <Landing />
+              <Home />
             </Route>
             <Route exact path="/login">
               <Login />

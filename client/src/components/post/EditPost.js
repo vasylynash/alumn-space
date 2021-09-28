@@ -134,7 +134,7 @@ const  EditPost = () => {
                         <MenuItem value={'Discussion'}>Discussion</MenuItem>
                         <MenuItem value={'NodeJS'}>NodeJS</MenuItem>
                         <MenuItem value={'GraphQL'}>GraphQL</MenuItem>
-                        <MenuItem value={'MONGODB'}>MongoDB</MenuItem>
+                        <MenuItem value={'MongoDB'}>MongoDB</MenuItem>
                         <MenuItem value={'React'}>React</MenuItem>
                         <MenuItem value={'CSS'}>CSS</MenuItem>
                         <MenuItem value={'HTML'}>HTML</MenuItem>

@@ -16,7 +16,7 @@ module.exports = {
       Discussion: 'Discussion',
       NodeJS: 'NodeJS',
       GraphQL: 'GraphQL',
-      MONGODB: 'MongoDB',
+      MongoDB: 'MongoDB',
       React: 'React',
       CSS: 'CSS',
       HTML: 'HTML',
