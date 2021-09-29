@@ -57,7 +57,7 @@ const [submitted, setSubmitted] = useState(false)
     return ( 
       <>
         <HeroContainer>
-          <Title className='desktopTitle'>AlumSpace</Title>
+          <Title className='desktopTitle'>AlumnSpace</Title>
           <img src={Hero}  alt="logo images"/>
           <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif'}} className='desktopDescription'> A place for coding bootcamp Alumni to connect  with each other and share ideas.</p>
         </HeroContainer>
