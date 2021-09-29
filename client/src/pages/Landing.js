@@ -45,7 +45,7 @@ export const LandingContainer = styled.div`
         background-color: #CECFD1;
         padding-top: 10vh;
         width: 35vw;
-        height: 90vh;
+        height: 100vh;
         float: right;
         flex-shrink: 0;
         box-shadow: 0px 3px  13px black;

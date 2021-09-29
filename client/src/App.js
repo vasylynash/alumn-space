@@ -24,7 +24,6 @@ const httpLink = createHttpLink({
   // uri: 'http://localhost:3001/graphql',
   // For heroku
   uri: '/graphql',
-  // uri: 'http://localhost:3001/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
