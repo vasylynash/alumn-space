@@ -20,7 +20,8 @@ class AuthService {
     try {
       const decoded = decode(token);
       if (decoded.exp < Date.now() / 1000) {
-        localStorage.removeItem("id_token");
+        // localStorage.removeItem("id_token");
+        this.logout();
         return true;
       } else return false;
     } catch (err) {
