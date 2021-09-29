@@ -15,6 +15,7 @@ import Auth from '../utils/auth';
 import UserProvider from '../utils/UserContext.js';
 import Navbar from '../components/nav/Navbar';
 
+
 const useStyles = makeStyles({
     root: {
       flexGrow: 1,
@@ -62,6 +63,10 @@ export const ArrowDisplay = styled.div`
     @media (min-width: 768px) {
         display: none;
     }
+`
+
+const Input = styled.input`
+    display: none;
 `
 
 const Profile = () => {
