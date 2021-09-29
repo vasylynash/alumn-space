@@ -117,7 +117,6 @@ const Info = () => {
         setProfileImg({
             selectedFile: event.target.files[0]
         })
-        console.log(profileImg);
     };
 
     return ( 
