@@ -40,6 +40,7 @@ const  Comments = () => {
                 commentText: commentText, 
                 author: Auth.getProfile().data.username}
         });
+        setCommentText('');
         } catch(e) {
             console.log(e)
         }
@@ -56,7 +57,7 @@ const  Comments = () => {
                 <h1 style={{fontSize:'39px', marginTop:'0.5rem'}}>Comments</h1>
                  <SearchBar>
                     <SearchIcon className='far fa-comment-alt'/>
-                    <SearchInput onChange={(e) => setCommentText(e.target.value)} placeholder='Add Comment'/>
+                    <SearchInput onChange={(e) => setCommentText(e.target.value)} placeholder='Add Comment' value={commentText}/>
                     <SearchBtn onClick={handleAddComment}>Comment</SearchBtn>
                 </SearchBar>
                     {
