@@ -76,7 +76,7 @@ const Signup = () => {
     return ( 
         <>
         <HeroContainer>
-          <Title className='desktopTitle'>AlumSpace</Title>
+          <Title className='desktopTitle'>AlumnSpace</Title>
           <img src={Hero}  alt="logo images"/>
           <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif'}} className='desktopDescription'> A place for coding bootcamp Alumni to connect  with each other and share ideas.</p>
         </HeroContainer> 
@@ -93,7 +93,7 @@ const Signup = () => {
                 <VerticalDiv>
                     <TextField id="username" label="Username" color='primary' name="username" onChange={handleChange} />
                     <TextField id="email" label="Email" color='primary' name="email" onChange={handleChange} />
-                    <FormControl style={{minWidth: 185}}>
+                    <FormControl style={{minWidth: 210}}>
                     <InputLabel id="subject" >Your class</InputLabel>
                         <Select
                         labelId="subject"

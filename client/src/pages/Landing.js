@@ -157,7 +157,7 @@ const Landing = () => {
         <>
         <div style={{display:'block',float:'left'}}>
             <HeroContainer>
-            <Title className='desktopTitle'>AlumSpace</Title>
+            <Title className='desktopTitle'>AlumnSpace</Title>
             <img src={Hero}  alt="logo images"/>
             <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif'}} className='desktopDescription'> A place for coding bootcamp Alumni to connect  with each other and share ideas.</p>
             </HeroContainer>
@@ -165,9 +165,9 @@ const Landing = () => {
         <LandingContainer>
             <GlobalStyle/>
             <img src={Logo}  alt="logo images"/>
-            <Title className='mobileTitle'>AlumSpace</Title>
+            <Title className='mobileTitle'>AlumnSpace</Title>
             <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif'}} className='description'> A place for coding bootcamp Alumni to connect  with each other <br/> and share ideas.</p>
-            <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif', padding:'0 30px'}} className='cta'> Please login or signup to continiue.</p>
+            <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif', padding:'0 30px'}} className='cta'> Please login or signup to continue.</p>
             <Link to="/login">
                 <LoginBtn textColor='white' backgroundColor='#51BBB9'>
                     Login

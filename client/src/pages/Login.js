@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import GlobalStyle from '../components/global.style';
 import { HeroContainer, LandingContainer, VerticalDiv } from './Landing';
@@ -14,7 +14,12 @@ import Hero from '../images/hero-graphic.png';
 import { Title } from './Landing';
 
 const Login = (props) => {
-const [formState, setFormState] = useState({ email: '', password: '' });
+const [formState, setFormState] = useState({ email: '', password: ''});
+
+var err
+
+const [errorState, setErrorState] = useState('');
+const [submitted, setSubmitted] = useState(false)
 
   const [login, { error }] = useMutation(LOGIN_USER);
 
@@ -27,11 +32,21 @@ const [formState, setFormState] = useState({ email: '', password: '' });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
     } catch (e) {
+      setSubmitted(true);
       console.log(e);
     }
+    setSubmitted(false)
   };
 
+  useEffect(() => {
+    if (error) {
+      err = error.message;
+      setErrorState(err);
+    }
+  }, [submitted]);
+
   const handleChange = (event) => {
+    setErrorState('');
     const { name, value } = event.target;
     setFormState({
       ...formState,
@@ -42,7 +57,7 @@ const [formState, setFormState] = useState({ email: '', password: '' });
     return ( 
       <>
         <HeroContainer>
-          <Title className='desktopTitle'>AlumSpace</Title>
+          <Title className='desktopTitle'>AlumnSpace</Title>
           <img src={Hero}  alt="logo images"/>
           <p style={{textAlign:'center', fontFamily: 'Montserrat, sans-serif'}} className='desktopDescription'> A place for coding bootcamp Alumni to connect  with each other and share ideas.</p>
         </HeroContainer>
@@ -58,6 +73,7 @@ const [formState, setFormState] = useState({ email: '', password: '' });
                 <VerticalDiv>
                     <TextField id="email" name="email" label="Email" color='primary' onChange={handleChange}/>
                     <TextField id="password" name="password" label="Password" color='primary' type='password' onChange={handleChange}/>
+                    <VerticalDiv style={{color: "red"}}>{ errorState }</VerticalDiv>
                     <LoginBtn textColor='white' backgroundColor='#51BBB9' type='Submit' style={{marginTop:'20px'}}>Login</LoginBtn>
                     <Link to='/signup'>
                         <SignUpBtn textColor='#707070' backgroundColor='#EDEDED'>Sign up</SignUpBtn>
