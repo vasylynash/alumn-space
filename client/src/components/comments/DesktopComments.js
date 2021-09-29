@@ -48,6 +48,7 @@ const  DesktopComments = () => {
                 commentText: commentText, 
                 author: Auth.getProfile().data.username}
         });
+        setCommentText('');
         } catch(e) {
             console.log(e)
         }
@@ -59,7 +60,7 @@ const  DesktopComments = () => {
             <VerticalDiv>
                  <SearchBar style={{width:'50vw'}}>
                     <SearchIcon className='far fa-comment-alt'/>
-                    <SearchInput onChange={(e) => setCommentText(e.target.value)} placeholder='Add Comment'/>
+                    <SearchInput onChange={(e) => setCommentText(e.target.value)} placeholder='Add Comment' value={commentText}/>
                     <SearchBtn onClick={handleAddComment}>Comment</SearchBtn>
                 </SearchBar>
                     {
