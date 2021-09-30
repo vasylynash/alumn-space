@@ -40,6 +40,7 @@ const typeDefs = gql`
         _id: ID
         commentText: String
         author: String
+        authorId: String
         dateCreated: String
         likes: Int
     } 
@@ -108,7 +109,7 @@ const typeDefs = gql`
         addPost(title: String!, body: String!, category: Category, label: Label): Post
         updatePost(id: ID!, title: String!, body: String!, category: Category, label: Label): Post
         removePost(id: ID!): Post
-        addComment(postId: String!, commentText: String!, author: String!): Comment
+        addComment(postId: String!, commentText: String!, author: String! authorId: String!): Comment
         updateComment(commentId: ID!, commentText: String!): Post
         removeComment(id: ID!): Post
         updateUser(id: ID!, firstName: String, lastName: String, bio: String, yearOfGraduation: String!, linkedIn: String, gitHub: String, className: String!, email: String!): User

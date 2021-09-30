@@ -18,9 +18,31 @@ export const ADD_USER = gql`
           linkedIn
           gitHub
           className
+          posts {
+            _id
+          title
+          body
+          author {
+              _id
+              username
+          }
+          dateCreated
+          totalLikes
+          category
+          label
+          comments {
+              _id
+              commentText
+              author
+              authorId
+              dateCreated
+              likes
+          }
+      }
+          }
       }
     }
-   }
+   
 `;
 
 export const LOGIN_USER = gql`
@@ -53,6 +75,7 @@ export const ADD_POST = gql`
               _id
               commentText
               author
+              authorId
               dateCreated
               likes
           }
@@ -75,6 +98,7 @@ export const ADD_POST = gql`
               _id
               commentText
               author
+              authorId
               dateCreated
               likes
           }
@@ -96,11 +120,12 @@ export const REMOVE_POST = gql`
 
 //check ADD UPDATE & REMOVE COMMENT in future branch/PR
 export const ADD_COMMENT = gql`
-        mutation addComment($postId: String!, $commentText: String!, $author: String!) {
-            addComment(postId: $postId, commentText: $commentText, author: $author) {
+        mutation addComment($postId: String!, $commentText: String!, $author: String!, $authorId: String!) {
+            addComment(postId: $postId, commentText: $commentText, author: $author, authorId: $authorId ) {
                 _id
                 commentText
                 author
+                authorId
                 dateCreated
                 likes
             }
@@ -120,6 +145,7 @@ export const UPDATE_COMMENT = gql`
                     _id
                     commentText
                     author
+                    authorId
                     dateCreated
                     likes
                 }
@@ -140,6 +166,7 @@ export const REMOVE_COMMENT = gql`
                     _id
                     commentText
                     author
+                    authorId
                     dateCreated
                     likes
                 }

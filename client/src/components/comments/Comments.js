@@ -38,7 +38,9 @@ const  Comments = () => {
             variables: {
                 postId: postId, 
                 commentText: commentText, 
-                author: Auth.getProfile().data.username}
+                author: Auth.getProfile().data.username,
+                authorId:  Auth.getProfile().data._id,
+            }
         });
         setCommentText('');
         } catch(e) {

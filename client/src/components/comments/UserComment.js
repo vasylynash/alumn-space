@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Auth from '../../utils/auth';
 
 const Comment = styled.div`
     display: flex;
@@ -53,15 +54,15 @@ const TrashContainer = styled.div`
 `
 
 const UserComment= ({comment}) => {
+    console.log(comment)
     return (
         <Comment>
-            <TrashContainer>
-                <IconBtn><i className="fas fa-trash"></i></IconBtn>
-            </TrashContainer>
+        {comment.authorId === Auth.getProfile().data._id ? <TrashContainer><IconBtn><i className="fas fa-trash"></i></IconBtn></TrashContainer>:''}
             <TextContainer>
-                <p><span>{comment.author}</span>{comment.commentText}</p>
+                <p><span>{comment.author}</span>{comment.commentText} </p>
                 <p className='date'>{comment.dateCreated}</p>
             </TextContainer>
+
         </Comment>
     )
 }

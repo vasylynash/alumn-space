@@ -39,6 +39,7 @@ export const QUERY_ALL_USERS = gql`
             _id
             commentText
             author
+            authorId
             dateCreated
             likes
         }
@@ -77,6 +78,7 @@ export const QUERY_SINGLE_USER = gql`
             _id
             commentText
             author
+            authorId
             dateCreated
             likes
         }
@@ -100,6 +102,7 @@ export const QUERY_ALL_POSTS_CATEGORY_LABEL = gql`
                 _id
                 commentText
                 author
+                authorId
                 dateCreated
                 likes
             }
@@ -126,6 +129,7 @@ export const QUERY_ALL_POSTS = gql`
                 _id
                 commentText
                 author
+                authorId
                 dateCreated
                 likes
             }
@@ -152,6 +156,7 @@ export const QUERY_SINGLE_POST = gql`
         _id
         commentText
         author
+        authorId
         dateCreated
         likes
       }

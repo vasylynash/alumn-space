@@ -31,7 +31,6 @@ const  DesktopComments = () => {
     const { loading, error, data } = useQuery(QUERY_SINGLE_POST, {
         variables: { id: postId },
       });
-
       const {comments} = data?.post || {};
       let commentsReversed =[...comments].reverse()
       if (loading) {
@@ -46,7 +45,9 @@ const  DesktopComments = () => {
             variables: {
                 postId: postId, 
                 commentText: commentText, 
-                author: Auth.getProfile().data.username}
+                author: Auth.getProfile().data.username,
+                authorId: Auth.getProfile().data._id,
+            }
         });
         setCommentText('');
         } catch(e) {
