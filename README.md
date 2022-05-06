@@ -55,7 +55,6 @@ Licensed under the [MIT](https://opensource.org/licenses/MIT) license.
 ## Contributing: 
 Feel free to contact me to contribute to this project. My contact information is listed below.
 
-## Questions: 
-GitHub: [YOUR NAME HERE]() 
+
 
 If you have any questions or suggestions, please contact me at <YOUR EMAIL HERE>. 
